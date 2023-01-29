@@ -1,0 +1,24 @@
+{
+  "name": "personal-ejs",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js",
+    "watch": "tailwindcss -i ./input.css -o ./views/assets/css/output.css --watch"
+  },
+  "author": "Prannay Kedia",
+  "license": "ISC",
+  "dependencies": {
+    "@tailwindcss/aspect-ratio": "^0.4.2",
+    "@tailwindcss/forms": "^0.5.3",
+    "axios": "^1.2.6",
+    "ejs": "^3.1.8",
+    "express": "^4.18.2",
+    "pm2": "^5.2.2"
+  },
+  "devDependencies": {
+    "tailwindcss": "^3.2.4"
+  }
+}

@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Contact Me | Prannay Kedia</title>
+    <%- include('../pages/partials/head'); %>
+</head>
+
+<body>
+    <!--Navbar Starts-->
+    <header class="relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6">
+            <div
+                class="flex justify-between items-center border-b border-black-600 pt-6 pb-4 lg:px-16 sm:px-6 md:space-x-10">
+                <div class="flex justify-start lg:w-0 lg:flex-1">
+                    <a href="/" class="text-2xl font-extrabold leading-none text-gray-900 select-none logo">Prannay<span
+                            class="text-indigo-600">.</span></a>
+                </div>
+                <div class="-mr-2 -my-2 md:hidden">
+                    <button type="button" id="hamburger-menu"
+                        class="rounded-md p-2 inline-flex items-center justify-center text-black-900 hover:text-black-900 hover:bg-black-900 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500"
+                        aria-expanded="false">
+                        <span class="sr-only">Open menu</span>
+                        <!-- Heroicon name: outline/menu -->
+                        <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                            stroke-width="2" stroke="currentColor" aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
+                    </button>
+                </div>
+                <nav class="hidden md:flex space-x-10">
+                    <a href="/about-me" class="text-sm font-normal text-black-300 hover:text-indigo-900"> About </a>
+                    <a href="/start-up" class="text-sm font-normal text-black-300 hover:text-indigo-900"> Start-Up
+                    </a>
+                    <a href="/projects" class="text-sm font-normal text-black-300 hover:text-indigo-900"> Projects
+                    </a>
+                    <a href="/blogs" class="text-sm font-normal text-black-300 hover:text-indigo-900"> Blog </a>
+                    <a href="https://drive.google.com/file/d/112vlj7AxSeZ6I0wYuxGY2FofZMj9HpM_/view?usp=sharing"
+                        target=”_blank” class="text-sm font-normal text-black-300 hover:text-indigo-900"> CV </a>
+                </nav>
+                <div class="hidden md:flex items-center justify-end md:flex-1 lg:w-0">
+                    <a href="/contact-me"
+                        class="ml-8 whitespace-nowrap inline-flex items-center justify-center px-4 py-2 border border-transparent rounded-full shadow-sm text-sm font-normal text-white bg-indigo-600 hover:bg-indigo-700">
+                        <div class="flex items-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20"
+                                fill="currentColor">
+                                <path fill-rule="evenodd"
+                                    d="M18 5v8a2 2 0 01-2 2h-5l-5 4v-4H4a2 2 0 01-2-2V5a2 2 0 012-2h12a2 2 0 012 2zM7 8H5v2h2V8zm2 0h2v2H9V8zm6 0h-2v2h2V8z"
+                                    clip-rule="evenodd" />
+                            </svg>
+                            <p class="inline-block pl-2">Contact Me</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <!-- Mobile Nav Links -->
+        <div id="mobile-nav"
+            class="hidden z-50 absolute top-0 inset-x-0 p-2 transition transform origin-top-right md:hidden">
+            <div class="rounded-lg shadow-lg ring-1 ring-black ring-opacity-5 bg-white divide-y-2 divide-gray-50">
+                <div class="pt-5 pb-6 px-5">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <a href="/"
+                                class="text-2xl font-extrabold leading-none text-gray-900 select-none logo">Prannay<span
+                                    class="text-indigo-600">.</span></a>
+                        </div>
+                        <div class="-mr-2">
+                            <button type="button" id="close-mobile-nav"
+                                class="bg-white rounded-md p-2 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500">
+                                <span class="sr-only">Close menu</span>
+                                <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                    stroke-width="2" stroke="currentColor" aria-hidden="true">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="mt-6">
+                        <nav class="grid gap-y-8">
+                            <a href="/about-me" class="-m-3 p-3 flex items-center rounded-md hover:bg-gray-50">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="flex-shrink-0 h-6 w-6 text-indigo-600"
+                                    viewBox="0 0 20 20" fill="currentColor">
+                                    <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z"
+                                        clip-rule="evenodd" />
+                                </svg>
+                                <span class="ml-3 text-base font-medium text-gray-900"> About </span>
+                            </a>
+
+                            <a href="/start-up" class="-m-3 p-3 flex items-center rounded-md hover:bg-gray-50">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="flex-shrink-0 h-6 w-6 text-indigo-600"
+                                    viewBox="0 0 20 20" fill="currentColor">
+                                    <path fill-rule="evenodd"
+                                        d="M10.496 2.132a1 1 0 00-.992 0l-7 4A1 1 0 003 8v7a1 1 0 100 2h14a1 1 0 100-2V8a1 1 0 00.496-1.868l-7-4zM6 9a1 1 0 00-1 1v3a1 1 0 102 0v-3a1 1 0 00-1-1zm3 1a1 1 0 012 0v3a1 1 0 11-2 0v-3zm5-1a1 1 0 00-1 1v3a1 1 0 102 0v-3a1 1 0 00-1-1z"
+                                        clip-rule="evenodd" />
+                                </svg>
+                                <span class="ml-3 text-base font-medium text-gray-900"> Start-Up </span>
+                            </a>
+
+                            <a href="/projects" class="-m-3 p-3 flex items-center rounded-md hover:bg-gray-50">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="flex-shrink-0 h-6 w-6 text-indigo-600"
+                                    viewBox="0 0 20 20" fill="currentColor">
+                                    <path d="M2 6a2 2 0 012-2h5l2 2h5a2 2 0 012 2v6a2 2 0 01-2 2H4a2 2 0 01-2-2V6z" />
+                                </svg>
+                                <span class="ml-3 text-base font-medium text-gray-900"> Projects </span>
+                            </a>
+
+                            <a href="/blogs" class="-m-3 p-3 flex items-center rounded-md hover:bg-gray-50">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="flex-shrink-0 h-6 w-6 text-indigo-600"
+                                    viewBox="0 0 20 20" fill="currentColor">
+                                    <path fill-rule="evenodd"
+                                        d="M4 4a2 2 0 012-2h4.586A2 2 0 0112 2.586L15.414 6A2 2 0 0116 7.414V16a2 2 0 01-2 2H6a2 2 0 01-2-2V4zm2 6a1 1 0 011-1h6a1 1 0 110 2H7a1 1 0 01-1-1zm1 3a1 1 0 100 2h6a1 1 0 100-2H7z"
+                                        clip-rule="evenodd" />
+                                </svg>
+                                <span class="ml-3 text-base font-medium text-gray-900"> Blog </span>
+                            </a>
+
+                            <a href="https://drive.google.com/file/d/112vlj7AxSeZ6I0wYuxGY2FofZMj9HpM_/view?usp=sharing"
+                                target=”_blank” class="-m-3 p-3 flex items-center rounded-md hover:bg-gray-50">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="flex-shrink-0 h-6 w-6 text-indigo-600"
+                                    viewBox="0 0 20 20" fill="currentColor">
+                                    <path d="M5 4a2 2 0 012-2h6a2 2 0 012 2v14l-5-2.5L5 18V4z" />
+                                </svg>
+                                <span class="ml-3 text-base font-medium text-gray-900"> CV </span>
+                            </a>
+                        </nav>
+                    </div>
+                </div>
+                <div class="py-6 px-5 space-y-6">
+                    <a href="/contact-me"
+                        class="w-full flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-indigo-600 hover:bg-indigo-700">
+                        <div class="flex items-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20"
+                                fill="currentColor">
+                                <path fill-rule="evenodd"
+                                    d="M18 5v8a2 2 0 01-2 2h-5l-5 4v-4H4a2 2 0 01-2-2V5a2 2 0 012-2h12a2 2 0 012 2zM7 8H5v2h2V8zm2 0h2v2H9V8zm6 0h-2v2h2V8z"
+                                    clip-rule="evenodd" />
+                            </svg>
+                            <p class="inline-block pl-2">Contact Me</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!--Navbar Ends-->
+
+    <div class="mt-12 px-4 overflow-hidden sm:px-6 lg:px-8">
+        <div class="relative max-w-xl mx-auto">
+            <svg class="absolute left-full transform translate-x-1/2" width="404" height="404" fill="none"
+                viewBox="0 0 404 404" aria-hidden="true">
+                <defs>
+                    <pattern id="85737c0e-0916-41d7-917f-596dc7edfa27" x="0" y="0" width="20" height="20"
+                        patternUnits="userSpaceOnUse">
+                        <rect x="0" y="0" width="4" height="4" class="text-gray-200" fill="currentColor" />
+                    </pattern>
+                </defs>
+                <rect width="404" height="404" fill="url(#85737c0e-0916-41d7-917f-596dc7edfa27)" />
+            </svg>
+            <svg class="absolute right-full bottom-0 transform -translate-x-1/2" width="404" height="404" fill="none"
+                viewBox="0 0 404 404" aria-hidden="true">
+                <defs>
+                    <pattern id="85737c0e-0916-41d7-917f-596dc7edfa27" x="0" y="0" width="20" height="20"
+                        patternUnits="userSpaceOnUse">
+                        <rect x="0" y="0" width="4" height="4" class="text-gray-200" fill="currentColor" />
+                    </pattern>
+                </defs>
+                <rect width="404" height="404" fill="url(#85737c0e-0916-41d7-917f-596dc7edfa27)" />
+            </svg>
+            <div class="text-center">
+                <div class="flex items-center justify-center gap-8">
+                    <hr class="w-12 md:w-48 h-2 rounded-full bg-black" />
+                    <div class="text-center text-2xl md:text-4xl font-extrabold">
+                        <p>Contact Me</p>
+                    </div>
+                    <hr class="w-12 md:w-48 h-2 rounded-full bg-black" />
+                </div>
+                <p class="mt-4 text-lg leading-6 text-gray-500">Want to talk? Send me a message and I'll get back to you
+                    in 2 day's time</p>
+            </div>
+            <div class="mt-12">
+                <form name="contact" method="POST" action="/contact-me-success"
+                    class="grid grid-cols-1 gap-y-6 sm:grid-cols-2 sm:gap-x-8" data-netlify="true">
+                    <div>
+                        <label for="first-name" class="block text-sm font-medium text-gray-700">First name <span
+                                class="text-red-700">*</span></label>
+                        <div class="mt-1">
+                            <input required type="text" name="first-name" id="first-name" autocomplete="given-name"
+                                class="py-3 px-4 block border w-full bg-transparent shadow-sm focus:ring-indigo-500 focus:border-indigo-500  rounded-md">
+                        </div>
+                    </div>
+                    <div>
+                        <label for="last-name" class="block text-sm font-medium text-gray-700">Last name <span
+                                class="text-red-700">*</span></label>
+                        <div class="mt-1">
+                            <input required type="text" name="last-name" id="last-name" autocomplete="family-name"
+                                class="py-3 px-4 block border w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 bg-transparent  rounded-md">
+                        </div>
+                    </div>
+                    <div class="sm:col-span-2">
+                        <label for="company" class="block text-sm font-medium text-gray-700">Company</label>
+                        <div class="mt-1">
+                            <input type="text" name="company" id="company" autocomplete="organization"
+                                class="py-3 px-4 block border w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 bg-transparent  rounded-md">
+                        </div>
+                    </div>
+                    <div class="sm:col-span-2">
+                        <label for="email" class="block text-sm font-medium text-gray-700">Email <span
+                                class="text-red-700">*</span></label>
+                        <div class="mt-1">
+                            <input required id="email" name="email" type="email" autocomplete="email"
+                                class="py-3 px-4 block border w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 bg-transparent rounded-md">
+                        </div>
+                    </div>
+                    <div class="sm:col-span-2">
+                        <label for="phone-number" class="block text-sm font-medium text-gray-700">Phone Number</label>
+                        <div class="mt-1 relative rounded-md shadow-sm">
+                            <input type="text" name="phone-number" id="phone-number" autocomplete="tel"
+                                class="py-3 px-4 block border w-full focus:ring-indigo-500 focus:border-indigo-500 bg-transparent rounded-md">
+                        </div>
+                    </div>
+                    <div class="sm:col-span-2">
+                        <label for="message" class="block text-sm font-medium text-gray-700">Message <span
+                                class="text-red-700">*</span></label>
+                        <div class="mt-1">
+                            <textarea required id="message" name="message" rows="4"
+                                class="py-3 px-4 block w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 border bg-transparent  rounded-md"></textarea>
+                        </div>
+                    </div>
+                    <div class="sm:col-span-2">
+                        <button type="submit"
+                            class="w-full inline-flex items-center justify-center px-6 py-3 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">Let'
+                            s talk</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <section class="contact-me lg:px-24 md:px-24 px-6 mt-24 flex flex-col items-center justify-center gap-5">
+        <div class="flex items-center justify-center gap-8">
+            <hr class="w-12 md:w-48 h-2 rounded-full bg-black" />
+            <div class="text-center text-2xl md:text-4xl font-extrabold">
+                <p>Or</p>
+            </div>
+            <hr class="w-12 md:w-48 h-2 rounded-full bg-black" />
+        </div>
+        <div class="details flex flex-col justify-center items-center gap-3">
+            <div class="flex gap-4 items-center">
+                <img src="https://res.cloudinary.com/dg24rzjez/image/upload/v1667496959/personal-website/gmail-icon.svg"
+                    class="h-6 w-6 md:h-8 md:w-8" alt="">
+                <p class="font-light text-md md:text-lg">prannaykedia1@gmail.com</p>
+            </div>
+            <div class="flex gap-4 items-center">
+                <img src="https://res.cloudinary.com/dg24rzjez/image/upload/v1667496959/personal-website/phone-icon.svg"
+                    alt="" class="h-6 w-6 md:h-8 md:w-8">
+                <p class="font-light text-md md:text-lg">+91 85840 11454</p>
+            </div>
+        </div>
+    </section>
+
+    <div class="hidden fixed z-10 inset-0 overflow-y-auto" id="contact-form-modal" aria-labelledby="modal-title"
+        role="dialog" aria-modal="true">
+        <div class="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
+            <div class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity" aria-hidden="true"></div>
+            <span class="hidden sm:inline-block sm:align-middle sm:h-screen" aria-hidden="true">&#8203;</span>
+            <div
+                class="inline-block align-bottom bg-white rounded-lg px-4 pt-5 pb-4 text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-sm sm:w-full sm:p-6">
+                <div>
+                    <div class="mx-auto flex items-center justify-center h-12 w-12 rounded-full bg-green-100">
+                        <!-- Heroicon name: outline/check -->
+                        <svg class="h-6 w-6 text-green-600" xmlns="http://www.w3.org/2000/svg" fill="none"
+                            viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                        </svg>
+                    </div>
+                    <div class="mt-3 text-center sm:mt-5">
+                        <h3 class="text-lg leading-6 font-medium text-gray-900" id="modal-title">Form Submitted
+                            Successfully</h3>
+                        <div class="mt-2">
+                            <p class="text-sm text-gray-500">I'll get back to you in a 1-2 working days. Cheers!</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="mt-5 sm:mt-6">
+                    <button type="button" id="contact-form-modal-button"
+                        class="inline-flex justify-center w-full rounded-md border border-transparent shadow-sm px-4 py-2 bg-indigo-600 text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:text-sm">Okay</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <%- include('../pages/partials/footer'); %>
+        <script>
+            // Contact Me Page
+            let contactModalButton = document.getElementById("contact-form-modal-button");
+            let contactModal = document.getElementById("contact-form-modal");
+            let currentURL = window.location.href;
+            let indexSlash = currentURL.indexOf("/", 8);
+            let finalURL = currentURL.substring(0, indexSlash) + "/contact-me";
+            contactModalButton.addEventListener("click", () => {
+                window.location.replace(finalURL);
+                contactModal.classList.toggle("hidden");
+            });
+        </script>
+</body>
+
+</html>
