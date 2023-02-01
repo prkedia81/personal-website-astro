@@ -253,31 +253,9 @@
         </div>
     </section>
 
-    <section
-        class="newsletter border-2 border-gray-800 mt-16 md:mt-24 mx-5 px-12 py-8 md:px-0 md:py-0 md:mx-20 rounded-md">
-        <div class="max-w-2xl mx-auto text-center sm:py-10 sm:px-6 lg:px-8">
-            <h2 class="text-3xl font-extrabold text-black sm:text-4xl">
-                <span class="block">Sign-up to my newsletter</span>
-            </h2>
-            <p class="mt-4 text-md leading-6 text-gray-700">I talk about start-up, investing, tech and
-                everything
-                around it. Sign-Up for my weekly newsletter to never miss an update</p>
-            <form name="newsletter-subscribers" method="POST" action=""
-                class="mt-5 flex flex-col md:flex-row md:gap-3 gap-2 items-center justify-center" data-netlify="true">
-                <div class="md:basis-3/4">
-                    <input required type="email" name="email" id="email" autocomplete="email"
-                        placeholder="prannaykedia1@gmail.com"
-                        class="py-2 px-4 text-md w-full bg-transparent block shadow-sm focus:ring-indigo-600 focus:border-indigo-600 border-gray-500 rounded-md">
-                </div>
-                <div class="md:basis-1/4">
-                    <button type="submit"
-                        class="w-full items-center justify-center px-5 py-2 border border-transparent text-md font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 sm:w-auto">Sign-up</button>
-                </div>
-            </form>
-        </div>
-    </section>
+    <%- include('../pages/partials/newsletter'); %>
 
-    <%- include('../pages/partials/footer'); %>
+        <%- include('../pages/partials/footer'); %>
 </body>
 
 </html>
