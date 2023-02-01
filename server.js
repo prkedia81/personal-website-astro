@@ -1,4 +1,6 @@
 const express = require("express");
+const session = require("express-session");
+const flash = require("connect-flash");
 const axios = require("axios");
 const nodemailer = require("nodemailer");
 const { text } = require("express");
@@ -7,6 +9,17 @@ const { GoogleSpreadsheet } = require("google-spreadsheet");
 const app = express();
 
 app.set("view engine", "ejs");
+
+app.use(
+  session({
+    secret: "prannay",
+    cookie: { maxAge: 60000 },
+    saveUninitialized: false,
+    resave: false,
+  })
+);
+
+app.use(flash());
 app.use(express.static(__dirname + "/views"));
 
 //Parse URL-encoded bodies
@@ -17,7 +30,7 @@ app.use(
 );
 
 app.get("/", (req, res) => {
-  res.render("pages/index");
+  res.render("pages/index", { message: req.flash("message") });
 });
 
 app.get("/about-me", (req, res) => {
@@ -29,7 +42,7 @@ app.get("/aggregate-terminal", (req, res) => {
 });
 
 app.get("/contact-me", (req, res) => {
-  res.render("pages/contact-me", { success: false });
+  res.render("pages/contact-me", { message: req.flash("message") });
 });
 
 app.get("/film-making", (req, res) => {
@@ -66,6 +79,7 @@ app.get("/blog/:slug", async (req, res) => {
 
   res.render("pages/blog", {
     blog: blog,
+    message: req.flash("message"),
   });
 });
 
@@ -121,6 +135,7 @@ app.post("/register-subscriber", async function (req, res) {
 
   console.log("Row Added: ", addRow);
 
+  req.flash("message", "Thank you for Subscribing!");
   res.redirect(req.get("referer"));
 });
 
@@ -156,6 +171,7 @@ app.post("/send-message", async function (req, res) {
 
   console.log("Row Added: ", addRow);
 
+  req.flash("message", "Thank you for Reaching Out!");
   res.redirect("contact-me");
 });
 
