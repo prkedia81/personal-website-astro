@@ -173,9 +173,9 @@
                             <%= new Date(blogs[0].created_at).toLocaleDateString( undefined, (options={ year: "numeric"
                                 , month: "long" , day: "2-digit" , }) ); %>
                         </p>
-                        <h2 class="text-xl md:text-4xl font-bold">
+                        <h1 class="text-xl md:text-4xl font-bold">
                             <%= blogs[0].title %>
-                        </h2>
+                        </h1>
                         <p class="font-light text-xs text-clip overflow-hidden max-h-24 md:max-h-fit md:text-base">
                             <%= blogs[0].custom_excerpt || blogs[0].excerpt %>
                         </p>
@@ -195,9 +195,9 @@
                                 <%= new Date(blogs[i].created_at).toLocaleDateString( undefined, (options={
                                     year: "numeric" , month: "long" , day: "2-digit" , }) ); %>
                             </p>
-                            <h2 class="text-xl font-bold pt-2">
+                            <h1 class="text-xl font-bold pt-2">
                                 <%= blogs[i].title %>
-                            </h2>
+                            </h1>
                             <p class="font-light text-xs pt-1">
                                 <%= blogs[i].custom_excerpt || blogs[0].excerpt %>
                             </p>
