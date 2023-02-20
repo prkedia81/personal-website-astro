@@ -67,7 +67,7 @@ app.get("/start-up", (req, res) => {
 
 app.get("/blogs", async (req, res) => {
   blogs = await getAllBlogs();
-
+  console.log(blogs);
   res.render("pages/blogs", {
     blogs: blogs,
   });
@@ -177,7 +177,7 @@ app.post("/send-message", async function (req, res) {
 
 // Get All Blogs from Ghost
 async function getAllBlogs() {
-  const apiURL = `https://blogs.prannaykedia.com/ghost/api/content/posts?key=${process.env.GHOST_KEY}&limit=all`;
+  const apiURL = `https://blogs.prannaykedia.com/ghost/api/content/posts?key=${process.env.GHOST_KEY}&limit=all&include=tags,authors`;
   let blogs = [];
   await axios
     .get(apiURL)
@@ -207,6 +207,106 @@ async function getBlog(slug) {
 
   return blog[0];
 }
+
+// sitemap
+app.get("/sitemap.xml", async function (req, res) {
+  let data = `<?xml version="1.0" encoding="UTF-8"?>
+  <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  `;
+
+  const urls = [];
+
+  let urlList = [
+    {
+      loc: "https://prannaykedia.com/",
+      lastmod: "2023-02-14T19:34:00+01:00",
+    },
+    {
+      loc: "https://prannaykedia.com/about-me",
+      lastmod: "2023-02-14T19:34:00+01:00",
+    },
+    {
+      loc: "https://prannaykedia.com/aggregate-terminal",
+      lastmod: "2023-02-14T19:34:00+01:00",
+    },
+    {
+      loc: "https://prannaykedia.com/contact-me",
+      lastmod: "2023-02-14T19:34:00+01:00",
+    },
+    {
+      loc: "https://prannaykedia.com/blogs",
+      lastmod: "2023-02-14T19:34:00+01:00",
+    },
+    {
+      loc: "https://prannaykedia.com/film-making",
+      lastmod: "2023-02-14T19:34:00+01:00",
+    },
+    {
+      loc: "https://prannaykedia.com/photography",
+      lastmod: "2023-02-14T19:34:00+01:00",
+    },
+    {
+      loc: "https://prannaykedia.com/start-up",
+      lastmod: "2023-02-14T19:34:00+01:00",
+    },
+    {
+      loc: "https://prannaykedia.com/flirtaid",
+      lastmod: "2023-02-14T19:34:00+01:00",
+    },
+    {
+      loc: "https://prannaykedia.com/projects",
+      lastmod: "2023-02-14T19:34:00+01:00",
+    },
+  ];
+
+  let ghostCall = await axios.get(
+    `https://blogs.prannaykedia.com/ghost/api/content/posts?key=${process.env.GHOST_KEY}&limit=all&fields=slug,updated_at`
+  );
+
+  ghostCall.data.posts.forEach((blog) => {
+    urlList.push({
+      loc: "https://prannaykedia.com/blog/" + blog.slug,
+      lastmod: blog.updated_at,
+    });
+  });
+
+  urlList.forEach((url) => {
+    urls.push(`<url>
+              <loc>${url.loc}</loc>
+              <lastmod>${url.lastmod}</lastmod>
+          </url>`);
+  });
+
+  data += urls.join("\n");
+  data += `</urlset>`;
+
+  res.header("Content-Type", "application/xml");
+  res.status(200).send(data);
+});
+
+//Robots
+app.get("/robots.txt", function (req, res) {
+  res.type("text/plain");
+  res.status(200).send(`User-agent: *
+Allow:
+Disallow:   
+
+Sitemap: https://www.prannaykedia.com/sitemap.xml`);
+});
+
+cron.schedule("0 0 * * 0", async () => {
+  await axios.get(
+    "https://www.google.com/ping?sitemap=https://prannaykedia.com/sitemap.xml"
+  );
+
+  sendMail(
+    "Prannay Kedia",
+    "prannaykedia1@gmail.com",
+    "prannaykedia4@gmail.com",
+    "Sitemap Submitted for Prannay Kedia",
+    "Sitemap updation request submitted to Google at : " + Date.now()
+  ).catch(console.error);
+});
 
 const port = process.env.PORT || 3000;
 app.listen(port, () => {

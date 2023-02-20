@@ -94,10 +94,10 @@ function formatBlogBody(blogBody) {
   };
 
   // headings:
-  formatFunction("h1, h2, h3", headingClasses);
+  formatFunction("h1, h2", headingClasses);
 
   // subheadings:
-  formatFunction("h4, h5", subheadingClasses);
+  formatFunction("h3, h4, h5", subheadingClasses);
 
   // paragraph:
   formatFunction("p", paragraphClasses);
