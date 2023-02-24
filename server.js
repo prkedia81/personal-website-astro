@@ -219,43 +219,43 @@ app.get("/sitemap.xml", async function (req, res) {
 
   let urlList = [
     {
-      loc: "https://prannaykedia.com/",
+      loc: "https://www.prannaykedia.com/",
       lastmod: "2023-02-14T19:34:00+01:00",
     },
     {
-      loc: "https://prannaykedia.com/about-me",
+      loc: "https://www.prannaykedia.com/about-me",
       lastmod: "2023-02-14T19:34:00+01:00",
     },
     {
-      loc: "https://prannaykedia.com/aggregate-terminal",
+      loc: "https://www.prannaykedia.com/aggregate-terminal",
       lastmod: "2023-02-14T19:34:00+01:00",
     },
     {
-      loc: "https://prannaykedia.com/contact-me",
+      loc: "https://www.prannaykedia.com/contact-me",
       lastmod: "2023-02-14T19:34:00+01:00",
     },
     {
-      loc: "https://prannaykedia.com/blogs",
+      loc: "https://www.prannaykedia.com/blogs",
       lastmod: "2023-02-14T19:34:00+01:00",
     },
     {
-      loc: "https://prannaykedia.com/film-making",
+      loc: "https://www.prannaykedia.com/film-making",
       lastmod: "2023-02-14T19:34:00+01:00",
     },
     {
-      loc: "https://prannaykedia.com/photography",
+      loc: "https://www.prannaykedia.com/photography",
       lastmod: "2023-02-14T19:34:00+01:00",
     },
     {
-      loc: "https://prannaykedia.com/start-up",
+      loc: "https://www.prannaykedia.com/start-up",
       lastmod: "2023-02-14T19:34:00+01:00",
     },
     {
-      loc: "https://prannaykedia.com/flirtaid",
+      loc: "https://www.prannaykedia.com/flirtaid",
       lastmod: "2023-02-14T19:34:00+01:00",
     },
     {
-      loc: "https://prannaykedia.com/projects",
+      loc: "https://www.prannaykedia.com/projects",
       lastmod: "2023-02-14T19:34:00+01:00",
     },
   ];
@@ -266,7 +266,7 @@ app.get("/sitemap.xml", async function (req, res) {
 
   ghostCall.data.posts.forEach((blog) => {
     urlList.push({
-      loc: "https://prannaykedia.com/blog/" + blog.slug,
+      loc: "https://www.prannaykedia.com/blog/" + blog.slug,
       lastmod: blog.updated_at,
     });
   });
