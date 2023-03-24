@@ -194,7 +194,7 @@ async function getAllBlogs() {
 
 // Get Specific Blog Post
 async function getBlog(slug) {
-  const apiURL = `https://blogs.prannaykedia.com/ghost/api/content/posts/slug/${slug}?key=${process.env.GHOST_KEY}`;
+  const apiURL = `https://blogs.prannaykedia.com/ghost/api/content/posts/slug/${slug}?key=${process.env.GHOST_KEY}&include=tags,authors`;
 
   let blog = [];
   await axios

@@ -7,19 +7,19 @@
   </title>
   <%- include('../pages/partials/head-blog'); %>
 
-  <meta name="title" content="<%= blog.meta_title || blog.title + ' - Writee AI' %>">
+  <meta name="title" content="<%= blog.meta_title || blog.title + ' | Prannay Kedia' %>">
   <meta name="description" content="<%= blog.meta_description || blog.custom_excerpt || blog.excerpt %>">
   <meta property="image" content="<%= blog.feature_image %>" />
   <meta name="author" content="<%= blog.primary_author.name %>" />
 
   <!-- Facebook Metadata -->
-  <meta property="og:url" content="<%= 'https://writee.in/blog/' + blog.slug %>">
-  <meta property="og:title" content="<%= blog.meta_title || blog.title + ' - Writee AI' %>">
+  <meta property="og:url" content="<%= 'https://prannaykedia.com/blog/' + blog.slug %>">
+  <meta property="og:title" content="<%= blog.meta_title || blog.title + ' | Prannay Kedia' %>">
   <meta property="og:description" content="<%= blog.meta_description || blog.custom_excerpt || blog.excerpt %>">
   <meta property="og:image" content="<%= blog.feature_image %>">
 
   <meta property="twitter:url" content="<%= 'https://writee.in/blog/' + blog.slug %>">
-  <meta property="twitter:title" content="<%= blog.meta_title || blog.title + ' - Writee AI' %>">
+  <meta property="twitter:title" content="<%= blog.meta_title || blog.title + ' | Prannay Kedia' %>">
   <meta property="twitter:description" content="<%= blog.meta_description || blog.custom_excerpt || blog.excerpt %>">
   <meta property="twitter:image" content="<%= blog.feature_image %>">
 </head>
