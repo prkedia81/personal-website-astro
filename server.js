@@ -68,7 +68,6 @@ app.get("/start-up", (req, res) => {
 
 app.get("/blogs", async (req, res) => {
   blogs = await getAllBlogs();
-  console.log(blogs);
   res.render("pages/blogs", {
     blogs: blogs,
   });
