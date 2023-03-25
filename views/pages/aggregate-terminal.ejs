@@ -2,348 +2,309 @@
 <html lang="en">
 
 <head>
-    <title>Aggregate Terminal | Prannay Kedia</title>
-    <%- include('../pages/partials/head'); %>
+  <title>Aggregate Terminal | Prannay Kedia</title>
+  <%- include('../pages/partials/head'); %>
+  <%- include('../pages/partials/metatags'); %>
 </head>
 
 <body>
-    <!--Navbar Starts-->
-    <header class="relative">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6">
-            <div
-                class="flex justify-between items-center border-b border-black-600 pt-6 pb-4 lg:px-16 sm:px-6 md:space-x-10">
-                <div class="flex justify-start lg:w-0 lg:flex-1">
-                    <a href="/" class="text-2xl font-extrabold leading-none text-gray-900 select-none logo">Prannay<span
-                            class="text-indigo-600">.</span></a>
-                </div>
-                <div class="-mr-2 -my-2 md:hidden">
-                    <button type="button" id="hamburger-menu"
-                        class="rounded-md p-2 inline-flex items-center justify-center text-black-900 hover:text-black-900 hover:bg-black-900 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500"
-                        aria-expanded="false">
-                        <span class="sr-only">Open menu</span>
-                        <!-- Heroicon name: outline/menu -->
-                        <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                            stroke-width="2" stroke="currentColor" aria-hidden="true">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
-                        </svg>
-                    </button>
-                </div>
-                <nav class="hidden md:flex space-x-10">
-                    <a href="/about-me" class="text-sm font-normal text-black-300 hover:text-indigo-900">
-                        About
-                    </a>
-                    <a href="/start-up" class="text-sm font-normal text-black-300 hover:text-indigo-900">
-                        Start-Up
-                    </a>
-                    <a href="/projects" class="text-sm font-normal text-black-300 hover:text-indigo-900">
-                        Projects
-                    </a>
-                    <a href="/blogs" class="text-sm font-normal text-black-300 hover:text-indigo-900">
-                        Blog
-                    </a>
-                    <a href="https://drive.google.com/file/d/112vlj7AxSeZ6I0wYuxGY2FofZMj9HpM_/view?usp=sharing"
-                        target="”_blank”" class="text-sm font-normal text-black-300 hover:text-indigo-900">
-                        CV
-                    </a>
-                </nav>
-                <div class="hidden md:flex items-center justify-end md:flex-1 lg:w-0">
-                    <a href="/contact-me"
-                        class="ml-8 whitespace-nowrap inline-flex items-center justify-center px-4 py-2 border border-transparent rounded-full shadow-sm text-sm font-normal text-white bg-indigo-600 hover:bg-indigo-700">
-                        <div class="flex items-center">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20"
-                                fill="currentColor">
-                                <path fill-rule="evenodd"
-                                    d="M18 5v8a2 2 0 01-2 2h-5l-5 4v-4H4a2 2 0 01-2-2V5a2 2 0 012-2h12a2 2 0 012 2zM7 8H5v2h2V8zm2 0h2v2H9V8zm6 0h-2v2h2V8z"
-                                    clip-rule="evenodd" />
-                            </svg>
-                            <p class="inline-block pl-2">Contact Me</p>
-                        </div>
-                    </a>
-                </div>
-            </div>
+  <!--Navbar Starts-->
+  <header class="relative">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6">
+      <div class="flex justify-between items-center border-b border-black-600 pt-6 pb-4 lg:px-16 sm:px-6 md:space-x-10">
+        <div class="flex justify-start lg:w-0 lg:flex-1">
+          <a href="/" class="text-2xl font-extrabold leading-none text-gray-900 select-none logo">Prannay<span class="text-indigo-600">.</span></a>
         </div>
-        <!-- Mobile Nav Links -->
-        <div id="mobile-nav"
-            class="hidden z-50 absolute top-0 inset-x-0 p-2 transition transform origin-top-right md:hidden">
-            <div class="rounded-lg shadow-lg ring-1 ring-black ring-opacity-5 bg-white divide-y-2 divide-gray-50">
-                <div class="pt-5 pb-6 px-5">
-                    <div class="flex items-center justify-between">
-                        <div>
-                            <a href="/"
-                                class="text-2xl font-extrabold leading-none text-gray-900 select-none logo">Prannay<span
-                                    class="text-indigo-600">.</span></a>
-                        </div>
-                        <div class="-mr-2">
-                            <button type="button" id="close-mobile-nav"
-                                class="bg-white rounded-md p-2 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500">
-                                <span class="sr-only">Close menu</span>
-                                <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                    stroke-width="2" stroke="currentColor" aria-hidden="true">
-                                    <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
-                                </svg>
-                            </button>
-                        </div>
-                    </div>
-                    <div class="mt-6">
-                        <nav class="grid gap-y-8">
-                            <a href="/about-me" class="-m-3 p-3 flex items-center rounded-md hover:bg-gray-50">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="flex-shrink-0 h-6 w-6 text-indigo-600"
-                                    viewBox="0 0 20 20" fill="currentColor">
-                                    <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z"
-                                        clip-rule="evenodd" />
-                                </svg>
-                                <span class="ml-3 text-base font-medium text-gray-900">
-                                    About
-                                </span>
-                            </a>
-
-                            <a href="/start-up" class="-m-3 p-3 flex items-center rounded-md hover:bg-gray-50">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="flex-shrink-0 h-6 w-6 text-indigo-600"
-                                    viewBox="0 0 20 20" fill="currentColor">
-                                    <path fill-rule="evenodd"
-                                        d="M10.496 2.132a1 1 0 00-.992 0l-7 4A1 1 0 003 8v7a1 1 0 100 2h14a1 1 0 100-2V8a1 1 0 00.496-1.868l-7-4zM6 9a1 1 0 00-1 1v3a1 1 0 102 0v-3a1 1 0 00-1-1zm3 1a1 1 0 012 0v3a1 1 0 11-2 0v-3zm5-1a1 1 0 00-1 1v3a1 1 0 102 0v-3a1 1 0 00-1-1z"
-                                        clip-rule="evenodd" />
-                                </svg>
-                                <span class="ml-3 text-base font-medium text-gray-900">
-                                    Start-Up
-                                </span>
-                            </a>
-
-                            <a href="/projects" class="-m-3 p-3 flex items-center rounded-md hover:bg-gray-50">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="flex-shrink-0 h-6 w-6 text-indigo-600"
-                                    viewBox="0 0 20 20" fill="currentColor">
-                                    <path d="M2 6a2 2 0 012-2h5l2 2h5a2 2 0 012 2v6a2 2 0 01-2 2H4a2 2 0 01-2-2V6z" />
-                                </svg>
-                                <span class="ml-3 text-base font-medium text-gray-900">
-                                    Projects
-                                </span>
-                            </a>
-
-                            <a href="/blogs" class="-m-3 p-3 flex items-center rounded-md hover:bg-gray-50">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="flex-shrink-0 h-6 w-6 text-indigo-600"
-                                    viewBox="0 0 20 20" fill="currentColor">
-                                    <path fill-rule="evenodd"
-                                        d="M4 4a2 2 0 012-2h4.586A2 2 0 0112 2.586L15.414 6A2 2 0 0116 7.414V16a2 2 0 01-2 2H6a2 2 0 01-2-2V4zm2 6a1 1 0 011-1h6a1 1 0 110 2H7a1 1 0 01-1-1zm1 3a1 1 0 100 2h6a1 1 0 100-2H7z"
-                                        clip-rule="evenodd" />
-                                </svg>
-                                <span class="ml-3 text-base font-medium text-gray-900">
-                                    Blog
-                                </span>
-                            </a>
-
-                            <a href="https://drive.google.com/file/d/112vlj7AxSeZ6I0wYuxGY2FofZMj9HpM_/view?usp=sharing"
-                                target="”_blank”" class="-m-3 p-3 flex items-center rounded-md hover:bg-gray-50">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="flex-shrink-0 h-6 w-6 text-indigo-600"
-                                    viewBox="0 0 20 20" fill="currentColor">
-                                    <path d="M5 4a2 2 0 012-2h6a2 2 0 012 2v14l-5-2.5L5 18V4z" />
-                                </svg>
-                                <span class="ml-3 text-base font-medium text-gray-900">
-                                    CV
-                                </span>
-                            </a>
-                        </nav>
-                    </div>
-                </div>
-                <div class="py-6 px-5 space-y-6">
-                    <a href="/contact-me"
-                        class="w-full flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-indigo-600 hover:bg-indigo-700">
-                        <div class="flex items-center">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20"
-                                fill="currentColor">
-                                <path fill-rule="evenodd"
-                                    d="M18 5v8a2 2 0 01-2 2h-5l-5 4v-4H4a2 2 0 01-2-2V5a2 2 0 012-2h12a2 2 0 012 2zM7 8H5v2h2V8zm2 0h2v2H9V8zm6 0h-2v2h2V8z"
-                                    clip-rule="evenodd" />
-                            </svg>
-                            <p class="inline-block pl-2">Contact Me</p>
-                        </div>
-                    </a>
-                </div>
-            </div>
+        <div class="-mr-2 -my-2 md:hidden">
+          <button type="button" id="hamburger-menu" class="rounded-md p-2 inline-flex items-center justify-center text-black-900 hover:text-black-900 hover:bg-black-900 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500" aria-expanded="false">
+            <span class="sr-only">Open menu</span>
+            <!-- Heroicon name: outline/menu -->
+            <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+          </button>
         </div>
-    </header>
-    <!--Navbar Ends-->
-
-    <section class="heading flex flex-col items-center justify-center mt-8 md:mt-12 gap-2">
-        <div class="flex items-center justify-center gap-4 md:gap-8">
-            <hr class="w-12 md:w-48 h-2 rounded-full bg-black" />
-            <div class="text-center text-4xl font-extrabold">
-                <h1>Aggregate Terminal</h1>
+        <nav class="hidden md:flex space-x-10">
+          <a href="/about-me" class="text-sm font-normal text-black-300 hover:text-indigo-900">
+            About
+          </a>
+          <a href="/start-up" class="text-sm font-normal text-black-300 hover:text-indigo-900">
+            Start-Up
+          </a>
+          <a href="/projects" class="text-sm font-normal text-black-300 hover:text-indigo-900">
+            Projects
+          </a>
+          <a href="/blogs" class="text-sm font-normal text-black-300 hover:text-indigo-900">
+            Blog
+          </a>
+          <a href="https://drive.google.com/file/d/112vlj7AxSeZ6I0wYuxGY2FofZMj9HpM_/view?usp=sharing" target="”_blank”" class="text-sm font-normal text-black-300 hover:text-indigo-900">
+            CV
+          </a>
+        </nav>
+        <div class="hidden md:flex items-center justify-end md:flex-1 lg:w-0">
+          <a href="/contact-me" class="ml-8 whitespace-nowrap inline-flex items-center justify-center px-4 py-2 border border-transparent rounded-full shadow-sm text-sm font-normal text-white bg-indigo-600 hover:bg-indigo-700">
+            <div class="flex items-center">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd" d="M18 5v8a2 2 0 01-2 2h-5l-5 4v-4H4a2 2 0 01-2-2V5a2 2 0 012-2h12a2 2 0 012 2zM7 8H5v2h2V8zm2 0h2v2H9V8zm6 0h-2v2h2V8z" clip-rule="evenodd" />
+              </svg>
+              <p class="inline-block pl-2">Contact Me</p>
             </div>
-            <hr class="w-12 md:w-48 h-2 rounded-full bg-black" />
+          </a>
         </div>
-        <a href="https://aterm.prannaykedia.com" class="flex gap-2 items-center italic hover:text-indigo-900"
-            target="_blank">
-            <p class="font-extralight">aterm.prannaykedia.com</p>
-            <img src="https://res.cloudinary.com/dg24rzjez/image/upload/v1667496959/personal-website/gotoarrow.svg"
-                class="h-3 w-3" alt="" />
-        </a>
-    </section>
+      </div>
+    </div>
+    <!-- Mobile Nav Links -->
+    <div id="mobile-nav" class="hidden z-50 absolute top-0 inset-x-0 p-2 transition transform origin-top-right md:hidden">
+      <div class="rounded-lg shadow-lg ring-1 ring-black ring-opacity-5 bg-white divide-y-2 divide-gray-50">
+        <div class="pt-5 pb-6 px-5">
+          <div class="flex items-center justify-between">
+            <div>
+              <a href="/" class="text-2xl font-extrabold leading-none text-gray-900 select-none logo">Prannay<span class="text-indigo-600">.</span></a>
+            </div>
+            <div class="-mr-2">
+              <button type="button" id="close-mobile-nav" class="bg-white rounded-md p-2 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500">
+                <span class="sr-only">Close menu</span>
+                <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              </button>
+            </div>
+          </div>
+          <div class="mt-6">
+            <nav class="grid gap-y-8">
+              <a href="/about-me" class="-m-3 p-3 flex items-center rounded-md hover:bg-gray-50">
+                <svg xmlns="http://www.w3.org/2000/svg" class="flex-shrink-0 h-6 w-6 text-indigo-600" viewBox="0 0 20 20" fill="currentColor">
+                  <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd" />
+                </svg>
+                <span class="ml-3 text-base font-medium text-gray-900">
+                  About
+                </span>
+              </a>
 
-    <section class="banner mt-8">
-        <img src="https://res.cloudinary.com/dg24rzjez/image/upload/v1667498943/personal-website/projects/aggregate-terminal/aggterm-banner.svg"
-            class="w-screen" alt="" />
-    </section>
+              <a href="/start-up" class="-m-3 p-3 flex items-center rounded-md hover:bg-gray-50">
+                <svg xmlns="http://www.w3.org/2000/svg" class="flex-shrink-0 h-6 w-6 text-indigo-600" viewBox="0 0 20 20" fill="currentColor">
+                  <path fill-rule="evenodd" d="M10.496 2.132a1 1 0 00-.992 0l-7 4A1 1 0 003 8v7a1 1 0 100 2h14a1 1 0 100-2V8a1 1 0 00.496-1.868l-7-4zM6 9a1 1 0 00-1 1v3a1 1 0 102 0v-3a1 1 0 00-1-1zm3 1a1 1 0 012 0v3a1 1 0 11-2 0v-3zm5-1a1 1 0 00-1 1v3a1 1 0 102 0v-3a1 1 0 00-1-1z" clip-rule="evenodd" />
+                </svg>
+                <span class="ml-3 text-base font-medium text-gray-900">
+                  Start-Up
+                </span>
+              </a>
 
-    <!-- TODO: text-lg or text-base -->
-    <section class="content mt-8 md:mt-16 lg:px-44 md:px-44 px-6 leading-7 font-normal text-base flex flex-col gap-8">
-        <p class="intro">
-            What started as an idea for a B-Plan competition turned into my first
-            full fledged project. Aggregate Terminal was my introduction to the
-            world of building which eventually led me to my start-up - Writee AI.
+              <a href="/projects" class="-m-3 p-3 flex items-center rounded-md hover:bg-gray-50">
+                <svg xmlns="http://www.w3.org/2000/svg" class="flex-shrink-0 h-6 w-6 text-indigo-600" viewBox="0 0 20 20" fill="currentColor">
+                  <path d="M2 6a2 2 0 012-2h5l2 2h5a2 2 0 012 2v6a2 2 0 01-2 2H4a2 2 0 01-2-2V6z" />
+                </svg>
+                <span class="ml-3 text-base font-medium text-gray-900">
+                  Projects
+                </span>
+              </a>
+
+              <a href="/blogs" class="-m-3 p-3 flex items-center rounded-md hover:bg-gray-50">
+                <svg xmlns="http://www.w3.org/2000/svg" class="flex-shrink-0 h-6 w-6 text-indigo-600" viewBox="0 0 20 20" fill="currentColor">
+                  <path fill-rule="evenodd" d="M4 4a2 2 0 012-2h4.586A2 2 0 0112 2.586L15.414 6A2 2 0 0116 7.414V16a2 2 0 01-2 2H6a2 2 0 01-2-2V4zm2 6a1 1 0 011-1h6a1 1 0 110 2H7a1 1 0 01-1-1zm1 3a1 1 0 100 2h6a1 1 0 100-2H7z" clip-rule="evenodd" />
+                </svg>
+                <span class="ml-3 text-base font-medium text-gray-900">
+                  Blog
+                </span>
+              </a>
+
+              <a href="https://drive.google.com/file/d/112vlj7AxSeZ6I0wYuxGY2FofZMj9HpM_/view?usp=sharing" target="”_blank”" class="-m-3 p-3 flex items-center rounded-md hover:bg-gray-50">
+                <svg xmlns="http://www.w3.org/2000/svg" class="flex-shrink-0 h-6 w-6 text-indigo-600" viewBox="0 0 20 20" fill="currentColor">
+                  <path d="M5 4a2 2 0 012-2h6a2 2 0 012 2v14l-5-2.5L5 18V4z" />
+                </svg>
+                <span class="ml-3 text-base font-medium text-gray-900">
+                  CV
+                </span>
+              </a>
+            </nav>
+          </div>
+        </div>
+        <div class="py-6 px-5 space-y-6">
+          <a href="/contact-me" class="w-full flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-indigo-600 hover:bg-indigo-700">
+            <div class="flex items-center">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd" d="M18 5v8a2 2 0 01-2 2h-5l-5 4v-4H4a2 2 0 01-2-2V5a2 2 0 012-2h12a2 2 0 012 2zM7 8H5v2h2V8zm2 0h2v2H9V8zm6 0h-2v2h2V8z" clip-rule="evenodd" />
+              </svg>
+              <p class="inline-block pl-2">Contact Me</p>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </header>
+  <!--Navbar Ends-->
+
+  <section class="heading flex flex-col items-center justify-center mt-8 md:mt-12 gap-2">
+    <div class="flex items-center justify-center gap-4 md:gap-8">
+      <hr class="w-12 md:w-48 h-2 rounded-full bg-black" />
+      <div class="text-center text-4xl font-extrabold">
+        <h1>Aggregate Terminal</h1>
+      </div>
+      <hr class="w-12 md:w-48 h-2 rounded-full bg-black" />
+    </div>
+    <a href="https://aterm.prannaykedia.com" class="flex gap-2 items-center italic hover:text-indigo-900" target="_blank">
+      <p class="font-extralight">aterm.prannaykedia.com</p>
+      <img src="https://res.cloudinary.com/dg24rzjez/image/upload/v1667496959/personal-website/gotoarrow.svg" class="h-3 w-3" alt="" />
+    </a>
+  </section>
+
+  <section class="banner mt-8">
+    <img src="https://res.cloudinary.com/dg24rzjez/image/upload/v1667498943/personal-website/projects/aggregate-terminal/aggterm-banner.svg" class="w-screen" alt="" />
+  </section>
+
+  <!-- TODO: text-lg or text-base -->
+  <section class="content mt-8 md:mt-16 lg:px-44 md:px-44 px-6 leading-7 font-normal text-base flex flex-col gap-8">
+    <p class="intro">
+      What started as an idea for a B-Plan competition turned into my first
+      full fledged project. Aggregate Terminal was my introduction to the
+      world of building which eventually led me to my start-up - Writee AI.
+    </p>
+    <div class="section flex flex-col gap-4">
+      <h2 class="heading text-2xl font-extrabold">Problem Statement</h2>
+      <p>
+        India is the home to the biggest stock exchange in the world (Bombay
+        Stock Exchange) with 5,400+ companies listed as on September’21. Yet,
+        the country lacks an accurate and affordable source of market data.
+        While US softwares like Bloomberg Terminal and YCharts are available
+        to Indians, exchange rates inflate the price of an already expensive
+        software. API providers like Alpha Vantage, IEX Cloud and Polygon
+        provide excellent data for the US Market, but their coverage of the
+        Indian markets are subpar at best. It is ironic that in the
+        information age, reliable data is either scarce or very expensive.
+      </p>
+      <p>
+        With Indian investment analysis portals, you can barely visualise the
+        trend in revenues for a company let alone any other complex processes.
+        This must change since the world’s next superpower cannot rely on
+        exorbitantly priced foreign portals for its internal data.
+      </p>
+    </div>
+    <div class="section flex flex-col gap-4">
+      <h2 class="heading text-2xl font-extrabold">The Product</h2>
+      <p>
+        Aggregate Terminal was conceptualised to be the one-stop platform for all things investments. The
+        primary
+        offerings were:
+      </p>
+      <ol class="list-decimal px-12">
+        <li><strong>Access to raw data via APIs and Excel Sheets:</strong> To own your data and run processes as
+          you
+          see fit</li>
+        <li><strong>Portfolio Tracker:</strong> To be on top of all changes happening to your portfolio at any
+          given
+          time</li>
+        <li><strong>Stock Aggregated:</strong> One-page to know everything about the stock - <a href="https://aterm.prannaykedia.com/stocks/ticker/PIDILITIND.NS" target="_blank" class="underline italic">Check it out here</a>
+        </li>
+        <li><strong>Equity Visualisation:</strong> Get the freedom to visualise any metric of your choice - <a href="https://aterm.prannaykedia.com/stocks/fundamental-charts" target="_blank" class="underline italic">Check it out here</a></li>
+        <li><strong>Mutual Fund Analysis:</strong> The most in-depth analysis of Mutual Funds with more than 22
+          factors
+          taken into account</li>
+      </ol>
+      <p>And the list goes on…..</p>
+      <div class="image flex flex-col gap-2 items-center justify-center">
+        <img src="https://res.cloudinary.com/dg24rzjez/image/upload/v1667499954/personal-website/projects/aggregate-terminal/product-offering.png" alt="" class="md:w-1/2" />
+        <p class="Subtext text-xs font-light">
+          Map of our offerings
         </p>
-        <div class="section flex flex-col gap-4">
-            <h2 class="heading text-2xl font-extrabold">Problem Statement</h2>
-            <p>
-                India is the home to the biggest stock exchange in the world (Bombay
-                Stock Exchange) with 5,400+ companies listed as on September’21. Yet,
-                the country lacks an accurate and affordable source of market data.
-                While US softwares like Bloomberg Terminal and YCharts are available
-                to Indians, exchange rates inflate the price of an already expensive
-                software. API providers like Alpha Vantage, IEX Cloud and Polygon
-                provide excellent data for the US Market, but their coverage of the
-                Indian markets are subpar at best. It is ironic that in the
-                information age, reliable data is either scarce or very expensive.
-            </p>
-            <p>
-                With Indian investment analysis portals, you can barely visualise the
-                trend in revenues for a company let alone any other complex processes.
-                This must change since the world’s next superpower cannot rely on
-                exorbitantly priced foreign portals for its internal data.
-            </p>
-        </div>
-        <div class="section flex flex-col gap-4">
-            <h2 class="heading text-2xl font-extrabold">The Product</h2>
-            <p>
-                Aggregate Terminal was conceptualised to be the one-stop platform for all things investments. The
-                primary
-                offerings were:
-            </p>
-            <ol class="list-decimal px-12">
-                <li><strong>Access to raw data via APIs and Excel Sheets:</strong> To own your data and run processes as
-                    you
-                    see fit</li>
-                <li><strong>Portfolio Tracker:</strong> To be on top of all changes happening to your portfolio at any
-                    given
-                    time</li>
-                <li><strong>Stock Aggregated:</strong> One-page to know everything about the stock - <a
-                        href="https://aterm.prannaykedia.com/stocks/ticker/PIDILITIND.NS" target="_blank"
-                        class="underline italic">Check it out here</a>
-                </li>
-                <li><strong>Equity Visualisation:</strong> Get the freedom to visualise any metric of your choice - <a
-                        href="https://aterm.prannaykedia.com/stocks/fundamental-charts" target="_blank"
-                        class="underline italic">Check it out here</a></li>
-                <li><strong>Mutual Fund Analysis:</strong> The most in-depth analysis of Mutual Funds with more than 22
-                    factors
-                    taken into account</li>
-            </ol>
-            <p>And the list goes on…..</p>
-            <div class="image flex flex-col gap-2 items-center justify-center">
-                <img src="https://res.cloudinary.com/dg24rzjez/image/upload/v1667499954/personal-website/projects/aggregate-terminal/product-offering.png"
-                    alt="" class="md:w-1/2" />
-                <p class="Subtext text-xs font-light">
-                    Map of our offerings
-                </p>
-            </div>
-        </div>
+      </div>
+    </div>
 
-        <div class="section flex flex-col gap-4">
-            <h2 class="heading text-2xl font-extrabold">Aggregate Terminal Pitch Deck</h2>
-            <embed src="aggregate-terminal/Aggregate Terminal 100X.pdf" type="application/pdf" width="80%"
-                height="450px" class="mx-auto rounded-md mt-4" />
-        </div>
+    <div class="section flex flex-col gap-4">
+      <h2 class="heading text-2xl font-extrabold">Aggregate Terminal Pitch Deck</h2>
+      <embed src="aggregate-terminal/Aggregate Terminal 100X.pdf" type="application/pdf" width="80%" height="450px" class="mx-auto rounded-md mt-4" />
+    </div>
 
-        <div class="section flex flex-col gap-4">
-            <h2 class="heading text-2xl font-extrabold">The feasibility of the idea</h2>
-            <p>
-                There were 2 main factors which convinced us to pursue this idea:
-            </p>
-            <ol class="list-decimal px-12">
-                <li><strong>Personal Experience:</strong> When you invest in a stock, a mutual fund, or an insurance;
-                    you are
-                    investing in your family’s future. Hence, in-depth research is warranted. Today, if you try to
-                    research a
-                    stock, you will have 100s of tabs open, each tab for a website which provides you with one metric.
-                    This makes
-                    researching investments a pain and also discourages a lot of potential investors from even entering
-                    the
-                    financial markets.
-                </li>
-                <li><a href="https://www.bajajfinservmarkets.in/discover/journals/blogs/investment/the-financialisation-of-indian-savings-explained/"
-                        target="_blank"><strong class="underline">Financialisation of Indian
-                            Savings:</strong>
-                    </a> RBI has pointed out that only 5% of India’s household wealth is in financial assets. This comes
-                    out to
-                    about $500 billion. RBI has opined that this is unsustainable. This 5% figure is going to increase.
-                    But by how
-                    much? If we assume a 1 percentage point increase per year, in 10 years the financial market would
-                    have
-                    trebled. With more people investing their money, they will need brokers, PMS services, direct
-                    indexing
-                    options, and a robust research terminal.
-                </li>
-            </ol>
-            <p>This fit the initial criterias for a good business idea - it was a problem I experienced personally and
-                the
-                market for the product was growing. But what went wrong then?</p>
-        </div>
+    <div class="section flex flex-col gap-4">
+      <h2 class="heading text-2xl font-extrabold">The feasibility of the idea</h2>
+      <p>
+        There were 2 main factors which convinced us to pursue this idea:
+      </p>
+      <ol class="list-decimal px-12">
+        <li><strong>Personal Experience:</strong> When you invest in a stock, a mutual fund, or an insurance;
+          you are
+          investing in your family’s future. Hence, in-depth research is warranted. Today, if you try to
+          research a
+          stock, you will have 100s of tabs open, each tab for a website which provides you with one metric.
+          This makes
+          researching investments a pain and also discourages a lot of potential investors from even entering
+          the
+          financial markets.
+        </li>
+        <li><a href="https://www.bajajfinservmarkets.in/discover/journals/blogs/investment/the-financialisation-of-indian-savings-explained/" target="_blank"><strong class="underline">Financialisation of Indian
+              Savings:</strong>
+          </a> RBI has pointed out that only 5% of India’s household wealth is in financial assets. This comes
+          out to
+          about $500 billion. RBI has opined that this is unsustainable. This 5% figure is going to increase.
+          But by how
+          much? If we assume a 1 percentage point increase per year, in 10 years the financial market would
+          have
+          trebled. With more people investing their money, they will need brokers, PMS services, direct
+          indexing
+          options, and a robust research terminal.
+        </li>
+      </ol>
+      <p>This fit the initial criterias for a good business idea - it was a problem I experienced personally and
+        the
+        market for the product was growing. But what went wrong then?</p>
+    </div>
 
-        <div class="section flex flex-col gap-4">
-            <h2 class="heading text-2xl font-extrabold">Not a sustainable model</h2>
-            <p>There are 2 primary sources of revenue for this product:</p>
-            <ol class="list-decimal px-12">
-                <li>Premium features on the Platform - to be introduced after 50,000 users</li>
-                <li>API as a Service - requires months of product development</li>
-            </ol>
-            <p>Our major expenditures would be:</p>
-            <ol class="list-decimal px-12">
-                <li>Hosting Services (AWS, Microsoft Azure etc)</li>
-                <li>Purchase of Raw Data from the exchanges</li>
-            </ol>
-            <p>By nature of this industry, we must start off by providing our services for free, so as to build a strong
-                base
-                which trusts us. It can be seen that the barrier-to-entry for this industry is very high. To even
-                start-off we
-                need access to raw data which costs around Rs 3,000,000. While a higher barrier-to-entry is another sign
-                of a
-                good business, it deters a first year student from entering the market.</p>
-        </div>
+    <div class="section flex flex-col gap-4">
+      <h2 class="heading text-2xl font-extrabold">Not a sustainable model</h2>
+      <p>There are 2 primary sources of revenue for this product:</p>
+      <ol class="list-decimal px-12">
+        <li>Premium features on the Platform - to be introduced after 50,000 users</li>
+        <li>API as a Service - requires months of product development</li>
+      </ol>
+      <p>Our major expenditures would be:</p>
+      <ol class="list-decimal px-12">
+        <li>Hosting Services (AWS, Microsoft Azure etc)</li>
+        <li>Purchase of Raw Data from the exchanges</li>
+      </ol>
+      <p>By nature of this industry, we must start off by providing our services for free, so as to build a strong
+        base
+        which trusts us. It can be seen that the barrier-to-entry for this industry is very high. To even
+        start-off we
+        need access to raw data which costs around Rs 3,000,000. While a higher barrier-to-entry is another sign
+        of a
+        good business, it deters a first year student from entering the market.</p>
+    </div>
 
-        <div class="section flex flex-col gap-4">
-            <h2 class="heading text-2xl font-extrabold">Lessons & Takeaways</h2>
-            <p>Aggregate Terminal was my introduction to the world of business and entrepreneurship. Through this
-                project I
-                learnt multiple key elements which helped me start-up eventually. Some key takeaways were:</p>
-            <ol class="list-decimal px-12">
-                <li><strong>Creation of a pitch deck -</strong> This was the first pitch deck I created, and it was a
-                    tedious
-                    process. Every term in the deck was new to me, but exposure to pitch decks in my first year itself
-                    acclimated
-                    me to the concept.
-                </li>
-                <li><strong>Analysis of a business idea -</strong> Concepts such as recurring revenue, barrier-to-entry,
-                    market
-                    size, addressable market size are fundamentals to analysing and choosing your business idea. People
-                    without
-                    the knowledge of these concepts are more susceptible to picking an idea without enough market
-                    potential.</li>
-                <li><strong>Working and leading a team -</strong> This was the first time I led a team of 5 in a
-                    project. I’ve
-                    had team experiences in my school, but none were similar to this. While leading a project, one must
-                    take into
-                    account the views of everyone and build a common consensus before moving ahead. Lack of consensus is
-                    the
-                    number one reason for start-ups failing.</li>
-            </ol>
-            <p>While Aggregate Terminal didn’t end up turning into a massive business, it gave me a number of practical
-                skills
-                that I value to this day. On a lighter note, we pitched the idea to <strong>100X.VC</strong> and
-                received
-                incredible feedback on
-                it.</p>
-        </div>
-    </section>
+    <div class="section flex flex-col gap-4">
+      <h2 class="heading text-2xl font-extrabold">Lessons & Takeaways</h2>
+      <p>Aggregate Terminal was my introduction to the world of business and entrepreneurship. Through this
+        project I
+        learnt multiple key elements which helped me start-up eventually. Some key takeaways were:</p>
+      <ol class="list-decimal px-12">
+        <li><strong>Creation of a pitch deck -</strong> This was the first pitch deck I created, and it was a
+          tedious
+          process. Every term in the deck was new to me, but exposure to pitch decks in my first year itself
+          acclimated
+          me to the concept.
+        </li>
+        <li><strong>Analysis of a business idea -</strong> Concepts such as recurring revenue, barrier-to-entry,
+          market
+          size, addressable market size are fundamentals to analysing and choosing your business idea. People
+          without
+          the knowledge of these concepts are more susceptible to picking an idea without enough market
+          potential.</li>
+        <li><strong>Working and leading a team -</strong> This was the first time I led a team of 5 in a
+          project. I’ve
+          had team experiences in my school, but none were similar to this. While leading a project, one must
+          take into
+          account the views of everyone and build a common consensus before moving ahead. Lack of consensus is
+          the
+          number one reason for start-ups failing.</li>
+      </ol>
+      <p>While Aggregate Terminal didn’t end up turning into a massive business, it gave me a number of practical
+        skills
+        that I value to this day. On a lighter note, we pitched the idea to <strong>100X.VC</strong> and
+        received
+        incredible feedback on
+        it.</p>
+    </div>
+  </section>
 
-    <%- include('../pages/partials/footer'); %>
+  <%- include('../pages/partials/footer'); %>
 </body>
 
 </html>
