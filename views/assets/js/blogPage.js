@@ -30,10 +30,10 @@ function createBlogBody(blog) {
 function formatBlogBody(blogBody) {
   // const paragraphClasses = ["indent-16"];
   const paragraphClasses = [];
-  const headingClasses = ["heading", "text-2xl", "mt-4", "font-extrabold"];
+  const headingClasses = ["heading", "text-3xl", "mt-4", "font-extrabold"];
   const boldClasses = [];
   const linkClasses = ["underline", "font-medium", "text-indigo-700"];
-  const subheadingClasses = ["subheading", "font-semibold"];
+  const subheadingClasses = ["subheading", "font-bold", "text-2xl"];
   const orderedListClasses = ["list-decimal", "px-12"];
   const unorderedListClasses = ["list-disc", "px-12"];
   const codeClasses = ["p-3", "bg-gray-50", "rounded-md", "text-sm"];
