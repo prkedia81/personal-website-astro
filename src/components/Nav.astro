@@ -33,7 +33,7 @@
           </svg>
         </button>
       </div>
-      <nav class="hidden md:flex space-x-10">
+      <nav class="hidden desktop-nav md:flex space-x-10">
         <a
           href="/about-me"
           class="text-sm font-normal text-black-300 hover:text-indigo-900">
@@ -82,6 +82,7 @@
       </div>
     </div>
   </div>
+
   <!-- Mobile Nav Links -->
   <div
     id="mobile-nav"
@@ -120,7 +121,7 @@
           </div>
         </div>
         <div class="mt-6">
-          <nav class="grid gap-y-8">
+          <nav class="grid mobile-nav gap-y-8">
             <a
               href="/about-me"
               class="-m-3 p-3 flex items-center rounded-md hover:bg-gray-50">
@@ -232,3 +233,64 @@
   </div>
 </header>
 <!--Navbar Ends-->
+
+<script>
+  function makeActiveNav(
+    navLinks: Array<HTMLAnchorElement>,
+    activeClasses: Array<string>,
+    inactiveClasses: Array<string>
+  ) {
+    navLinks.forEach((link) => {
+      link.className = "";
+      link.classList.add(...inactiveClasses);
+      const currentPath = window.location.pathname.slice(1);
+      const hrefArray = link.href.split("/");
+      const thisPath = hrefArray[hrefArray.length - 1];
+      if (currentPath === thisPath) {
+        link.className = "";
+        link.classList.add(...activeClasses);
+      }
+    });
+  }
+
+  const desktopInactiveClasses = [
+    "text-sm",
+    "font-normal",
+    "text-black-300",
+    "hover:text-indigo-900",
+  ];
+  const desktopActiveClasses = ["text-sm", "font-semibold", "text-indigo-600"];
+
+  const mobileActiveClasses = [
+    "-m-3",
+    "p-3",
+    "flex",
+    "items-center",
+    "rounded-md",
+    "bg-indigo-100",
+  ];
+  const mobileInactiveClasses = [
+    "-m-3",
+    "p-3",
+    "flex",
+    "items-center",
+    "rounded-md",
+    "hover:bg-gray-50",
+  ];
+
+  makeActiveNav(
+    new Array(
+      ...document.querySelectorAll(".desktop-nav")[0].children
+    ) as Array<HTMLAnchorElement>,
+    desktopActiveClasses,
+    desktopInactiveClasses
+  );
+
+  makeActiveNav(
+    new Array(
+      ...document.querySelectorAll(".mobile-nav")[0].children
+    ) as Array<HTMLAnchorElement>,
+    mobileActiveClasses,
+    mobileInactiveClasses
+  );
+</script>

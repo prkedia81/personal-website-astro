@@ -2,6 +2,7 @@
 import Layout from "../layouts/Layout.astro";
 import PageHeading from "../components/PageHeading.astro";
 import ResumePoint from "../components/ResumePoint.astro";
+import { resumePoints } from "../data/resume";
 ---
 
 <Layout title="About Me | Prannay Kedia">
@@ -56,26 +57,15 @@ import ResumePoint from "../components/ResumePoint.astro";
           <div class="relative md:px-4 space-y-6 md:col-span-3">
             <div
               class="col-span-12 space-y-12 relative px-4 sm:col-span-8 sm:space-y-8 sm:before:absolute sm:before:top-2 sm:before:bottom-0 sm:before:w-0.5 sm:before:-left-3 before:bg-gray-700">
-              <ResumePoint
-                title="Chemical Engineering at Jadavpur University"
-                time="2020 to 2024"
-                description="Pursuing my Bachelors in Chemical Engineering. Have participated in multiple activities throughout college, which includes leading JU's E-Cell, organising my department's 100 year anniversary celebration and facilitating the set-up of JU's own incubation centre."
-              />
-              <ResumePoint
-                title="Bombay Stock Exchange"
-                time="May 2022 - July 2022"
-                description="Worked on analysing and generating insights from Mutual Fund Distribution data in Eastern India. Developed and implemented the MIS-Reporting system to improve productivity and boost conversion."
-              />
-              <ResumePoint
-                title="Bokaro Steel Plant"
-                time="Dec 2022 - Dec 2022"
-                description=" Completed intensive vocational training program at Bokaro Steel Plant, acquiring comprehensive knowledge and practical skills in steel production processes, machinery operation, and quality control measures."
-              />
-              <ResumePoint
-                title="Writee AI"
-                time="Feb 2022 - Present"
-                description="Lead Writee AI as it's CEO & Co-founder. Actively worked on product development, legal compliances and finding product-market fit. Currently focused on obtaining scale through various marketing and development efforts."
-              />
+              {
+                resumePoints.map((point) => (
+                  <ResumePoint
+                    title={point.title}
+                    time={point.time}
+                    description={point.description}
+                  />
+                ))
+              }
             </div>
           </div>
         </div>

@@ -13,7 +13,7 @@ export interface Props {
 
 const { title = "Prannay Kedia", isNav = true } = Astro.props as Props;
 
-let { metaData } = Astro.props as MetaProps;
+let { metaData } = Astro.props as Props;
 
 if (metaData === undefined) {
   metaData = {
@@ -48,6 +48,7 @@ if (metaData === undefined) {
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     />
+    <link rel="sitemap" href="/sitemap-index.xml" />
 
     <style is:global>
       :root {
