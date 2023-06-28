@@ -1,0 +1,85 @@
+---
+import Layout from "../layouts/Layout.astro";
+import PageHeading from "../components/PageHeading.astro";
+import ResumePoint from "../components/ResumePoint.astro";
+---
+
+<Layout title="About Me | Prannay Kedia">
+  <PageHeading>
+    <h1>About Me</h1>
+  </PageHeading>
+
+  <main class="mt-12 md:px-16">
+    <div class="flex flex-row gap-12 items-center">
+      <div class="hidden md:block">
+        <img
+          src="https://res.cloudinary.com/dg24rzjez/image/upload/v1673015859/personal-website/me-pic.jpg"
+        />
+      </div>
+      <div class="flex flex-col px-4 md:px-0 gap-8">
+        <p>
+          Hey there! I’m Prannay, CEO & Co-Founder of Writee AI - an AI-based
+          copywriting platform that helps businesses produce content better,
+          faster and easier. Currently I am pursuing my Bachelors in Chemical
+          Engineering at Jadavpur University, Kolkata. Being an entrepreneur, I
+          had to become what people call a specialised generalist. That is to
+          say I know a little about a lot of things while being in the constant
+          pursuit of learning more along the way.
+        </p>
+        <p>
+          I'm a devout believer in the audacity of thought - so if you've got an
+          idea too big for the world to digest, count me in. My core
+          competencies lie in copywriting, full stack development, data science,
+          finance and everything product centric. When not working on my
+          startup, you can find me humming Indian Classical Music, venturing out
+          to take the occasional photograph or just lying on my bed
+          binge-watching the latest TV show on Netflix. Hit me up if you want to
+          discuss any potential business ideas, learn more about Writee
+          (founders live and breathe their start-ups) or just chat over a cup of
+          coffee.
+        </p>
+      </div>
+    </div>
+
+    <div class="pt-12 px-12">
+      <div class="day-1 container max-w-5xl md:px-4 pt-12 mx-auto">
+        <div class="grid md:gap-28 md:mx-4 grid-cols-1 md:grid-cols-5">
+          <div class="md:col-span-2">
+            <div
+              class="text-center sm:text-left mb-14 before:block before:w-24 before:h-3 before:mb-5 before:rounded-md before:mx-auto sm:before:mx-0 before:bg-indigo-400">
+              <h3 class="text-3xl font-semibold">My Resume</h3>
+              <span class="text-sm font-bold tracking-wider uppercase"
+                >at a glance</span
+              >
+            </div>
+          </div>
+          <div class="relative md:px-4 space-y-6 md:col-span-3">
+            <div
+              class="col-span-12 space-y-12 relative px-4 sm:col-span-8 sm:space-y-8 sm:before:absolute sm:before:top-2 sm:before:bottom-0 sm:before:w-0.5 sm:before:-left-3 before:bg-gray-700">
+              <ResumePoint
+                title="Chemical Engineering at Jadavpur University"
+                time="2020 to 2024"
+                description="Pursuing my Bachelors in Chemical Engineering. Have participated in multiple activities throughout college, which includes leading JU's E-Cell, organising my department's 100 year anniversary celebration and facilitating the set-up of JU's own incubation centre."
+              />
+              <ResumePoint
+                title="Bombay Stock Exchange"
+                time="May 2022 - July 2022"
+                description="Worked on analysing and generating insights from Mutual Fund Distribution data in Eastern India. Developed and implemented the MIS-Reporting system to improve productivity and boost conversion."
+              />
+              <ResumePoint
+                title="Bokaro Steel Plant"
+                time="Dec 2022 - Dec 2022"
+                description=" Completed intensive vocational training program at Bokaro Steel Plant, acquiring comprehensive knowledge and practical skills in steel production processes, machinery operation, and quality control measures."
+              />
+              <ResumePoint
+                title="Writee AI"
+                time="Feb 2022 - Present"
+                description="Lead Writee AI as it's CEO & Co-founder. Actively worked on product development, legal compliances and finding product-market fit. Currently focused on obtaining scale through various marketing and development efforts."
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+</Layout>
