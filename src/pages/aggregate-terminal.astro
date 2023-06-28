@@ -1,0 +1,210 @@
+---
+import Layout from "../layouts/Layout.astro";
+import PageHeading, { Banner } from "../components/PageHeading.astro";
+
+interface Props {
+  banner: Banner;
+}
+
+let { banner } = Astro.props as Props;
+banner = {
+  link: "https://aterm.prannaykedia.com",
+  linkUrl: "aterm.prannaykedia.com",
+  bannerImg:
+    "https://res.cloudinary.com/dg24rzjez/image/upload/v1667498943/personal-website/projects/aggregate-terminal/aggterm-banner.svg",
+};
+---
+
+<Layout title="Aggregate Terminal | Prannay Kedia">
+  <PageHeading banner={banner}>
+    <h1>Aggregate Terminal</h1>
+  </PageHeading>
+
+  <section
+    class="content mt-8 md:mt-16 lg:px-44 md:px-44 px-6 leading-7 font-normal text-base flex flex-col gap-8">
+    <p class="intro">
+      What started as an idea for a B-Plan competition turned into my first full
+      fledged project. Aggregate Terminal was my introduction to the world of
+      building which eventually led me to my start-up - Writee AI.
+    </p>
+    <div class="section flex flex-col gap-4">
+      <h2 class="heading text-2xl font-extrabold">Problem Statement</h2>
+      <p>
+        India is the home to the biggest stock exchange in the world (Bombay
+        Stock Exchange) with 5,400+ companies listed as on September’21. Yet,
+        the country lacks an accurate and affordable source of market data.
+        While US softwares like Bloomberg Terminal and YCharts are available to
+        Indians, exchange rates inflate the price of an already expensive
+        software. API providers like Alpha Vantage, IEX Cloud and Polygon
+        provide excellent data for the US Market, but their coverage of the
+        Indian markets are subpar at best. It is ironic that in the information
+        age, reliable data is either scarce or very expensive.
+      </p>
+      <p>
+        With Indian investment analysis portals, you can barely visualise the
+        trend in revenues for a company let alone any other complex processes.
+        This must change since the world’s next superpower cannot rely on
+        exorbitantly priced foreign portals for its internal data.
+      </p>
+    </div>
+    <div class="section flex flex-col gap-4">
+      <h2 class="heading text-2xl font-extrabold">The Product</h2>
+      <p>
+        Aggregate Terminal was conceptualised to be the one-stop platform for
+        all things investments. The primary offerings were:
+      </p>
+      <ol class="list-decimal px-12">
+        <li
+          ><strong>Access to raw data via APIs and Excel Sheets:</strong> To own
+          your data and run processes as you see fit</li
+        >
+        <li
+          ><strong>Portfolio Tracker:</strong> To be on top of all changes happening
+          to your portfolio at any given time</li
+        >
+        <li
+          ><strong>Stock Aggregated:</strong> One-page to know everything about the
+          stock - <a
+            href="https://aterm.prannaykedia.com/stocks/ticker/PIDILITIND.NS"
+            target="_blank"
+            class="underline italic">Check it out here</a
+          >
+        </li>
+        <li
+          ><strong>Equity Visualisation:</strong> Get the freedom to visualise any
+          metric of your choice - <a
+            href="https://aterm.prannaykedia.com/stocks/fundamental-charts"
+            target="_blank"
+            class="underline italic">Check it out here</a
+          ></li
+        >
+        <li
+          ><strong>Mutual Fund Analysis:</strong> The most in-depth analysis of Mutual
+          Funds with more than 22 factors taken into account</li
+        >
+      </ol>
+      <p>And the list goes on…..</p>
+      <div class="image flex flex-col gap-2 items-center justify-center">
+        <img
+          src="https://res.cloudinary.com/dg24rzjez/image/upload/v1667499954/personal-website/projects/aggregate-terminal/product-offering.png"
+          alt=""
+          class="md:w-1/2"
+        />
+        <p class="Subtext text-xs font-light"> Map of our offerings</p>
+      </div>
+    </div>
+
+    <div class="section flex flex-col gap-4">
+      <h2 class="heading text-2xl font-extrabold"
+        >Aggregate Terminal Pitch Deck</h2
+      >
+      <embed
+        src="https://drive.google.com/file/d/1QAZKRsRiwIdmDYPd7lunRzL-DiOBG96h/view?usp=sharing"
+        type="application/pdf"
+        width="80%"
+        height="450px"
+        class="mx-auto rounded-md mt-4"
+      />
+    </div>
+
+    <div class="section flex flex-col gap-4">
+      <h2 class="heading text-2xl font-extrabold"
+        >The feasibility of the idea</h2
+      >
+      <p> There were 2 main factors which convinced us to pursue this idea:</p>
+      <ol class="list-decimal px-12">
+        <li
+          ><strong>Personal Experience:</strong> When you invest in a stock, a mutual
+          fund, or an insurance; you are investing in your family’s future. Hence,
+          in-depth research is warranted. Today, if you try to research a stock,
+          you will have 100s of tabs open, each tab for a website which provides
+          you with one metric. This makes researching investments a pain and also
+          discourages a lot of potential investors from even entering the financial
+          markets.
+        </li>
+        <li
+          ><a
+            href="https://www.bajajfinservmarkets.in/discover/journals/blogs/investment/the-financialisation-of-indian-savings-explained/"
+            target="_blank"
+            ><strong class="underline"
+              >Financialisation of Indian Savings:</strong
+            >
+          </a> RBI has pointed out that only 5% of India’s household wealth is in
+          financial assets. This comes out to about $500 billion. RBI has opined
+          that this is unsustainable. This 5% figure is going to increase. But by
+          how much? If we assume a 1 percentage point increase per year, in 10 years
+          the financial market would have trebled. With more people investing their
+          money, they will need brokers, PMS services, direct indexing options, and
+          a robust research terminal.
+        </li>
+      </ol>
+      <p
+        >This fit the initial criterias for a good business idea - it was a
+        problem I experienced personally and the market for the product was
+        growing. But what went wrong then?</p
+      >
+    </div>
+
+    <div class="section flex flex-col gap-4">
+      <h2 class="heading text-2xl font-extrabold">Not a sustainable model</h2>
+      <p>There are 2 primary sources of revenue for this product:</p>
+      <ol class="list-decimal px-12">
+        <li
+          >Premium features on the Platform - to be introduced after 50,000
+          users</li
+        >
+        <li>API as a Service - requires months of product development</li>
+      </ol>
+      <p>Our major expenditures would be:</p>
+      <ol class="list-decimal px-12">
+        <li>Hosting Services (AWS, Microsoft Azure etc)</li>
+        <li>Purchase of Raw Data from the exchanges</li>
+      </ol>
+      <p
+        >By nature of this industry, we must start off by providing our services
+        for free, so as to build a strong base which trusts us. It can be seen
+        that the barrier-to-entry for this industry is very high. To even
+        start-off we need access to raw data which costs around Rs 3,000,000.
+        While a higher barrier-to-entry is another sign of a good business, it
+        deters a first year student from entering the market.</p
+      >
+    </div>
+
+    <div class="section flex flex-col gap-4">
+      <h2 class="heading text-2xl font-extrabold">Lessons & Takeaways</h2>
+      <p
+        >Aggregate Terminal was my introduction to the world of business and
+        entrepreneurship. Through this project I learnt multiple key elements
+        which helped me start-up eventually. Some key takeaways were:</p
+      >
+      <ol class="list-decimal px-12">
+        <li
+          ><strong>Creation of a pitch deck -</strong> This was the first pitch deck
+          I created, and it was a tedious process. Every term in the deck was new
+          to me, but exposure to pitch decks in my first year itself acclimated me
+          to the concept.
+        </li>
+        <li
+          ><strong>Analysis of a business idea -</strong> Concepts such as recurring
+          revenue, barrier-to-entry, market size, addressable market size are fundamentals
+          to analysing and choosing your business idea. People without the knowledge
+          of these concepts are more susceptible to picking an idea without enough
+          market potential.</li
+        >
+        <li
+          ><strong>Working and leading a team -</strong> This was the first time
+          I led a team of 5 in a project. I’ve had team experiences in my school,
+          but none were similar to this. While leading a project, one must take into
+          account the views of everyone and build a common consensus before moving
+          ahead. Lack of consensus is the number one reason for start-ups failing.</li
+        >
+      </ol>
+      <p
+        >While Aggregate Terminal didn’t end up turning into a massive business,
+        it gave me a number of practical skills that I value to this day. On a
+        lighter note, we pitched the idea to <strong>100X.VC</strong> and received
+        incredible feedback on it.</p
+      >
+    </div>
+  </section>
+</Layout>

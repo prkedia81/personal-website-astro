@@ -1,0 +1,74 @@
+---
+import Layout from "../layouts/Layout.astro";
+import PageHeading from "../components/PageHeading.astro";
+import ProjectCard from "../components/ProjectCard.astro";
+
+interface Project {
+  link: string;
+  imageLink: string;
+  title: string;
+  description: string;
+}
+
+interface Props {
+  projects: Project[];
+}
+
+let { projects } = Astro.props as Props;
+
+projects = [
+  {
+    link: "/aggregate-terminal",
+    imageLink:
+      "https://res.cloudinary.com/dg24rzjez/image/upload/v1667497921/personal-website/projects/aggregate-terminal/aggregate-terminal.svg",
+    title: "Aggregate Terminal",
+    description:
+      "Your one-stop investment analysis platform. Project made in my first year at college.",
+  },
+  {
+    link: "/flirtaid",
+    imageLink:
+      "https://res.cloudinary.com/dg24rzjez/image/upload/v1667501323/personal-website/projects/flirtaid/flirtaid.png",
+    title: "FlirtAid",
+    description:
+      "A dating app made for the students of JU by the students of JU. First project to go to market.",
+  },
+  {
+    link: "/photography",
+    imageLink:
+      "https://res.cloudinary.com/dg24rzjez/image/upload/v1667581385/personal-website/projects/photography/photography.svg",
+    title: "Photography",
+    description:
+      "A collection of my photographs from the last 5 years. Includes product images to nature",
+  },
+  {
+    link: "/film-making",
+    imageLink:
+      "https://res.cloudinary.com/dg24rzjez/image/upload/v1667583818/personal-website/projects/film-making.svg",
+    title: "Film Making",
+    description:
+      "Select short films I've been a part of. I contributed as the director and cinematographer.",
+  },
+];
+---
+
+<Layout title="About Me | Prannay Kedia">
+  <PageHeading>
+    <p>Selected</p>
+    <p>Projects</p>
+  </PageHeading>
+
+  <main
+    class="projects grid grid-cols-1 md:grid-cols-3 gap-x-10 gap-y-16 lg:px-24 md:px-24 px-6 mt-20">
+    {
+      projects.map((project) => (
+        <ProjectCard
+          link={project.link}
+          imageLink={project.imageLink}
+          title={project.title}
+          description={project.description}
+        />
+      ))
+    }
+  </main>
+</Layout>
