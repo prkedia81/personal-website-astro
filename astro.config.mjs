@@ -19,4 +19,5 @@ export default defineConfig({
   ],
   output: "hybrid",
   adapter: vercel(),
+  site: "https://prannaykedia.com",
 });
