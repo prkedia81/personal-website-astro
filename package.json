@@ -1,30 +1,20 @@
 {
-  "name": "personal-ejs",
-  "version": "1.0.0",
-  "description": "",
-  "main": "server.js",
+  "name": "personal-website-astro",
+  "type": "module",
+  "version": "0.0.1",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js",
-    "watch": "tailwindcss -i ./input.css -o ./views/assets/css/output.css --watch"
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
   },
-  "author": "Prannay Kedia",
-  "license": "ISC",
   "dependencies": {
+    "@astrojs/tailwind": "^4.0.0",
     "@tailwindcss/aspect-ratio": "^0.4.2",
     "@tailwindcss/forms": "^0.5.3",
-    "axios": "^1.2.6",
-    "connect-flash": "^0.1.1",
-    "dotenv": "^16.0.3",
-    "ejs": "^3.1.8",
-    "express": "^4.18.2",
-    "express-session": "^1.17.3",
-    "google-spreadsheet": "^3.3.0",
-    "node-cron": "^3.0.2",
-    "nodemailer": "^6.9.1",
-    "nodemon": "^2.0.21"
-  },
-  "devDependencies": {
-    "tailwindcss": "^3.2.4"
+    "astro": "^2.7.1",
+    "astro-google-fonts-optimizer": "^0.2.2",
+    "tailwindcss": "^3.3.2"
   }
 }

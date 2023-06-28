@@ -1,0 +1,25 @@
+---
+export interface Props {
+  partytown?: boolean;
+}
+
+const { partytown = false } = Astro.props;
+
+const attrs = partytown ? { type: "text/partytown" } : {};
+---
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script
+  {...attrs}
+  async
+  src="https://www.googletagmanager.com/gtag/js?id=G-7EXFKD9YSE"></script>
+<script {...attrs}>
+  window.dataLayer = window.dataLayer || [];
+
+  function gtag() {
+    dataLayer.push(arguments);
+  }
+  gtag("js", new Date());
+
+  gtag("config", "G-7EXFKD9YSE");
+</script>
