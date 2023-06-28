@@ -1,61 +1,136 @@
-<section class="newsletter border-2 border-gray-800 mt-16 md:mt-24 mx-5 px-12 py-8 md:px-0 md:py-0 md:mx-20 rounded-md">
-    <div class="max-w-2xl mx-auto text-center sm:py-10 sm:px-6 lg:px-8">
-        <h2 class="text-3xl font-extrabold text-black sm:text-4xl">
-            <span class="block">Sign-up to my newsletter</span>
-        </h2>
-        <p class="mt-4 text-md leading-6 text-gray-700">I talk about start-up, investing, tech and
-            everything
-            around it. Sign-Up for my weekly newsletter to never miss an update</p>
-        <form name="newsletter-subscribers" method="POST" action="/register-subscriber"
-            class="mt-5 flex flex-col md:flex-row md:gap-3 gap-2 items-center justify-center">
-            <div class="md:basis-3/4">
-                <input required type="email" name="email" id="email" autocomplete="email"
-                    placeholder="example@email.com"
-                    class="py-2 px-4 text-md w-full bg-transparent block shadow-sm focus:ring-indigo-600 focus:border-indigo-600 border-gray-500 rounded-md">
-            </div>
-            <div class="md:basis-1/4">
-                <button type="submit"
-                    class="w-full items-center justify-center px-5 py-2 border border-transparent text-md font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 sm:w-auto">Sign-up</button>
-            </div>
-        </form>
-    </div>
+---
+export const prerender = false;
+
+import sendMail from "../services/emailer";
+import addRowToSheet from "../services/spreadsheet";
+
+let sentMail = false;
+
+if (Astro.request.method === "POST") {
+  try {
+    sentMail = true;
+    const data = await Astro.request.formData();
+    const email = data.get("email") as string;
+
+    // Send Email
+    await sendMail(
+      "",
+      "prannaykedia1@gmail.com",
+      "prannaykedia1@gmail.com",
+      "New Subscriber to your Newsletter!",
+      `${email} subscribed to your newsletter at ${new Date().toDateString()}`
+    );
+
+    // Add data to sheet
+    await addRowToSheet({ email, type: "NewsletterForm" }, "newsletter");
+
+    console.log("Newsletter: ", email);
+  } catch (error) {
+    sentMail = false;
+    if (error instanceof Error) {
+      console.error(error.message);
+    }
+  }
+}
+---
+
+<section
+  class="newsletter border-2 border-gray-800 mt-16 md:mt-24 mx-5 px-12 py-8 md:px-0 md:py-0 md:mx-20 rounded-md">
+  <div class="max-w-2xl mx-auto text-center sm:py-10 sm:px-6 lg:px-8">
+    <h2 class="text-3xl font-extrabold text-black sm:text-4xl">
+      <span class="block">Sign-up to my newsletter</span>
+    </h2>
+    <p class="mt-4 text-md leading-6 text-gray-700"
+      >I talk about start-up, investing, tech and everything around it. Sign-Up
+      for my weekly newsletter to never miss an update</p
+    >
+    <form
+      name="newsletter-subscribers"
+      method="POST"
+      class="mt-5 flex flex-col md:flex-row md:gap-3 gap-2 items-center justify-center">
+      <div class="md:basis-3/4">
+        <input
+          required
+          type="email"
+          name="email"
+          id="email"
+          autocomplete="email"
+          placeholder="example@email.com"
+          class="py-2 px-4 text-md w-full bg-transparent block shadow-sm focus:ring-indigo-600 focus:border-indigo-600 border-gray-500 rounded-md"
+        />
+      </div>
+      <div class="md:basis-1/4">
+        <button
+          type="submit"
+          class="w-full items-center justify-center px-5 py-2 border border-transparent text-md font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 sm:w-auto"
+          >Sign-up</button
+        >
+      </div>
+    </form>
+  </div>
 </section>
 
-{ (message.length> 0) &&
-    <div class="fixed z-10 inset-0 overflow-y-auto" id="submit-modal" aria-labelledby="modal-title" role="dialog"
-        aria-modal="true">
-        <div class="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
-            <div class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity" aria-hidden="true"></div>
-            <span class="hidden sm:inline-block sm:align-middle sm:h-screen" aria-hidden="true">&#8203;</span>
-            <div
-                class="inline-block align-bottom bg-white rounded-lg px-4 pt-5 pb-4 text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-sm sm:w-full sm:p-6">
-                <div>
-                    <div class="mx-auto flex items-center justify-center h-12 w-12 rounded-full bg-green-100">
-                        <!-- Heroicon name: outline/check -->
-                        <svg class="h-6 w-6 text-green-600" xmlns="http://www.w3.org/2000/svg" fill="none"
-                            viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-                        </svg>
-                    </div>
-                    <div class="mt-3 text-center sm:mt-5">
-                        <h3 class="text-lg leading-6 font-medium text-gray-900" id="modal-title">
-                            { message[0] }
-                        </h3>
-                    </div>
-                </div>
-                <div class="mt-5 sm:mt-6">
-                    <button type="button" id="modal-button"
-                        class="inline-flex justify-center w-full rounded-md border border-transparent shadow-sm px-4 py-2 bg-indigo-600 text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:text-sm">Okay</button>
-                </div>
+{
+  sentMail && (
+    <div
+      class="fixed z-10 inset-0 overflow-y-auto"
+      id="submit-modal"
+      aria-labelledby="modal-title"
+      role="dialog"
+      aria-modal="true">
+      <div class="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
+        <div
+          class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity"
+          aria-hidden="true"
+        />
+        <span
+          class="hidden sm:inline-block sm:align-middle sm:h-screen"
+          aria-hidden="true">
+          &#8203;
+        </span>
+        <div class="inline-block align-bottom bg-white rounded-lg px-4 pt-5 pb-4 text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-sm sm:w-full sm:p-6">
+          <div>
+            <div class="mx-auto flex items-center justify-center h-12 w-12 rounded-full bg-green-100">
+              <svg
+                class="h-6 w-6 text-green-600"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                aria-hidden="true">
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M5 13l4 4L19 7"
+                />
+              </svg>
             </div>
+            <div class="mt-3 text-center sm:mt-5">
+              <h3
+                class="text-lg leading-6 font-medium text-gray-900"
+                id="modal-title">
+                Thank you for Subscribing!
+              </h3>
+            </div>
+          </div>
+          <div class="mt-5 sm:mt-6">
+            <button
+              type="button"
+              id="modal-button"
+              class="inline-flex justify-center w-full rounded-md border border-transparent shadow-sm px-4 py-2 bg-indigo-600 text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:text-sm">
+              Okay
+            </button>
+          </div>
         </div>
+      </div>
     </div>
+  )
 }
-        <script>
-            // Contact Me Page
-            let contactModalButton = document.getElementById("modal-button");
-            let contactModal = document.getElementById("submit-modal");
-            contactModalButton.addEventListener("click", () => {
-                contactModal.classList.toggle("hidden");
-            });
-        </script>
+<script>
+  let contactModalButton = document.getElementById("modal-button");
+  let contactModal = document.getElementById("submit-modal");
+  contactModalButton?.addEventListener("click", () => {
+    contactModal?.classList.toggle("hidden");
+  });
+</script>

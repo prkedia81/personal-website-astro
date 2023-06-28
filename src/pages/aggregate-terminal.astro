@@ -2,12 +2,7 @@
 import Layout from "../layouts/Layout.astro";
 import PageHeading, { Banner } from "../components/PageHeading.astro";
 
-interface Props {
-  banner: Banner;
-}
-
-let { banner } = Astro.props as Props;
-banner = {
+const banner: Banner = {
   link: "https://aterm.prannaykedia.com",
   linkUrl: "aterm.prannaykedia.com",
   bannerImg:

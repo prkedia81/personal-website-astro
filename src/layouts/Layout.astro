@@ -6,12 +6,12 @@ import MetaTags, { MetaProps } from "../components/MetaTags.astro";
 import Nav from "../components/Nav.astro";
 
 export interface Props {
-  title: string;
+  title?: string;
   metaData?: MetaProps;
   isNav?: boolean;
 }
 
-const { title, isNav = true } = Astro.props as Props;
+const { title = "Prannay Kedia", isNav = true } = Astro.props as Props;
 
 let { metaData } = Astro.props as MetaProps;
 
@@ -55,6 +55,17 @@ if (metaData === undefined) {
       }
     </style>
 
+    <Analytics partytown={false} />
+
+    <MetaTags {...metaData} />
+  </head>
+
+  <body class="bg-background">
+    {isNav && <Nav />}
+
+    <slot />
+    <Footer />
+
     <script is:inline>
       let mobileNav = document.getElementById("mobile-nav");
       let closeBTN = document.getElementById("close-mobile-nav");
@@ -66,16 +77,5 @@ if (metaData === undefined) {
         mobileNav.classList.toggle("hidden");
       });
     </script>
-
-    <Analytics partytown={true} />
-
-    <MetaTags {...metaData} />
-  </head>
-
-  <body class="bg-background">
-    {isNav && <Nav />}
-
-    <slot />
-    <Footer />
   </body></html
 >

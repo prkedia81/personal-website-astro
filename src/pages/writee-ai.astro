@@ -1,11 +1,363 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import PageHeading from "../components/PageHeading.astro";
+import PageHeading, { Banner } from "../components/PageHeading.astro";
+
+const banner: Banner = {
+  link: "https://writee.in",
+  linkUrl: "www.writee.in",
+  bannerImg:
+    "https://res.cloudinary.com/dg24rzjez/image/upload/v1667590043/personal-website/writee/writee-banner.svg",
+};
 ---
 
 <Layout title="About Me | Prannay Kedia">
-  <PageHeading>
-    <h1>About Me</h1>
+  <PageHeading banner={banner}>
+    <h1
+      >Whixic <br class="md:hidden" />Technologies <br class="md:hidden" />Pvt
+      Ltd</h1
+    >
   </PageHeading>
 
+  <section
+    class="content mt-8 md:mt-16 lg:px-44 md:px-44 px-6 leading-7 font-normal text-base flex flex-col gap-8">
+    <p class="intro">
+      Writee AI, legally incorporated as Whixic Technologies Private Limited, is
+      an AI-based copywriting platform built for marketers, founders and
+      freelancers. Writee was incorporated on <strong>9th March 2022</strong> and
+      it's my first start-up.
+    </p>
+    <div class="section flex flex-col gap-4">
+      <h2 class="heading text-2xl font-extrabold">What is Writee AI?</h2>
+      <p>
+        Writee AI is an AI-based copywriting platform that helps people write
+        more engaging content quicker. In a world that is increasingly becoming
+        digital, words are more important than ever. They are the foundation of
+        communication, connection, and understanding. They have the power to
+        build bridges and break down barriers. They can inspire and they can
+        ignite. Yet, very few people have enough power over words to convey
+        their messages let alone persuade others to follow them.
+      </p>
+      <p>
+        With this thought in mind, Writee AI was born. Writee is your assistant.
+        It’s a friend always at your disposal to help you write better, bolder,
+        and faster.
+      </p>
+    </div>
+
+    <div class="section flex flex-col gap-4">
+      <h2 class="heading text-2xl font-extrabold">The Beginning of Writee</h2>
+      <p>
+        On <strong>30th January 2022</strong>, 3 students from Jadavpur
+        University were on a call at midnight discussing ideas that could
+        revolutionise the world. It was apparent that they had an intense desire
+        of starting-up. This was the third continuous day of discussion. Ideas
+        from Neobanking and AI-powered investing to a social media for food
+        bloggers, they had discussed it all.
+      </p>
+      <p>
+        Having had the experience of building things in the past, we knew better
+        than to jump head first into an idea without doing our due diligence.
+        There was a detailed process followed while selecting the idea. The
+        process was as follows:
+      </p>
+      <ol class="list-decimal px-12">
+        <li
+          ><strong>Try and estimate the barrier-to-entry in the market</strong> -
+          Moderate barrier-to-entry is the sweet spot.</li
+        >
+        <li
+          ><strong>Check out the competitors</strong> - If there is a clear monopoly
+          avoid it, zero competition isn’t what we were looking for too.</li
+        >
+        <li
+          ><strong>Come up with potential business models</strong> - Any high burn
+          model wasn’t suitable.</li
+        >
+        <li
+          ><strong>Evaluate if you could make it yourself</strong> - It is important
+          to come up with a Minimum Viable Product with the founding team itself,
+          so was it something we could build ourselves?</li
+        >
+      </ol>
+      <p>
+        We used this framework to sift through business ideas all night for 3
+        consecutive nights. On the third night we came across the idea for an
+        AI-content writer. Having an AI researcher in the team, we were
+        intrigued with the concept of an AI writing content for you. Here’s what
+        we found when we went through our framework for selecting an idea:
+      </p>
+      <ol class="list-decimal px-12">
+        <li
+          >There were multiple competitors in the industry but there wasn’t a
+          clear monopoly.</li
+        >
+        <li
+          >It was a relatively lower barrier-to-entry market with the quality of
+          product increasing with the number of users.</li
+        >
+        <li
+          >There was a clear subscription model visible with a possibility of
+          revenue led growth.</li
+        >
+        <li
+          >We had the technical expertise to build the initial versions of the
+          product in the team itself.</li
+        >
+      </ol>
+      <p>
+        An AI-Copywriter passed all our test parameters. This sealed the deal
+        for Writee AI. It was now time to incorporate our company. Little did we
+        know, this is a tedious process with little to no information on the
+        internet. While the government has simplified a lot of the archaic
+        systems, ease of doing business is still far from reality in India.
+        There are a number of formalities to be completed, from getting digital
+        signatures for the directors to drafting a memorandum of association, it
+        is next to impossible to do it by yourself. This is when we started
+        scouting for agencies. We had meetings with 5 chartered accountants, and
+        after being given outrageous quotations, we fixed our service provider
+        and the process began. After 3 tenacious weeks, <strong
+          >Whixic Technologies Private Limited</strong
+        > was officially registered with the Government of India on 9th March 2022.
+      </p>
+      <div class="flex flex-col md:flex-row gap-2">
+        <div class="image flex flex-col gap-2 items-center justify-center">
+          <img
+            src="https://res.cloudinary.com/dg24rzjez/image/upload/v1667591370/personal-website/writee/bank-papers.png"
+            alt=""
+            class="md:h-72"
+          />
+          <p class="subtext text-center text-xs font-light"
+            >Signing Board Resolutions on college ground for opening Company's
+            Bank Accounts</p
+          >
+        </div>
+        <div class="image flex flex-col gap-2 items-center justify-center">
+          <img
+            src="https://res.cloudinary.com/dg24rzjez/image/upload/v1667591370/personal-website/writee/meeting.png"
+            alt=""
+            class="md:h-72"
+          />
+          <p class="Subtext text-xs font-light"
+            >Board Meeting in College Classroom discussing future plan</p
+          >
+        </div>
+      </div>
+    </div>
+
+    <div class="section flex flex-col gap-4">
+      <h2 class="heading text-2xl font-extrabold">The Initial Development</h2>
+      <p>
+        With the incorporation out of the way, we quickly drafted the required
+        Board Resolution to begin business and got to developing our <a
+          href="https://www.productplan.com/glossary/minimum-viable-product/"
+          target="_blank"
+          class="underline italic">MVP</a
+        >. Having had some experience in building products, we knew better than
+        to get deep into development before talking to people and performing
+        preliminary tests such as the <a
+          class="underline italic"
+          href="https://www.tractionwise.com/en/magazine/mom-test/#:~:text=What%20is%20the%20Mom%20Test,cannot%20help%20but%20answer%20honestly."
+          target="_blank">Mom’s Test</a
+        >. To accomplish this well, we developed a one-page, free-to-use website
+        demonstrating our product. It was as simple as it could get but helped
+        us validate the potency of our idea.
+      </p>
+      <div class="image flex flex-col gap-2 items-center justify-center">
+        <img
+          src="https://res.cloudinary.com/dg24rzjez/image/upload/v1667591370/personal-website/writee/vTest.png"
+          alt=""
+          class="md:w-2/3"
+        />
+        <p class="Subtext text-xs font-light"
+          >First version of Writee AI - a single page form</p
+        >
+      </div>
+      <p>
+        Having performed all the required inceptive tests, we started working on
+        our Minimal Viable Product (MVP). After weeks of meetings, potential
+        client calls, and research, we narrowed down our MVP to a simple tool
+        which would let users generate blogs, captions, and quotes. Our research
+        showed that long-form content such as blogs are what most users struggle
+        with while captions are things users need on a day-to-day basis for
+        social media posts.
+      </p>
+      <div class="flex flex-col md:flex-row gap-2">
+        <div
+          class="image flex flex-col gap-2 items-center justify-center basis-3/5">
+          <img
+            src="https://res.cloudinary.com/dg24rzjez/image/upload/v1667591370/personal-website/writee/MVP.png"
+            alt=""
+            class=""
+          />
+          <p class="Subtext text-xs font-light"
+            >Minimum Viable Product to test for market validation</p
+          >
+        </div>
+        <div
+          class="image flex flex-col gap-2 items-center justify-center basis-2/5">
+          <img
+            src="https://res.cloudinary.com/dg24rzjez/image/upload/v1667591370/personal-website/writee/generating-content.png"
+            alt=""
+            class="md:h-80"
+          />
+          <p class="Subtext text-xs font-light"
+            >Using Writee to generate content for Internship Report</p
+          >
+        </div>
+      </div>
+      <p>
+        There was a secondary objective of our MVP - <strong
+          >training our artificial intelligence model</strong
+        >
+        to perform better. AI becomes better as more data is feeded into it. With
+        this in mind, we needed relevant and real life content to train and optimise
+        our model to be more performant and precise. With the beta running for <strong
+          >3+ months</strong
+        >, Writee wrote more than <strong>1,72,000 words</strong> for <strong
+          >100+ users</strong
+        >. This gave us enough data to come up with accurate insights into the
+        needs of our users and to train our model.
+      </p>
+    </div>
+
+    <div class="section flex flex-col gap-4">
+      <h2 class="heading text-2xl font-extrabold">Team Building</h2>
+      <p>
+        It is important for multiple different streams of work to function at
+        the same time in a company. While the development and testing of the MVP
+        was underway it was important for us to start working on branding and
+        marketing the company at the same time. For a start-up the primary ways
+        to start getting the word out is through social media content. As a
+        bootstrapped company, we had no money to hire an agency but we had a
+        willing student crowd we could access and hire as interns. Writee had a
+        hiring drive where we hired interns for 4 different roles -
+      </p>
+      <ul class="list-disc px-12">
+        <li>CEO’s office</li>
+        <li>Digital Marketing</li>
+        <li>Graphic Designing</li>
+        <li>Front-end Development</li>
+      </ul>
+      <p>
+        We hired through multiple different channels - students of Jadavpur
+        University, LinkedIn hiring and referral hiring (through our networks).
+        Everything comes at a price, so while we couldn't pay our interns
+        monetarily, we compensated them with attention, time and training for a
+        prosperous career.
+      </p>
+      <p>
+        It is with a lot of pride I can claim that all the interns that worked
+        with Writee have gone on to do incredible internships and work after
+        their experience at the company. I was lucky enough to find people who
+        were committed to doing their best, hence I found a lot of joy in
+        training them in their respective fields. From explaining and emulating
+        the sales process for the CEO’s office intern to teaching the golden
+        rules of content marketing to the Digital Marketing intern I was able to
+        upskill while sharing my knowledge with all my team members.
+      </p>
+      <p>
+        It is through this process I learnt the core principles of building a
+        team. There are two key concepts to remember:
+      </p>
+      <ol class="list-decimal px-12">
+        <li
+          >Your team needs the chance to do things that elevates them and helps
+          them grow. Team members leave when they feel that there isn’t anything
+          left for them to learn.</li
+        >
+        <li
+          >Attitude triumphs all. Someone with the right attitude and lesser
+          experience will upskill as and when necessary to perform for the
+          company. In contrast, someone with all the required skills but a toxic
+          temperament will refrain from utilising their complete potential even
+          in the best conditions.</li
+        >
+      </ol>
+      <p>
+        While these are commonly accepted rules of the game, it hits differently
+        when you try them out and see the results yourself. This stands for most
+        things entrepreneurial.
+      </p>
+    </div>
+
+    <div class="section flex flex-col gap-4">
+      <h2 class="heading text-2xl font-extrabold">Understanding the Market</h2>
+      <p>
+        In a moderately competitive market there is just 1 thing that
+        differentiates companies - Understanding of the market. There is a
+        common saying that <span class="italic font-semibold"
+          >if a market is crowded it means that it’s a market ripe for
+          disruption</span
+        >. There is no product out there that solves all of the user’s problems,
+        hence there is no clear winner in the user’s eyes. This was the case
+        with the AI Copywriting industry. We spent about 2 months talking to
+        users, going through product reviews on websites like G2 and trustpilot,
+        while studying relevant marketing trends. This built our philosophy for
+        our final release. We had the necessary knowledge to finally bring our
+        clients the product they were looking for.
+      </p>
+    </div>
+
+    <div class="section flex flex-col gap-4">
+      <h2 class="heading text-2xl font-extrabold">The Launch</h2>
+      <p>
+        After a detailed market research, we got down to planning the product
+        for our final release. Having learnt what the users needed, we set out
+        to build the mightiest and juiciest product ever. We failed miserably in
+        the first 2 weeks itself! We had set out to build a product which needed
+        the power of an engineering team working full-time for 4+ months.
+        Ambition is something which start-up founders are not bereft of. We
+        sized up our expections, and chalked out an achievable plan of action.
+        It did take more than 2 months to execute but we ended up with an
+        incredible product we could ship.
+      </p>
+      <div class="flex flex-col md:flex-row gap-2 items-center justify-center">
+        <div class="image flex flex-col gap-2 items-center justify-center">
+          <img
+            src="https://res.cloudinary.com/dg24rzjez/image/upload/v1667591370/personal-website/writee/Coming_Soon.png"
+            alt=""
+          />
+          <p class="Subtext text-xs font-light">A week from launch</p>
+        </div>
+        <div class="image flex flex-col gap-2 items-center justify-center">
+          <img
+            src="https://res.cloudinary.com/dg24rzjez/image/upload/v1667592092/personal-website/writee/v1.0.png"
+            alt=""
+          />
+          <p class="Subtext text-xs font-light">Final Release of Writee AI</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="section flex flex-col gap-4">
+      <h2 class="heading text-2xl font-extrabold">Next Steps</h2>
+      <p>
+        With the final release of our product ready, we started aggressive
+        marketing and sales campaigns. Being college students, we had our
+        reservations about seeking investment. There are 2 primary factors that
+        drove the decision to not take funding:
+      </p>
+      <ol class="list-decimal px-12">
+        <li
+          >Do we really need funds to scale to $50,000 monthly recurring
+          revenue?</li
+        >
+        <li
+          >Can we afford to do Writee full-time with college looming over our
+          heads?</li
+        >
+      </ol>
+      <p>
+        After hours of evaluation, we decided to not take funding until we are
+        towards the end of our undergraduate lives and already at a decent MRR.
+        This is where this article stops. There are multiple nuances in each of
+        the above mentioned points and a lot which couldn’t be covered in this
+        article. You can follow the latest updates of Writee on my LinkedIn page
+        and learn more about the ins & outs of the start-up world on my <a
+          href="/blogs"
+          class="italic underline">blog</a
+        >.
+      </p>
+    </div>
+  </section>
 </Layout>

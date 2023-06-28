@@ -1,0 +1,44 @@
+---
+interface Props {
+  slug: string;
+  date: string;
+  image: string;
+  title: string;
+  excerpt: string;
+}
+
+function truncateString(str: string, num: number): string {
+  if (str.length <= num) {
+    return str;
+  } else {
+    return str.substring(0, num) + "...";
+  }
+}
+
+const { slug, date, image } = Astro.props as Props;
+let { title, excerpt } = Astro.props as Props;
+
+excerpt = truncateString(excerpt, 150);
+title = truncateString(title, 50);
+---
+
+<a href={"/blogs/" + slug} class="flex flex-col gap-4">
+  <img class="h-48 w-76 rounded-xl card hover:shadow-xl" src={image} />
+  <div class="pl-1 text-center md:text-start">
+    <p class="text-gray-500 font-normal md:font-medium text-xs">
+      {
+        new Date(date).toLocaleDateString(undefined, {
+          year: "numeric",
+          month: "long",
+          day: "2-digit",
+        })
+      }
+    </p>
+    <h1 class="text-xl font-bold pt-2">
+      {title}
+    </h1>
+    <p class="font-light text-xs pt-1">
+      {excerpt}
+    </p>
+  </div>
+</a>

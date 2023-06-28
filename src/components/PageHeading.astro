@@ -13,10 +13,10 @@ const { banner = null } = Astro.props as Props;
 ---
 
 <section
-  class="heading flex flex-col items-center justify-center mt-8 md:mt-12 gap-2">
+  class="heading flex flex-col items-center justify-center mt-8 md:mt-12">
   <div class="flex items-center justify-center gap-4 md:gap-8">
     <hr class="w-12 md:w-48 h-2 rounded-full bg-black" />
-    <div class="text-center text-4xl font-extrabold">
+    <div class="text-center text-2xl md:text-4xl font-extrabold">
       <slot />
     </div>
     <hr class="w-12 md:w-48 h-2 rounded-full bg-black" />
@@ -27,7 +27,7 @@ const { banner = null } = Astro.props as Props;
       <>
         <a
           href={banner.link}
-          class="flex gap-2 items-center italic hover:text-indigo-900"
+          class="flex gap-2 mt-2 items-center italic hover:text-indigo-900"
           target="_blank">
           <p class="font-extralight">{banner.linkUrl}</p>
           <img

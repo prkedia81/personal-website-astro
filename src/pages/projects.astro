@@ -10,13 +10,7 @@ interface Project {
   description: string;
 }
 
-interface Props {
-  projects: Project[];
-}
-
-let { projects } = Astro.props as Props;
-
-projects = [
+const projects: Project[] = [
   {
     link: "/aggregate-terminal",
     imageLink:

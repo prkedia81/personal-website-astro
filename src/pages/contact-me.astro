@@ -1,0 +1,312 @@
+---
+export const prerender = false;
+
+import Layout from "../layouts/Layout.astro";
+import PageHeading from "../components/PageHeading.astro";
+import Connect from "../components/Connect.astro";
+import sendMail from "../services/emailer";
+import addRowToSheet from "../services/spreadsheet";
+
+let sentMail = false;
+
+if (Astro.request.method === "POST") {
+  try {
+    const data = await Astro.request.formData();
+    const firstName = data.get("first_name") as string;
+    const lastName = data.get("last_name") as string;
+    const email = data.get("email") as string;
+    const company = data.get("company") as string;
+    const phoneNumber = data.get("phone_number") as string;
+    const message = data.get("message") as string;
+
+    // Send Email
+    const name = firstName + " " + lastName;
+    const toMail = "prannaykedia1@gmail.com";
+    const fromEmail = email || "prannaykedia4@gmail.com";
+    await sendMail(
+      name,
+      fromEmail,
+      toMail,
+      name + " reached out to you through your website",
+      message
+    ).then(() => (sentMail = true));
+
+    // Add data to sheet
+    await addRowToSheet(
+      {
+        name,
+        email,
+        company,
+        phone_number: phoneNumber,
+        message,
+        type: "ContactForm",
+      },
+      "contact-me"
+    );
+
+    console.log(name, email, message);
+  } catch (error) {
+    if (error instanceof Error) {
+      console.error(error.message);
+    }
+  }
+}
+---
+
+<Layout title="Contact Me | Prannay Kedia">
+  <PageHeading>
+    <h1>Contact Me</h1>
+  </PageHeading>
+  <div class="text-center">
+    <p class="mt-4 text-lg font-normal leading-6 text-gray-500"
+      >Want to talk? Send me a message and I'll get back to you in 2 day's time</p
+    >
+  </div>
+
+  <div class="mt-6 px-4 overflow-hidden sm:px-6 lg:px-8">
+    <div class="relative max-w-xl mx-auto">
+      <svg
+        class="absolute left-full transform translate-x-1/2"
+        width="404"
+        height="404"
+        fill="none"
+        viewBox="0 0 404 404"
+        aria-hidden="true">
+        <defs>
+          <pattern
+            id="85737c0e-0916-41d7-917f-596dc7edfa27"
+            x="0"
+            y="0"
+            width="20"
+            height="20"
+            patternUnits="userSpaceOnUse">
+            <rect
+              x="0"
+              y="0"
+              width="4"
+              height="4"
+              class="text-gray-200"
+              fill="currentColor"></rect>
+          </pattern>
+        </defs>
+        <rect
+          width="404"
+          height="404"
+          fill="url(#85737c0e-0916-41d7-917f-596dc7edfa27)"></rect>
+      </svg>
+      <svg
+        class="absolute right-full bottom-0 transform -translate-x-1/2"
+        width="404"
+        height="404"
+        fill="none"
+        viewBox="0 0 404 404"
+        aria-hidden="true">
+        <defs>
+          <pattern
+            id="85737c0e-0916-41d7-917f-596dc7edfa27"
+            x="0"
+            y="0"
+            width="20"
+            height="20"
+            patternUnits="userSpaceOnUse">
+            <rect
+              x="0"
+              y="0"
+              width="4"
+              height="4"
+              class="text-gray-200"
+              fill="currentColor"></rect>
+          </pattern>
+        </defs>
+        <rect
+          width="404"
+          height="404"
+          fill="url(#85737c0e-0916-41d7-917f-596dc7edfa27)"></rect>
+      </svg>
+      <div class="mt-12">
+        <form
+          name="contact"
+          method="POST"
+          action="/contact-me"
+          class="grid grid-cols-1 gap-y-6 sm:grid-cols-2 sm:gap-x-8">
+          <div>
+            <label
+              for="first_name"
+              class="block text-sm font-medium text-gray-700"
+              >First name <span class="text-red-700">*</span></label
+            >
+            <div class="mt-1">
+              <input
+                required
+                type="text"
+                name="first_name"
+                id="first_name"
+                autocomplete="given-name"
+                class="py-3 px-4 block border w-full bg-transparent shadow-sm focus:ring-indigo-500 focus:border-indigo-500 rounded-md"
+              />
+            </div>
+          </div>
+          <div>
+            <label
+              for="last_name"
+              class="block text-sm font-medium text-gray-700"
+              >Last name <span class="text-red-700">*</span></label
+            >
+            <div class="mt-1">
+              <input
+                required
+                type="text"
+                name="last_name"
+                id="last_name"
+                autocomplete="family-name"
+                class="py-3 px-4 block border w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 bg-transparent rounded-md"
+              />
+            </div>
+          </div>
+          <div class="sm:col-span-2">
+            <label for="company" class="block text-sm font-medium text-gray-700"
+              >Company</label
+            >
+            <div class="mt-1">
+              <input
+                type="text"
+                name="company"
+                id="company"
+                autocomplete="organization"
+                class="py-3 px-4 block border w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 bg-transparent rounded-md"
+              />
+            </div>
+          </div>
+          <div class="sm:col-span-2">
+            <label for="email" class="block text-sm font-medium text-gray-700"
+              >Email <span class="text-red-700">*</span></label
+            >
+            <div class="mt-1">
+              <input
+                required
+                id="email"
+                name="email"
+                type="email"
+                autocomplete="email"
+                class="py-3 px-4 block border w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 bg-transparent rounded-md"
+              />
+            </div>
+          </div>
+          <div class="sm:col-span-2">
+            <label
+              for="phone_number"
+              class="block text-sm font-medium text-gray-700"
+              >Phone Number</label
+            >
+            <div class="mt-1 relative rounded-md shadow-sm">
+              <input
+                type="text"
+                name="phone_number"
+                id="phone_number"
+                autocomplete="tel"
+                class="py-3 px-4 block border w-full focus:ring-indigo-500 focus:border-indigo-500 bg-transparent rounded-md"
+              />
+            </div>
+          </div>
+          <div class="sm:col-span-2">
+            <label for="message" class="block text-sm font-medium text-gray-700"
+              >Message <span class="text-red-700">*</span></label
+            >
+            <div class="mt-1">
+              <textarea
+                required
+                id="message"
+                name="message"
+                rows="4"
+                class="py-3 px-4 block w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 border bg-transparent rounded-md"
+              ></textarea>
+            </div>
+          </div>
+          <div class="sm:col-span-2">
+            <button
+              type="submit"
+              class="w-full inline-flex items-center justify-center px-6 py-3 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+              >Let' s talk</button
+            >
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <Connect>
+    <p>Or</p>
+  </Connect>
+
+  {
+    sentMail && (
+      <div
+        class="fixed z-10 inset-0 overflow-y-auto"
+        id="submit-modal"
+        aria-labelledby="modal-title"
+        role="dialog"
+        aria-modal="true">
+        <div class="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
+          <div
+            class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity"
+            aria-hidden="true"
+          />
+          <span
+            class="hidden sm:inline-block sm:align-middle sm:h-screen"
+            aria-hidden="true">
+            &#8203;
+          </span>
+          <div class="inline-block align-bottom bg-white rounded-lg px-4 pt-5 pb-4 text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-sm sm:w-full sm:p-6">
+            <div>
+              <div class="mx-auto flex items-center justify-center h-12 w-12 rounded-full bg-green-100">
+                <svg
+                  class="h-6 w-6 text-green-600"
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                  aria-hidden="true">
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M5 13l4 4L19 7"
+                  />
+                </svg>
+              </div>
+              <div class="mt-3 text-center sm:mt-5">
+                <h3
+                  class="text-lg leading-6 font-medium text-gray-900"
+                  id="modal-title">
+                  Thank you for Reaching Out!
+                </h3>
+                <div class="mt-2">
+                  <p class="text-sm text-gray-500">
+                    I'll get back to you in 1-2 business days. Cheers!
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="mt-5 sm:mt-6">
+              <button
+                type="button"
+                id="modal-button"
+                class="inline-flex justify-center w-full rounded-md border border-transparent shadow-sm px-4 py-2 bg-indigo-600 text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:text-sm">
+                Okay
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    )
+  }
+
+  <script>
+    // Contact Me Page
+    let contactModalButton = document.getElementById("modal-button");
+    let contactModal = document.getElementById("submit-modal");
+    contactModalButton.addEventListener("click", () => {
+      contactModal.classList.toggle("hidden");
+    });
+  </script>
+</Layout>
