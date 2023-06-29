@@ -1,4 +1,4 @@
-<!-- ---
+---
 export const prerender = false;
 
 import sendMail from "../services/emailer";
@@ -134,6 +134,6 @@ if (Astro.request.method === "POST") {
     contactModal?.classList.toggle("hidden");
   });
 
-  const currentPath = window.location.pathname;
-  document.getElementsByTagName("form")[0].action = currentPath;
-</script> -->
+  // const currentPath = window.location.pathname;
+  // document.getElementsByTagName("form")[0].action = currentPath;
+</script>
