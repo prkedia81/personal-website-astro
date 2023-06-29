@@ -1,5 +1,5 @@
 ---
-import { PostsOrPages } from "@tryghost/content-api";
+import type { PostsOrPages } from "@tryghost/content-api";
 import BlogCard from "./BlogCard.astro";
 import { positionAt } from "astro/dist/core/errors";
 
@@ -12,7 +12,7 @@ const { posts } = Astro.props as Props;
 
 <section id="latest-blog">
   <a
-    href={"/blogs/" + posts[0].slug}
+    href={"/blog/" + posts[0].slug}
     class="flex flex-col md:flex-row items-center lg:px-24 md:px-24 px-6 mt-12 md:mt-20 gap-3 md:gap-12">
     <img
       class="rounded-xl aspect-video h-auto md:w-1/2 hover:shadow-xl"
@@ -22,11 +22,14 @@ const { posts } = Astro.props as Props;
       class="md:w-1/2 flex flex-col text-center md:text-start gap-2 md:gap-6">
       <p class="text-gray-500 text-xs font-normal md:font-medium md:text-sm">
         {
-          new Date(posts[0].published_at).toLocaleDateString(undefined, {
-            year: "numeric",
-            month: "long",
-            day: "2-digit",
-          })
+          new Date(posts[0].published_at ?? "1/1/2023").toLocaleDateString(
+            undefined,
+            {
+              year: "numeric",
+              month: "long",
+              day: "2-digit",
+            }
+          )
         }
       </p>
       <h1 class="text-xl md:text-4xl font-bold">

@@ -1,10 +1,10 @@
 ---
-import { ghostClient } from "../../services/ghost";
-import { PostsOrPages } from "@tryghost/content-api";
-import Layout from "../../layouts/Layout.astro";
-import PageHeading from "../../components/PageHeading.astro";
-import BlogsEmptyState from "../../components/BlogsEmptyState.astro";
-import AllBlogs from "../../components/AllBlogs.astro";
+import { ghostClient } from "../services/ghost";
+import type { PostsOrPages } from "@tryghost/content-api";
+import Layout from "../layouts/Layout.astro";
+import PageHeading from "../components/PageHeading.astro";
+import BlogsEmptyState from "../components/BlogsEmptyState.astro";
+import AllBlogs from "../components/AllBlogs.astro";
 
 const posts = (await ghostClient.posts
   .browse({

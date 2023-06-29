@@ -5,9 +5,6 @@ import sitemap from "@astrojs/sitemap";
 import prefetch from "@astrojs/prefetch";
 import compress from "astro-compress";
 
-// import netlify from "@astrojs/netlify/functions";
-
-// https://astro.build/config
 export default defineConfig({
   integrations: [
     tailwind(),
