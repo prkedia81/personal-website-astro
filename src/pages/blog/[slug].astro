@@ -10,36 +10,24 @@ interface Props {
   meta: MetaProps;
 }
 
-export async function getStaticPaths() {
-  const posts = (await ghostClient.posts
-    .browse({
-      limit: "all",
-      include: ["authors", "tags"],
-    })
-    .catch((err) => {
-      console.error(err);
-    })) as PostsOrPages;
+const posts = (await ghostClient.posts
+  .browse({
+    limit: "all",
+    include: ["authors", "tags"],
+  })
+  .catch((err) => {
+    console.error(err);
+  })) as PostsOrPages;
 
-  return posts.map((post) => {
-    return {
-      params: {
-        slug: post.slug,
-      },
-      props: {
-        post: post as PostOrPage,
-        meta: {
-          title: post.meta_title || post.title,
-          description:
-            post.meta_description || post.custom_excerpt || post.excerpt,
-          image: post.feature_image,
-          url: "https://prannaykedia.com/blog/" + post.slug,
-        },
-      },
-    };
-  });
-}
-
-const { post, meta } = Astro.props;
+const { slug } = Astro.params;
+const post = posts.find((post) => post.slug === slug);
+if (!post) return Astro.redirect("/404");
+const meta = {
+  title: post.meta_title || post.title,
+  description: post.meta_description || post.custom_excerpt || post.excerpt,
+  image: post.feature_image,
+  url: "https://prannaykedia.com/blog/" + post.slug,
+} as MetaProps;
 ---
 
 <Layout title={post.title} metaData={meta}>

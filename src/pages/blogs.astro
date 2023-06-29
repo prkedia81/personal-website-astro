@@ -5,6 +5,7 @@ import Layout from "../layouts/Layout.astro";
 import PageHeading from "../components/PageHeading.astro";
 import BlogsEmptyState from "../components/BlogsEmptyState.astro";
 import AllBlogs from "../components/AllBlogs.astro";
+export const prerender = true;
 
 const posts = (await ghostClient.posts
   .browse({

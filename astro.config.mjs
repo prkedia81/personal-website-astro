@@ -21,7 +21,7 @@ export default defineConfig({
   experimental: {
     assets: true,
   },
-  output: "hybrid",
+  output: "server",
   adapter: vercelServerless({
     imageService: true,
   }),

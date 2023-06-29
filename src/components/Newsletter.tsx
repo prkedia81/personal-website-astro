@@ -1,7 +1,5 @@
 import { FormEvent, useState } from "react";
 
-export const prerender = false;
-
 function Newsletter() {
   // const [responseMessage, setResponseMessage] = useState("");
   const [modalOpen, setModalOpen] = useState(false);
