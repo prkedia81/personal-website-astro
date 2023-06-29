@@ -1,6 +1,6 @@
 import { defineConfig } from "astro/config";
 import tailwind from "@astrojs/tailwind";
-import vercel from "@astrojs/vercel/serverless";
+import vercelServerless from "@astrojs/vercel/serverless";
 import sitemap from "@astrojs/sitemap";
 import prefetch from "@astrojs/prefetch";
 import compress from "astro-compress";
@@ -19,7 +19,7 @@ export default defineConfig({
     assets: true,
   },
   output: "hybrid",
-  adapter: vercel({
+  adapter: vercelServerless()({
     imageService: true,
   }),
   site: "https://prannaykedia.com",
