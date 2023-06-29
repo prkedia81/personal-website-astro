@@ -4,7 +4,9 @@ import vercelServerless from "@astrojs/vercel/serverless";
 import sitemap from "@astrojs/sitemap";
 import prefetch from "@astrojs/prefetch";
 import compress from "astro-compress";
+import react from "@astrojs/react";
 
+// https://astro.build/config
 export default defineConfig({
   integrations: [
     tailwind(),
@@ -14,6 +16,7 @@ export default defineConfig({
       throttle: 5,
     }),
     compress(),
+    react(),
   ],
   experimental: {
     assets: true,

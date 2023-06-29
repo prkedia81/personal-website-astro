@@ -2,7 +2,7 @@
 import Layout from "../../layouts/Layout.astro";
 import { ghostClient } from "../../services/ghost";
 import type { PostsOrPages, PostOrPage, Tag } from "@tryghost/content-api";
-import Newsletter from "../../components/Newsletter.astro";
+import Newsletter from "../../components/Newsletter";
 import type { MetaProps } from "../../components/MetaTags.astro";
 
 interface Props {
@@ -78,7 +78,7 @@ const { post, meta } = Astro.props;
     </div>
   </section>
 
-  <Newsletter />
+  <Newsletter client:visible />
 
   <script src="../../assets/blogParser.js"></script>
 </Layout>
