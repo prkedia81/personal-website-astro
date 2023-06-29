@@ -19,7 +19,7 @@ export default defineConfig({
     assets: true,
   },
   output: "hybrid",
-  adapter: vercelServerless()({
+  adapter: vercelServerless({
     imageService: true,
   }),
   site: "https://prannaykedia.com",
