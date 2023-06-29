@@ -47,6 +47,7 @@ if (Astro.request.method === "POST") {
     <form
       name="newsletter-subscribers"
       method="POST"
+      action=""
       class="mt-5 flex flex-col md:flex-row md:gap-3 gap-2 items-center justify-center">
       <div class="md:basis-3/4">
         <input
@@ -133,4 +134,7 @@ if (Astro.request.method === "POST") {
   contactModalButton?.addEventListener("click", () => {
     contactModal?.classList.toggle("hidden");
   });
+
+  const currentPath = window.location.pathname.slice(1);
+  document.getElementsByTagName("form")[0].action = currentPath;
 </script>
