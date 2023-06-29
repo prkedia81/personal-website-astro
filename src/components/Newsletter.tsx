@@ -1,11 +1,12 @@
 import { FormEvent, useState } from "react";
 
+export const prerender = false;
+
 function Newsletter() {
   // const [responseMessage, setResponseMessage] = useState("");
   const [modalOpen, setModalOpen] = useState(false);
 
   async function submit(e: FormEvent) {
-    console.log("here");
     e.preventDefault();
     const formData = new FormData(e.target as HTMLFormElement);
     setModalOpen(true);
