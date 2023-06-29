@@ -18,6 +18,9 @@ export default defineConfig({
     }),
     compress(),
   ],
+  experimental: {
+    assets: true,
+  },
   output: "hybrid",
   adapter: vercel({
     imageService: true,
