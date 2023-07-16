@@ -6,6 +6,8 @@ import prefetch from "@astrojs/prefetch";
 import compress from "astro-compress";
 import react from "@astrojs/react";
 
+import image from "@astrojs/image";
+
 // https://astro.build/config
 export default defineConfig({
   integrations: [
@@ -15,15 +17,11 @@ export default defineConfig({
       selector: "a[href^='/']",
       throttle: 5,
     }),
-    compress(),
     react(),
+    image(),
+    compress(),
   ],
-  experimental: {
-    assets: true,
-  },
   output: "server",
-  adapter: vercelServerless({
-    imageService: true,
-  }),
+  adapter: vercelServerless(),
   site: "https://prannaykedia.com",
 });

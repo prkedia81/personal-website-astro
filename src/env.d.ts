@@ -1,4 +1,4 @@
-/// <reference types="astro/client-image" />
+/// <reference types="@astrojs/image/client" />
 interface ImportMetaEnv {
   readonly SMTP_USER: string;
   readonly SMTP_PASSWORD: string;

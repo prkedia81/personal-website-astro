@@ -1,6 +1,7 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import PageHeading, { Banner } from "../components/PageHeading.astro";
+import { Image } from "@astrojs/image/components";
 export const prerender = true;
 
 const banner: Banner = {
@@ -81,9 +82,12 @@ const banner: Banner = {
       </ol>
       <p>And the list goes on…..</p>
       <div class="image flex flex-col gap-2 items-center justify-center">
-        <img
+        <Image
+          width={1300}
+          height={1000}
+          format="avif"
           src="https://res.cloudinary.com/dg24rzjez/image/upload/v1667499954/personal-website/projects/aggregate-terminal/product-offering.png"
-          alt=""
+          alt="Aggregate Terminal Product Offerings"
           class="md:w-1/2"
         />
         <p class="Subtext text-xs font-light"> Map of our offerings</p>

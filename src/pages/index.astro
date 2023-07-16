@@ -2,6 +2,7 @@
 import Layout from "../layouts/Layout.astro";
 import Connect from "../components/Connect.astro";
 import Newsletter from "../components/Newsletter";
+import { Image } from "@astrojs/image/components";
 ---
 
 <Layout title="Prannay Kedia">
@@ -9,7 +10,10 @@ import Newsletter from "../components/Newsletter";
     <div class="flex items-center justify-around">
       <div
         class="hero-content flex flex-col items-center text-center md:text-start md:items-start">
-        <img
+        <Image
+          width={100}
+          height={100}
+          format="svg"
           src="https://res.cloudinary.com/dg24rzjez/image/upload/v1667496959/personal-website/homepage-hello.svg"
           class="w-full md:w-3/4 h-auto"
           alt=""
@@ -39,7 +43,10 @@ import Newsletter from "../components/Newsletter";
               href="/about-me"
               class="flex items-center gap-2 text-md justify-center font-medium text-black hover:text-indigo-900">
               <p>Profile</p>
-              <img
+              <Image
+                width={100}
+                height={100}
+                format="svg"
                 src="https://res.cloudinary.com/dg24rzjez/image/upload/v1667496959/personal-website/gotoarrow.svg"
                 class="h-3 w-3"
                 alt=""
@@ -72,7 +79,10 @@ import Newsletter from "../components/Newsletter";
         </div>
       </div>
       <div class="portrait-image hidden md:inline-block">
-        <img
+        <Image
+          width={100}
+          height={100}
+          format="svg"
           src="https://res.cloudinary.com/dg24rzjez/image/upload/v1667496959/personal-website/homepage-portrait.svg"
           class="w-96 h-auto"
           alt=""

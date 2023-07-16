@@ -3,6 +3,7 @@ import Layout from "../layouts/Layout.astro";
 import PageHeading from "../components/PageHeading.astro";
 import ResumePoint from "../components/ResumePoint.astro";
 import { resumePoints } from "../data/resume";
+import { Image } from "@astrojs/image/components";
 
 export const prerender = true;
 ---
@@ -17,6 +18,7 @@ export const prerender = true;
       <div class="hidden md:block">
         <img
           src="https://res.cloudinary.com/dg24rzjez/image/upload/v1673015859/personal-website/me-pic.jpg"
+          alt="Prannay Kedia picture"
         />
       </div>
       <div class="flex flex-col px-4 md:px-0 gap-8">

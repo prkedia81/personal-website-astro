@@ -1,6 +1,7 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import PageHeading, { Banner } from "../components/PageHeading.astro";
+import { Image } from "@astrojs/image/components";
 export const prerender = true;
 
 interface Props {
@@ -44,12 +45,12 @@ const banner = {
       <div class="image flex flex-col gap-2 items-center justify-center">
         <img
           src="https://res.cloudinary.com/dg24rzjez/image/upload/v1667502578/personal-website/projects/flirtaid/survey1.png"
-          alt=""
+          alt="Survey 1 image"
           class="md:w-1/2"
         />
         <img
           src="https://res.cloudinary.com/dg24rzjez/image/upload/v1667502578/personal-website/projects/flirtaid/survey2.png"
-          alt=""
+          alt="Survey 2 image"
           class="md:w-2/3"
         />
       </div>
@@ -113,7 +114,7 @@ const banner = {
       <div class="image flex flex-col gap-2 items-center justify-center">
         <img
           src="https://res.cloudinary.com/dg24rzjez/image/upload/v1667499954/personal-website/projects/flirtaid/dev.svg"
-          alt=""
+          alt="Development Image"
           class="w-1/2"
         />
         <p class="Subtext text-xs font-light">
@@ -144,7 +145,7 @@ const banner = {
       <div class="image flex flex-col gap-2 items-center justify-center">
         <img
           src="https://res.cloudinary.com/dg24rzjez/image/upload/v1667499954/personal-website/projects/flirtaid/marketing.svg"
-          alt=""
+          alt="Marketing efforts"
           class="md:w-3/4"
         />
         <p class="Subtext text-xs font-light"> Our marketing efforts</p>
@@ -202,7 +203,7 @@ const banner = {
       <div class="image flex flex-col gap-2 items-center justify-center">
         <img
           src="https://res.cloudinary.com/dg24rzjez/image/upload/v1667499954/personal-website/projects/flirtaid/impact.svg"
-          alt=""
+          alt="Impact quantified"
           class="md:w-2/3"
         />
         <p class="Subtext text-xs font-light">
