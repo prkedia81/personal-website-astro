@@ -1,4 +1,6 @@
-import { FormEvent, useState } from "react";
+import { type FormEvent, useState } from "react";
+import sendMail from "../services/emailer";
+import addRowToSheet from "../services/spreadsheet";
 
 function Newsletter() {
   // const [responseMessage, setResponseMessage] = useState("");
@@ -6,16 +8,25 @@ function Newsletter() {
 
   async function submit(e: FormEvent) {
     e.preventDefault();
+
+    console.log("HERE");
     const formData = new FormData(e.target as HTMLFormElement);
     setModalOpen(true);
-    const response = await fetch("/api/newsletter", {
-      method: "POST",
-      body: formData,
-    });
-    const data = await response.json();
-    if (!data.message) {
-      setModalOpen(false);
-    }
+
+    const email = formData.get("email") as string;
+    console.log(email);
+
+    // Send Email
+    await sendMail(
+      "",
+      "prannaykedia1@gmail.com",
+      "prannaykedia1@gmail.com",
+      "New Subscriber to your Newsletter!",
+      `${email} subscribed to your newsletter at ${new Date().toDateString()}`
+    );
+
+    // Add data to sheet
+    await addRowToSheet({ email, type: "NewsletterForm" }, "newsletter");
   }
 
   return (
