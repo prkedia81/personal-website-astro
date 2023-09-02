@@ -7,7 +7,7 @@ import partytown from "@astrojs/partytown";
 // import vercelServerless from "@astrojs/vercel/serverless";
 // import image from "@astrojs/image";
 
-import vercel from "@astrojs/vercel/serverless";
+import vercel from "@astrojs/vercel/static";
 
 // https://astro.build/config
 export default defineConfig({
@@ -20,7 +20,7 @@ export default defineConfig({
     react(),
     partytown(),
   ],
-  output: "server",
+  output: "static",
   adapter: vercel(),
   site: "https://prannaykedia.com",
 });
