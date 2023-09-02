@@ -2,7 +2,7 @@
 import { GoogleFontsOptimizer } from "astro-google-fonts-optimizer";
 import Analytics from "../components/Analytics.astro";
 import Footer from "../components/Footer.astro";
-import MetaTags, { MetaProps } from "../components/MetaTags.astro";
+import MetaTags, { type MetaProps } from "../components/MetaTags.astro";
 import Nav from "../components/Nav.astro";
 
 export interface Props {
@@ -40,6 +40,8 @@ if (metaData === undefined) {
       type="image/ico"
       href="https://res.cloudinary.com/dg24rzjez/image/upload/v1667496959/personal-website/favicon.png"
     />
+
+    <!-- TODO: Remove Font Awesome CDN -->
     <!-- Font Awesome CDN -->
     <link
       rel="stylesheet"
@@ -56,7 +58,7 @@ if (metaData === undefined) {
       }
     </style>
 
-    <Analytics partytown={false} />
+    <Analytics partytown={true} />
 
     <MetaTags {...metaData} />
   </head>

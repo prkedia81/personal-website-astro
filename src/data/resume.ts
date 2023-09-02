@@ -21,12 +21,12 @@ export const resumePoints = <ResumePoint[]>[
     title: "Bokaro Steel Plant",
     time: "Dec 2022 - Dec 2022",
     description:
-      " Completed intensive vocational training program at Bokaro Steel Plant, acquiring comprehensive knowledge and practical skills in steel production processes, machinery operation, and quality control measures.",
+      "Completed intensive vocational training program at Bokaro Steel Plant, acquiring comprehensive knowledge and practical skills in steel production processes, machinery operation, and quality control measures.",
   },
   {
     title: "Writee AI",
-    time: "Feb 2022 - Present",
+    time: "Feb 2022 - Jul 2023",
     description:
-      "Lead Writee AI as it's CEO & Co-founder. Actively worked on product development, legal compliances and finding product-market fit. Currently focused on obtaining scale through various marketing and development efforts.",
+      "Lead Writee AI as it's Co-founder. Actively worked on product development, legal compliances and finding product-market fit. Acquired resulting in 10-fold returns for the founders.",
   },
 ];

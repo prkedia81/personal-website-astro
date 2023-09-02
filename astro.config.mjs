@@ -5,8 +5,10 @@ import sitemap from "@astrojs/sitemap";
 import prefetch from "@astrojs/prefetch";
 import compress from "astro-compress";
 import react from "@astrojs/react";
+// import image from "@astrojs/image";
+import partytown from "@astrojs/partytown";
 
-import image from "@astrojs/image";
+import vercel from "@astrojs/vercel/serverless";
 
 // https://astro.build/config
 export default defineConfig({
@@ -18,8 +20,8 @@ export default defineConfig({
       throttle: 5,
     }),
     react(),
-    image(),
     compress(),
+    partytown(),
   ],
   output: "server",
   adapter: vercelServerless(),
