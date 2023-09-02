@@ -20,7 +20,7 @@ export default defineConfig({
     react(),
     partytown(),
   ],
-  output: "hybrid",
+  output: "server",
   adapter: vercel(),
   site: "https://prannaykedia.com",
 });
