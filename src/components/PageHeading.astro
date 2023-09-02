@@ -1,4 +1,5 @@
 ---
+import { Image } from "astro:assets";
 export interface Banner {
   link: string;
   linkUrl: string;
@@ -30,14 +31,24 @@ const { banner = null } = Astro.props as Props;
           class="flex gap-2 mt-2 items-center italic hover:text-indigo-900"
           target="_blank">
           <p class="font-extralight">{banner.linkUrl}</p>
-          <img
+          <Image
+            width={200}
+            height={200}
+            format="webp"
             src="https://res.cloudinary.com/dg24rzjez/image/upload/v1667496959/personal-website/gotoarrow.svg"
             class="h-3 w-3"
             alt="go to arrow"
           />
         </a>
         <section class="banner mt-8">
-          <img src={banner.bannerImg} class="w-screen" alt="banner image" />
+          <Image
+            width={5000}
+            height={1000}
+            format="webp"
+            src={banner.bannerImg}
+            class="w-screen"
+            alt="banner image"
+          />
         </section>
       </>
     )

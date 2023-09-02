@@ -3,6 +3,8 @@ import Layout from "../layouts/Layout.astro";
 import Connect from "../components/Connect.astro";
 import Newsletter from "../components/Newsletter";
 import { Image } from "astro:assets";
+
+export const prerender = true;
 ---
 
 <Layout title="Prannay Kedia">
@@ -11,12 +13,13 @@ import { Image } from "astro:assets";
       <div
         class="hero-content flex flex-col items-center text-center md:text-start md:items-start">
         <Image
-          width={100}
-          height={100}
-          format="svg"
+          width={1000}
+          height={1000}
+          format="webp"
+          loading={"eager"}
           src="https://res.cloudinary.com/dg24rzjez/image/upload/v1667496959/personal-website/homepage-hello.svg"
           class="w-full md:w-3/4 h-auto"
-          alt=""
+          alt="My name is Prannay Kedia"
         />
         <div class="hero-content-others md:pl-7">
           <p class="font-light text-xl text-gray-900 pt-4 md:pt-1"
@@ -46,10 +49,10 @@ import { Image } from "astro:assets";
               <Image
                 width={100}
                 height={100}
-                format="svg"
+                format="webp"
                 src="https://res.cloudinary.com/dg24rzjez/image/upload/v1667496959/personal-website/gotoarrow.svg"
                 class="h-3 w-3"
-                alt=""
+                alt="Go to arrow"
               />
             </a>
           </div>
@@ -80,9 +83,11 @@ import { Image } from "astro:assets";
       </div>
       <div class="portrait-image hidden md:inline-block">
         <Image
-          width={100}
-          height={100}
-          format="svg"
+          width={1000}
+          height={1000}
+          format="webp"
+          quality="max"
+          loading={"eager"}
           src="https://res.cloudinary.com/dg24rzjez/image/upload/v1667496959/personal-website/homepage-portrait.svg"
           class="w-96 h-auto"
           alt=""
@@ -120,18 +125,20 @@ import { Image } from "astro:assets";
         Hey there! I’m Prannay, CEO & Co-Founder of <a
           href="https://www.writee.in"
           class="underline italic">Writee AI</a
-        > - an AI-based copywriting platform that helps businesses produce content
-        better, faster and easier. Currently I am pursuing my Bachelors in Chemical
-        Engineering at Jadavpur University, Kolkata. Being an entrepreneur, I had
-        to become what people call a specialised generalist. That is to say I know
-        a little about a lot of things while being in the constant pursuit of learning
-        more along the way. I'm a devout believer in the audacity of thought - so
-        if you've got an idea too big for the world to digest, count me in. <a
+        > - an AI-based copywriting platform that helps businesses produce
+        content better, faster and easier. Currently I am pursuing my Bachelors
+        in Chemical Engineering at Jadavpur University, Kolkata. Being an
+        entrepreneur, I had to become what people call a specialised generalist.
+        That is to say I know a little about a lot of things while being in the
+        constant pursuit of learning more along the way. I'm a devout believer
+        in the audacity of thought - so if you've got an idea too big for the
+        world to digest, count me in. <a
           href="/contact-me"
           class="underline italic">Hit me up</a
         >
-        if you want to discuss any potential business ideas, learn more about Writee
-        (founders live and breathe their start-ups) or just chat over a cup of coffee.
+         if you want to discuss any potential business ideas, learn more about
+        Writee (founders live and breathe their start-ups) or just chat over a
+        cup of coffee.
       </p>
     </div>
   </section>

@@ -1,10 +1,12 @@
 ---
+import { Image } from "astro:assets";
+
 interface Props {
-  slug: string;
-  date: string;
-  image: string;
-  title: string;
-  excerpt: string;
+  slug: string | undefined;
+  date: string | undefined | null;
+  image: string | undefined | null;
+  title: string | undefined;
+  excerpt: string | undefined;
 }
 
 function truncateString(str: string, num: number): string {
@@ -16,18 +18,25 @@ function truncateString(str: string, num: number): string {
 }
 
 const { slug, date, image } = Astro.props as Props;
-let { title, excerpt } = Astro.props as Props;
+let { title = "", excerpt = "" } = Astro.props as Props;
 
 excerpt = truncateString(excerpt, 150);
 title = truncateString(title, 50);
 ---
 
 <a href={"/blog/" + slug} class="flex flex-col gap-4">
-  <img class="h-48 w-76 rounded-xl card hover:shadow-xl" src={image} />
+  <Image
+    transition:name={slug}
+    width={2400}
+    height={1000}
+    alt={title}
+    class="h-48 w-76 rounded-xl card hover:shadow-xl"
+    src={image || ""}
+  />
   <div class="pl-1 text-center md:text-start">
     <p class="text-gray-500 font-normal md:font-medium text-xs">
       {
-        new Date(date).toLocaleDateString(undefined, {
+        new Date(date || "18/11/2002").toLocaleDateString(undefined, {
           year: "numeric",
           month: "long",
           day: "2-digit",

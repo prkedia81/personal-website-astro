@@ -234,7 +234,7 @@
 </header>
 <!--Navbar Ends-->
 
-<script>
+<!-- <script>
   function makeActiveNav(
     navLinks: Array<HTMLAnchorElement>,
     activeClasses: Array<string>,
@@ -278,19 +278,39 @@
     "hover:bg-gray-50",
   ];
 
-  makeActiveNav(
-    new Array(
+  document.addEventListener('astro:page-load', () => {
+
+    console.log("HERE")
+
+    makeActiveNav(new Array(
       ...document.querySelectorAll(".desktop-nav")[0].children
     ) as Array<HTMLAnchorElement>,
     desktopActiveClasses,
-    desktopInactiveClasses
-  );
+    desktopInactiveClasses);
 
-  makeActiveNav(
+    makeActiveNav(
     new Array(
       ...document.querySelectorAll(".mobile-nav")[0].children
     ) as Array<HTMLAnchorElement>,
     mobileActiveClasses,
     mobileInactiveClasses
   );
-</script>
+  }, { once: true });
+
+
+  // makeActiveNav(
+  //   new Array(
+  //     ...document.querySelectorAll(".desktop-nav")[0].children
+  //   ) as Array<HTMLAnchorElement>,
+  //   desktopActiveClasses,
+  //   desktopInactiveClasses
+  // );
+
+  // makeActiveNav(
+  //   new Array(
+  //     ...document.querySelectorAll(".mobile-nav")[0].children
+  //   ) as Array<HTMLAnchorElement>,
+  //   mobileActiveClasses,
+  //   mobileInactiveClasses
+  // );
+</script> -->

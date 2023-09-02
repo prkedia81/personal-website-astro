@@ -27,6 +27,6 @@ export const resumePoints = <ResumePoint[]>[
     title: "Writee AI",
     time: "Feb 2022 - Jul 2023",
     description:
-      "Lead Writee AI as it's Co-founder. Actively worked on product development, legal compliances and finding product-market fit. Acquired resulting in 10-fold returns for the founders.",
+      "Lead Writee AI as it's Co-founder. Actively worked on product development, legal compliances and finding product-market fit. Got acquired resulting in 10-fold returns for the founders.",
   },
 ];

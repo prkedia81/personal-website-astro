@@ -1,4 +1,5 @@
 ---
+import { Image } from "astro:assets";
 interface Props {
   link: string;
   imageLink: string;
@@ -12,10 +13,13 @@ const { link, imageLink, title, description } = Astro.props as Props;
 <a
   href={link}
   class="project flex flex-col items-center justify-center text-center">
-  <img
+  <Image
+    width={2000}
+    height={2000}
+    quality="high"
     src={imageLink}
     class="rounded-xl card shadow-card hover:drop-shadow-lg"
-    alt=""
+    alt={description}
   />
   <h2 class="pt-8 text-lg font-bold">{title}</h2>
   <p class="font-light pt-2 text-sm">{description}</p>
