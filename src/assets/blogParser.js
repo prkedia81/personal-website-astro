@@ -95,5 +95,5 @@ function formatBlogBody(blogBody) {
   formatFunction("blockquote", blockquoteClasses);
 }
 
-const blogBody = document.getElementById("blog-content");
-formatBlogBody(blogBody);
+// const blogBody = document.getElementById("blog-content");
+// formatBlogBody(blogBody);

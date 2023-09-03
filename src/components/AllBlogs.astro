@@ -14,7 +14,7 @@ const { posts } = Astro.props as Props;
 <section id="latest-blog">
   <a
     href={"/blog/" + posts[0].slug}
-    class="flex flex-col md:flex-row items-center lg:px-24 md:px-24 px-6 mt-12 md:mt-20 gap-3 md:gap-12">
+    class="flex flex-col md:flex-row items-center lg:px-24 md:px-16 px-6 mt-12 md:mt-20 gap-3 md:gap-12">
     <Image
       transition:name={posts[0].slug}
       width={2400}
@@ -37,7 +37,7 @@ const { posts } = Astro.props as Props;
           )
         }
       </p>
-      <h1 class="text-xl md:text-4xl font-bold">
+      <h1 class="text-xl md:text-2xl lg:text-4xl font-bold">
         {posts[0].title}
       </h1>
       <p
@@ -50,7 +50,7 @@ const { posts } = Astro.props as Props;
 
 <section
   id="blogs"
-  class="grid grid-col-1 md:grid-cols-3 gap-x-10 gap-y-12 md:gap-y-16 lg:px-24 md:px-24 px-6 mt-12 md:mt-16 justify-start">
+  class="grid grid-col-1 lg:grid-cols-3 md:grid-cols-2 gap-x-10 gap-y-12 md:gap-y-16 lg:px-24 md:px-16 px-6 mt-12 md:mt-16 justify-start">
   {
     posts
       .slice(1)
