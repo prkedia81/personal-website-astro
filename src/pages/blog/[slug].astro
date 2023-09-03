@@ -5,6 +5,8 @@ import type { PostsOrPages, PostOrPage, Tag } from "@tryghost/content-api";
 import Newsletter from "../../components/Newsletter";
 import type { MetaProps } from "../../components/MetaTags.astro";
 import { Image } from "astro:assets";
+import BlogContent from "../../components/BlogContent.astro";
+
 export const prerender = true;
 
 interface Props {
@@ -75,13 +77,8 @@ const { post, meta } = Astro.props;
   </section>
 
   <section id="blog-content">
-    <div
-      class="mt-6 md:mt-16 lg:px-44 md:px-44 px-6 leading-7 font-normal text-base flex flex-col gap-4">
-      <Fragment set:html={post.html} />
-    </div>
+    <BlogContent post={post.html} />
   </section>
 
   <Newsletter client:visible />
-
-  <script src="../../assets/blogParser.js"></script>
 </Layout>

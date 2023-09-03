@@ -17,16 +17,16 @@ function Newsletter() {
     console.log(email);
 
     // Send Email
-    await sendMail(
-      "",
-      "prannaykedia1@gmail.com",
-      "prannaykedia1@gmail.com",
-      "New Subscriber to your Newsletter!",
-      `${email} subscribed to your newsletter at ${new Date().toDateString()}`
-    );
+    // await sendMail(
+    //   "",
+    //   "prannaykedia1@gmail.com",
+    //   "prannaykedia1@gmail.com",
+    //   "New Subscriber to your Newsletter!",
+    //   `${email} subscribed to your newsletter at ${new Date().toDateString()}`
+    // );
 
     // Add data to sheet
-    await addRowToSheet({ email, type: "NewsletterForm" }, "newsletter");
+    // await addRowToSheet({ email, type: "NewsletterForm" }, "newsletter");
   }
 
   return (
