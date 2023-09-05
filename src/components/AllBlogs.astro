@@ -13,7 +13,7 @@ const { posts } = Astro.props as Props;
 
 <section id="latest-blog">
   <a
-    href={"/blog/" + posts[0].slug}
+    href={"/blog/" + posts[0].slug + "/"}
     class="flex flex-col md:flex-row items-center lg:px-24 md:px-16 px-6 mt-12 md:mt-20 gap-3 md:gap-12">
     <Image
       transition:name={posts[0].slug}
@@ -56,7 +56,7 @@ const { posts } = Astro.props as Props;
       .slice(1)
       .map((post) => (
         <BlogCard
-          slug={post.slug}
+          slug={post.slug + "/"}
           image={post.feature_image}
           date={post.published_at}
           title={post.title}
