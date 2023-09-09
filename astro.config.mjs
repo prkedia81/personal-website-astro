@@ -24,7 +24,7 @@ export default defineConfig({
     partytown(),
     compress(),
   ],
-  output: "server",
-  adapter: cloudflare(),
+  output: "static",
+  adapter: vercel(),
   site: "https://prannaykedia.com",
 });
