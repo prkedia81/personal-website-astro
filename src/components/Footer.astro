@@ -1,5 +1,7 @@
 ---
-
+import { Image } from "astro:assets";
+import phoneImage from "../assets/images/phone-icon.svg";
+import gmailIcon from "../assets/images/gmail-icon.svg";
 ---
 
 <footer class="max-w-7xl px-4 sm:px-6 mt-16 md:mt-24">
@@ -7,18 +9,22 @@
     <div class="me flex flex-row items-center md:gap-36 lg:gap-48 py-6">
       <div class="details hidden md:inline-block">
         <div class="flex gap-4 items-center">
-          <img
-            src="https://res.cloudinary.com/dg24rzjez/image/upload/v1667496959/personal-website/gmail-icon.svg"
-            class="h-6 w-6"
-            alt=""
+          <Image
+            width={300}
+            height={300}
+            src={gmailIcon}
+            class="h-6 w-6 md:h-8 md:w-8"
+            alt="gmail icon"
           />
           <p class="font-light text-sm">prannaykedia1@gmail.com</p>
         </div>
         <div class="flex gap-4 items-center">
-          <img
-            src="https://res.cloudinary.com/dg24rzjez/image/upload/v1667496959/personal-website/phone-icon.svg"
-            alt=""
-            class="h-6 w-6"
+          <Image
+            width={300}
+            height={300}
+            src={phoneImage}
+            alt="phone icon"
+            class="h-6 w-6 md:h-8 md:w-8"
           />
           <p class="font-light text-sm">+91 85840 11454</p>
         </div>

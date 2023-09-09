@@ -4,6 +4,7 @@ import PageHeading from "../components/PageHeading.astro";
 import ResumePoint from "../components/ResumePoint.astro";
 import { resumePoints } from "../data/resume";
 import { Image } from "astro:assets";
+import myImage from "../assets/images/me-pic.jpg";
 
 export const prerender = true;
 ---
@@ -17,11 +18,11 @@ export const prerender = true;
     <div class="flex flex-row gap-12 items-center">
       <div class="hidden md:block">
         <Image
-          width={2400}
+          width={2000}
           height={4000}
           loading="lazy"
           quality="high"
-          src="https://res.cloudinary.com/dg24rzjez/image/upload/v1673015859/personal-website/me-pic.jpg"
+          src={myImage}
           alt="Prannay Kedia picture"
           class="w-full h-full"
         />

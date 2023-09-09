@@ -3,6 +3,9 @@ import Layout from "../layouts/Layout.astro";
 import Connect from "../components/Connect.astro";
 import Newsletter from "../components/Newsletter";
 import { Image } from "astro:assets";
+import helloImage from "../assets/images/homepage-hello.svg";
+import portraitImage from "../assets/images/homepage-portrait.svg";
+import goToArrow from "../assets/images/gotoarrow.svg";
 
 export const prerender = true;
 ---
@@ -17,7 +20,7 @@ export const prerender = true;
           height={1000}
           format="webp"
           loading={"eager"}
-          src="https://res.cloudinary.com/dg24rzjez/image/upload/v1667496959/personal-website/homepage-hello.svg"
+          src={helloImage}
           class="w-full md:w-3/4 h-auto"
           alt="My name is Prannay Kedia"
         />
@@ -50,7 +53,7 @@ export const prerender = true;
                 width={100}
                 height={100}
                 format="webp"
-                src="https://res.cloudinary.com/dg24rzjez/image/upload/v1667496959/personal-website/gotoarrow.svg"
+                src={goToArrow}
                 class="h-3 w-3"
                 alt="Go to arrow"
               />
@@ -124,7 +127,7 @@ export const prerender = true;
           format="webp"
           quality="max"
           loading={"eager"}
-          src="https://res.cloudinary.com/dg24rzjez/image/upload/v1667496959/personal-website/homepage-portrait.svg"
+          src={portraitImage}
           class="w-96 h-auto"
           alt=""
         />
