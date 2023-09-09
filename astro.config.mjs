@@ -8,6 +8,9 @@ import partytown from "@astrojs/partytown";
 // import image from "@astrojs/image";
 
 import vercel from "@astrojs/vercel/static";
+import compress from "astro-compress";
+
+import cloudflare from "@astrojs/cloudflare";
 
 // https://astro.build/config
 export default defineConfig({
@@ -19,8 +22,9 @@ export default defineConfig({
     }),
     react(),
     partytown(),
+    compress(),
   ],
-  output: "static",
-  adapter: vercel(),
+  output: "server",
+  adapter: cloudflare(),
   site: "https://prannaykedia.com",
 });

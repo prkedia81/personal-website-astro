@@ -55,7 +55,7 @@
           Blog
         </a>
         <a
-          href="https://drive.google.com/file/d/1Ad4bSgonObG4z2Y1GEtKN17Zkaphz8GJ/view?usp=sharing"
+          href="https://dub.sh/pkwebcv"
           target="”_blank”"
           class="text-sm font-normal text-black-300 hover:text-indigo-900">
           CV
@@ -233,6 +233,20 @@
   </div>
 </header>
 <!--Navbar Ends-->
+
+<script is:raw>
+if (typeof mobileNav === "undefined") {
+  let mobileNav = document.getElementById("mobile-nav");
+  let closeBTN = document.getElementById("close-mobile-nav");
+  let hamburgerBTN = document.getElementById("hamburger-menu");
+  closeBTN.addEventListener("click", () => {
+    mobileNav.classList.toggle("hidden");
+  });
+  hamburgerBTN.addEventListener("click", () => {
+    mobileNav.classList.toggle("hidden");
+  });
+}
+</script>
 
 <!-- <script>
   function makeActiveNav(
