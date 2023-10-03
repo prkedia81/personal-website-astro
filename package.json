@@ -22,7 +22,7 @@
     "@tryghost/content-api": "^1.11.16",
     "@types/react": "^18.2.14",
     "@types/react-dom": "^18.2.6",
-    "astro": "^3.0.7",
+    "astro": "^3.2.2",
     "astro-compress": "^2.0.15",
     "astro-google-fonts-optimizer": "^0.2.2",
     "axios": "^1.4.0",
