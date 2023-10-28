@@ -8,4 +8,6 @@ interface ImportMetaEnv {
   readonly GOOGLE_PROJECT_ID: string;
   readonly GOOGLE_PRIVATE_KEY_ID: string;
   readonly GOOGLE_PRIVATE_KEY: string;
+  readonly NOTION_DATABASE_ID: string;
+  readonly NOTION_TOKEN: string;
 }

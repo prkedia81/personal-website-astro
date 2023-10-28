@@ -4,9 +4,16 @@ export interface MetaProps {
   description: string;
   image: string;
   url: string;
+  tags?: string;
 }
 
-const { title, description, image, url } = Astro.props;
+const {
+  title,
+  description,
+  image,
+  url,
+  tags = "entrepreneur, prannay kedia, prannay, start up, kedia, ai",
+} = Astro.props as MetaProps;
 ---
 
 <meta charset="utf-8" />
@@ -18,10 +25,7 @@ const { title, description, image, url } = Astro.props;
 <meta name="title" content={title} />
 <meta name="description" content={description} />
 <meta property="image" content={image} />
-<meta
-  name="keywords"
-  content="entrepreneur, start up, prannay, prannay kedia, student entrepreneur, ai company, management"
-/>
+<meta name="keywords" content={tags} />
 <meta name="robots" content="index,follow" />
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="language" content="English" />

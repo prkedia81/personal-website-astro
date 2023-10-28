@@ -1,7 +1,7 @@
 ---
 import { Image } from "astro:assets";
 
-interface Props {
+export interface BlogCardInterface {
   slug: string | undefined;
   date: string | undefined | null;
   image: string | undefined | null;
@@ -17,8 +17,8 @@ function truncateString(str: string, num: number): string {
   }
 }
 
-const { slug, date, image } = Astro.props as Props;
-let { title = "", excerpt = "" } = Astro.props as Props;
+const { slug, date, image } = Astro.props as BlogCardInterface;
+let { title = "", excerpt = "" } = Astro.props as BlogCardInterface;
 
 excerpt = truncateString(excerpt, 150);
 title = truncateString(title, 50);
