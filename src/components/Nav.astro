@@ -234,21 +234,18 @@
 </header>
 <!--Navbar Ends-->
 
-<script is:raw>
-if (typeof mobileNav === "undefined") {
-  let mobileNav = document.getElementById("mobile-nav");
-  let closeBTN = document.getElementById("close-mobile-nav");
-  let hamburgerBTN = document.getElementById("hamburger-menu");
-  closeBTN.addEventListener("click", () => {
-    mobileNav.classList.toggle("hidden");
-  });
-  hamburgerBTN.addEventListener("click", () => {
-    mobileNav.classList.toggle("hidden");
-  });
-}
-</script>
-
-<!-- <script>
+<script>
+  function mobileNav() {
+    let mobileNav = document.getElementById("mobile-nav");
+    let closeBTN = document.getElementById("close-mobile-nav");
+    let hamburgerBTN = document.getElementById("hamburger-menu");
+    closeBTN?.addEventListener("click", () => {
+      mobileNav?.classList.toggle("hidden");
+    });
+    hamburgerBTN?.addEventListener("click", () => {
+      mobileNav?.classList.toggle("hidden");
+    });
+  }
   function makeActiveNav(
     navLinks: Array<HTMLAnchorElement>,
     activeClasses: Array<string>,
@@ -292,25 +289,7 @@ if (typeof mobileNav === "undefined") {
     "hover:bg-gray-50",
   ];
 
-  document.addEventListener('astro:page-load', () => {
-
-    console.log("HERE")
-
-    makeActiveNav(new Array(
-      ...document.querySelectorAll(".desktop-nav")[0].children
-    ) as Array<HTMLAnchorElement>,
-    desktopActiveClasses,
-    desktopInactiveClasses);
-
-    makeActiveNav(
-    new Array(
-      ...document.querySelectorAll(".mobile-nav")[0].children
-    ) as Array<HTMLAnchorElement>,
-    mobileActiveClasses,
-    mobileInactiveClasses
-  );
-  }, { once: true });
-
+  mobileNav();
 
   // makeActiveNav(
   //   new Array(
@@ -327,4 +306,8 @@ if (typeof mobileNav === "undefined") {
   //   mobileActiveClasses,
   //   mobileInactiveClasses
   // );
-</script> -->
+
+  document.addEventListener("astro:after-swap", () => {
+    mobileNav();
+  });
+</script>
