@@ -1,46 +1,59 @@
 ---
 import Layout from "../../layouts/Layout.astro";
-import { ghostClient } from "../../services/ghost";
-import type { PostsOrPages, PostOrPage, Tag } from "@tryghost/content-api";
 import Newsletter from "../../components/Newsletter";
 import type { MetaProps } from "../../components/MetaTags.astro";
 import { Image } from "astro:assets";
 import BlogContent from "../../components/BlogContent.astro";
+import { fetchPageBySlug, fetchPages } from "../../services/notion";
 
 export const prerender = true;
 
 interface Props {
-  //   post: PostOrPage;
   post: any;
   meta: MetaProps;
 }
 
 export async function getStaticPaths() {
-  const posts = (await ghostClient.posts
-    .browse({
-      limit: "all",
-      include: ["tags"],
-    })
-    .catch((err) => {
-      console.error(err);
-    })) as PostsOrPages;
-  return posts.map((post) => {
-    return {
-      params: {
-        slug: post.slug,
-      },
-      props: {
-        post: post as PostOrPage,
-        meta: {
-          title: post.meta_title || post.title,
-          description:
-            post.meta_description || post.custom_excerpt || post.excerpt,
-          image: post.feature_image,
-          url: "https://prannaykedia.com/blog/" + post.slug,
+  const posts = (await fetchPages()).results;
+  const postData = Promise.all(
+    posts.map(async (item) => {
+      const postObject = await fetchPageBySlug(item.properties.Slug.url);
+      return {
+        params: {
+          slug: postObject?.properties.Slug.url,
         },
-      },
-    };
-  });
+        props: {
+          post: {
+            id: postObject?.id as string,
+            title: postObject?.properties.Title.title[0].plain_text,
+            date: item.properties["Published Date"].date.start,
+            slug: postObject?.properties.Slug.url,
+          },
+          meta: {
+            title: postObject?.properties.Title.title[0].plain_text,
+            description:
+              postObject?.properties.Excerpt.rich_text[0] == undefined
+                ? ""
+                : postObject?.properties.Excerpt.rich_text[0].plain_text,
+            image: postObject?.cover
+              ? postObject?.cover.external
+                ? postObject?.cover.external.url
+                : postObject?.cover.file.url
+              : null,
+            tags:
+              postObject?.properties.Tags.rich_text[0] == undefined
+                ? ""
+                : postObject.properties.Excerpt.rich_text[0].plain_text,
+            url:
+              "https://prannaykedia.com/blog/" +
+              postObject?.properties.Slug.url,
+          },
+        },
+      };
+    })
+  );
+
+  return postData;
 }
 const { post, meta } = Astro.props;
 ---
@@ -56,14 +69,11 @@ const { post, meta } = Astro.props;
       </h1>
       <p class="text-gray-500 font-light text-xs md:text-sm">
         {
-          new Date(post.published_at ?? "1.1.2023").toLocaleDateString(
-            undefined,
-            {
-              year: "numeric",
-              month: "long",
-              day: "2-digit",
-            }
-          )
+          new Date(post.date ?? "1.1.2023").toLocaleDateString(undefined, {
+            year: "numeric",
+            month: "long",
+            day: "2-digit",
+          })
         }
       </p>
     </div>
@@ -71,14 +81,14 @@ const { post, meta } = Astro.props;
       width={2400}
       height={1000}
       transition:name={post.slug}
-      src={post.feature_image || ""}
+      src={meta.image || ""}
       class="md:w-1/2 aspect-video md:order-2 rounded-xl"
-      alt={post.excerpt || ""}
+      alt={post.title || ""}
     />
   </section>
 
   <section id="blog-content">
-    <BlogContent post={post.html} />
+    <BlogContent id={post.id} />
   </section>
 
   <Newsletter client:visible />

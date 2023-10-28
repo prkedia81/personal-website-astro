@@ -1,16 +1,19 @@
 ---
+import { fetchPageBlocks } from "../services/notion";
 export const prerender = true;
+import { Render } from "@9gustin/react-notion-render";
 
 interface Props {
-  post: string | undefined | null;
+  id: string;
 }
 
-const { post } = Astro.props as Props;
+const { id } = Astro.props as Props;
+const blocks = await fetchPageBlocks(id);
 ---
 
 <div
   class="blog mt-6 md:mt-16 lg:px-44 md:px-44 px-6 leading-7 font-normal text-base flex flex-col gap-4">
-  <Fragment set:html={post} />
+  <Render blocks={blocks} simpleTitles />
 </div>
 
 <style is:inline>

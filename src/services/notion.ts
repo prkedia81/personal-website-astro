@@ -1,3 +1,4 @@
+import type { NotionBlock } from "@9gustin/react-notion-render";
 import { Client } from "@notionhq/client";
 import type {
   BlockObjectResponse,
@@ -35,7 +36,8 @@ export const fetchPageBySlug = async (slug: string) => {
 };
 
 export const fetchPageBlocks = async (pageId: string) => {
-  return notion.blocks.children
-    .list({ block_id: pageId })
-    .then((res) => res.results as BlockObjectResponse[]);
+  const response = await notion.blocks.children.list({
+    block_id: pageId,
+  });
+  return response.results as NotionBlock[];
 };
