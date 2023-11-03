@@ -1,52 +1,23 @@
 import React, { useState, type FormEvent } from "react";
-import addRowToSheet from "../services/spreadsheet";
-import sendMail from "../services/emailer";
+import LoadingSpinner from "../components/LoadingSpinner";
+import axios from "axios";
 
 function Contact() {
   const [modalOpen, setModalOpen] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   async function submit(e: FormEvent) {
-    console.log("Submitted");
-    try {
-      const data = new FormData(e.target as HTMLFormElement);
-      const firstName = data.get("first_name") as string;
-      const lastName = data.get("last_name") as string;
-      const email = data.get("email") as string;
-      const company = data.get("company") as string;
-      const phoneNumber = data.get("phone_number") as string;
-      const message = data.get("message") as string;
+    e.preventDefault();
 
-      // Send Email
-      const name = firstName + " " + lastName;
-      const toMail = "prannaykedia1@gmail.com";
-      const fromEmail = email || "prannaykedia4@gmail.com";
-      await sendMail(
-        name,
-        fromEmail,
-        toMail,
-        name + " reached out to you through your website",
-        message
-      ).then(() => setModalOpen(true));
+    const formData = new FormData(e.target as HTMLFormElement);
+    setLoading(true);
 
-      // Add data to sheet
-      await addRowToSheet(
-        {
-          name,
-          email,
-          company,
-          phone_number: phoneNumber,
-          message,
-          type: "ContactForm",
-        },
-        "contact-me"
-      );
+    const response = await axios.post("/api/contact", formData);
 
-      console.log(name, email, message);
-    } catch (error) {
-      if (error instanceof Error) {
-        console.error(error.message);
-      }
+    if (response.status === 200) {
+      setModalOpen(true);
     }
+    setLoading(false);
   }
 
   return (
@@ -218,7 +189,11 @@ function Contact() {
                 <button
                   type="submit"
                   className="w-full inline-flex items-center justify-center px-6 py-3 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-                  Let' s talk
+                  {loading ? (
+                    <LoadingSpinner color="text-white" />
+                  ) : (
+                    "Let's Talk"
+                  )}
                 </button>
               </div>
             </form>
@@ -255,9 +230,9 @@ function Contact() {
                     stroke="currentColor"
                     aria-hidden="true">
                     <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="2"
                       d="M5 13l4 4L19 7"
                     />
                   </svg>

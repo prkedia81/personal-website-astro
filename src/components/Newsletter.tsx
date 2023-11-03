@@ -1,33 +1,23 @@
+import axios from "axios";
 import { type FormEvent, useState } from "react";
-import sendMail from "../services/emailer";
-import addRowToSheet from "../services/spreadsheet";
+import LoadingSpinner from "./LoadingSpinner.tsx";
 
 function Newsletter() {
-  // const [responseMessage, setResponseMessage] = useState("");
   const [modalOpen, setModalOpen] = useState(false);
+  const [loading, setLoading] = useState(false);
 
-  async function submit(e: FormEvent) {
+  const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
-
-    console.log("HERE");
     const formData = new FormData(e.target as HTMLFormElement);
-    setModalOpen(true);
+    setLoading(true);
 
-    const email = formData.get("email") as string;
-    console.log(email);
+    const response = await axios.post("/api/newsletter", formData);
 
-    // Send Email
-    // await sendMail(
-    //   "",
-    //   "prannaykedia1@gmail.com",
-    //   "prannaykedia1@gmail.com",
-    //   "New Subscriber to your Newsletter!",
-    //   `${email} subscribed to your newsletter at ${new Date().toDateString()}`
-    // );
-
-    // Add data to sheet
-    // await addRowToSheet({ email, type: "NewsletterForm" }, "newsletter");
-  }
+    if (response.status === 200) {
+      setModalOpen(true);
+    }
+    setLoading(false);
+  };
 
   return (
     <>
@@ -42,7 +32,7 @@ function Newsletter() {
           </p>
           <form
             name="newsletter-subscribers"
-            onSubmit={(e) => submit(e)}
+            onSubmit={(e) => handleSubmit(e)}
             className="mt-5 flex flex-col md:flex-row md:gap-3 gap-2 items-center justify-center">
             <div className="md:basis-3/4">
               <input
@@ -59,7 +49,7 @@ function Newsletter() {
               <button
                 type="submit"
                 className="w-full items-center justify-center px-5 py-2 border border-transparent text-md font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 sm:w-auto">
-                Sign-up
+                {loading ? <LoadingSpinner color="text-white" /> : "Sign-up"}
               </button>
             </div>
           </form>
@@ -94,9 +84,9 @@ function Newsletter() {
                     stroke="currentColor"
                     aria-hidden="true">
                     <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="2"
                       d="M5 13l4 4L19 7"
                     />
                   </svg>

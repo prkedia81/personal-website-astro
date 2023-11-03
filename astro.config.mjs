@@ -4,11 +4,15 @@ import sitemap from "@astrojs/sitemap";
 import prefetch from "@astrojs/prefetch";
 import react from "@astrojs/react";
 import partytown from "@astrojs/partytown";
-// import vercelServerless from "@astrojs/vercel/serverless";
+import vercel from "@astrojs/vercel/serverless";
 // import image from "@astrojs/image";
 
-import vercel from "@astrojs/vercel/static";
+// import vercel from "@astrojs/vercel/static";
 import compress from "astro-compress";
+// import node from "@astrojs/node";
+// node({
+//   mode: "standalone",
+// })
 
 import cloudflare from "@astrojs/cloudflare";
 
@@ -20,11 +24,13 @@ export default defineConfig({
     prefetch({
       selector: "a[href^='/']",
     }),
-    react(),
+    react({ experimentalReactChildren: true }),
     partytown(),
     compress(),
   ],
-  output: "static",
-  adapter: vercel(),
+  output: "hybrid",
+  adapter: vercel({
+    functionPerRoute: false,
+  }),
   site: "https://prannaykedia.com",
 });

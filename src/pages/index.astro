@@ -1,7 +1,7 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import Connect from "../components/Connect.astro";
-import Newsletter from "../components/Newsletter";
+import Newsletter from "../components/Newsletter.tsx";
 import { Image } from "astro:assets";
 import helloImage from "../assets/images/homepage-hello.svg";
 import portraitImage from "../assets/images/homepage-portrait.svg";
@@ -16,9 +16,9 @@ export const prerender = true;
       <div
         class="hero-content flex flex-col items-center text-center md:text-start md:items-start">
         <Image
-          width={1000}
-          height={1000}
-          format="webp"
+          width={500}
+          height={500}
+          format="avif"
           loading={"eager"}
           src={helloImage}
           class="w-full md:w-3/4 h-auto"
@@ -52,7 +52,7 @@ export const prerender = true;
               <Image
                 width={100}
                 height={100}
-                format="webp"
+                format="avif"
                 src={goToArrow}
                 class="h-3 w-3"
                 alt="Go to arrow"
@@ -122,9 +122,9 @@ export const prerender = true;
       </div>
       <div class="portrait-image hidden md:inline-block">
         <Image
-          width={1000}
-          height={1000}
-          format="webp"
+          width={500}
+          height={500}
+          format="avif"
           quality="max"
           loading={"eager"}
           src={portraitImage}
@@ -151,7 +151,7 @@ export const prerender = true;
   </main>
 
   <section
-    class="about-me lg:px-24 md:px-24 px-6 mt-24 flex flex-col md:flex-row gap-4 md:gap-16 items-center">
+    class="about-me lg:px-24 md:px-16 px-6 mt-24 flex flex-col md:flex-row gap-4 md:gap-12 lg:gap-16 items-center">
     <div class="whitespace-nowrap font-bold text-4xl">
       <p>About Me</p>
     </div>
@@ -159,7 +159,7 @@ export const prerender = true;
       class="line border-t md:border-t-0 md:border-l border-black w-32 md:h-40"
     ></div>
     <div
-      class="about-text text-base text-center md:text-start md:text-lg font-light p-4">
+      class="about-text text-base text-center md:text-start md:text-lg font-light md:p-4">
       <p>
         Hey there! I’m Prannay, Ex-Founder of <a
           href="https://www.writee.in"
