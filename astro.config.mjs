@@ -31,6 +31,12 @@ export default defineConfig({
   output: "server",
   adapter: vercel({
     functionPerRoute: false,
+    speedInsights: {
+      enabled: true,
+    },
+    webAnalytics: {
+      enabled: true,
+    },
   }),
   site: "https://prannaykedia.com",
 });
