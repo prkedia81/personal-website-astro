@@ -28,7 +28,7 @@ export default defineConfig({
     partytown(),
     compress(),
   ],
-  output: "hybrid",
+  output: "server",
   adapter: vercel({
     functionPerRoute: false,
   }),
