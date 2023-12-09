@@ -14,8 +14,6 @@ import compress from "astro-compress";
 //   mode: "standalone",
 // })
 
-import cloudflare from "@astrojs/cloudflare";
-
 // https://astro.build/config
 export default defineConfig({
   integrations: [
