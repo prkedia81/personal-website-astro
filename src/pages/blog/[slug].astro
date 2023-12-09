@@ -69,6 +69,7 @@ const { post, meta } = Astro.props;
     <Image
       width={2400}
       height={1000}
+      format="webp"
       transition:name={post.slug}
       src={post.feature_image || ""}
       class="md:w-1/2 aspect-video md:order-2 rounded-xl"

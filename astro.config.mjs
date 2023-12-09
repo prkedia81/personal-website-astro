@@ -38,5 +38,8 @@ export default defineConfig({
       enabled: true,
     },
   }),
+  experimental: {
+    contentCollectionCache: true,
+  },
   site: "https://prannaykedia.com",
 });

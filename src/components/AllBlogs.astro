@@ -19,6 +19,7 @@ const { posts } = Astro.props as Props;
       transition:name={posts[0].slug}
       width={2400}
       height={1000}
+      format="webp"
       alt={posts[0].title || "Blog Post"}
       class="rounded-xl aspect-video h-auto md:w-1/2 hover:shadow-xl"
       src={posts[0].feature_image || ""}
