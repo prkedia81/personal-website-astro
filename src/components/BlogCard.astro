@@ -25,15 +25,19 @@ title = truncateString(title, 50);
 ---
 
 <a href={"/blog/" + slug} class="flex flex-col gap-4">
-  <Image
-    transition:name={slug}
-    width={2400}
-    height={1000}
-    alt={title}
-    format="webp"
-    class="h-auto w-76 rounded-xl card hover:shadow-xl"
-    src={image || ""}
-  />
+  {
+    image && (
+      <Image
+        transition:name={slug}
+        width={2400}
+        height={1000}
+        alt={title}
+        format="webp"
+        class="h-auto w-76 rounded-xl card hover:shadow-xl"
+        src={image || ""}
+      />
+    )
+  }
   <div class="pl-1 text-center md:text-start">
     <p class="text-gray-500 font-normal md:font-medium text-xs">
       {

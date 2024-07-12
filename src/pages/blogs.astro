@@ -15,6 +15,7 @@ const posts = (await ghostClient.posts
   .catch((err) => {
     console.error(err);
   })) as PostsOrPages;
+console.log(posts[0]);
 ---
 
 <Layout title="Blogs | Prannay Kedia">

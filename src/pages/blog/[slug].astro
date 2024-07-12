@@ -66,15 +66,19 @@ const { post, meta } = Astro.props;
         }
       </p>
     </div>
-    <Image
-      width={2400}
-      height={1000}
-      format="webp"
-      transition:name={post.slug}
-      src={post.feature_image || ""}
-      class="md:w-1/2 aspect-video md:order-2 rounded-xl"
-      alt={post.excerpt || ""}
-    />
+    {
+      post.feature_image && (
+        <Image
+          width={2400}
+          height={1000}
+          format="webp"
+          transition:name={post.slug}
+          src={post.feature_image || ""}
+          class="md:w-1/2 aspect-video md:order-2 rounded-xl"
+          alt={post.excerpt || ""}
+        />
+      )
+    }
   </section>
 
   <section id="blog-content">

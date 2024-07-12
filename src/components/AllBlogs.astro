@@ -15,15 +15,19 @@ const { posts } = Astro.props as Props;
   <a
     href={"/blog/" + posts[0].slug + "/"}
     class="flex flex-col md:flex-row items-center lg:px-24 md:px-16 px-6 mt-12 md:mt-20 gap-3 md:gap-12">
-    <Image
-      transition:name={posts[0].slug}
-      width={2400}
-      height={1000}
-      format="webp"
-      alt={posts[0].title || "Blog Post"}
-      class="rounded-xl aspect-video h-auto md:w-1/2 hover:shadow-xl"
-      src={posts[0].feature_image || ""}
-    />
+    {
+      posts[0].feature_image && (
+        <Image
+          transition:name={posts[0].slug}
+          width={2400}
+          height={1000}
+          format="webp"
+          alt={posts[0].title || "Blog Post"}
+          class="rounded-xl aspect-video h-auto md:w-1/2 hover:shadow-xl"
+          src={posts[0].feature_image}
+        />
+      )
+    }
     <div
       class="md:w-1/2 flex flex-col text-center md:text-start gap-2 md:gap-6">
       <p class="text-gray-500 text-xs font-normal md:font-medium md:text-sm">
