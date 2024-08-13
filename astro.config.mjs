@@ -23,7 +23,7 @@ export default defineConfig({
       selector: "a[href^='/']",
     }),
     react({ experimentalReactChildren: true }),
-    partytown(),
+    partytown({ config: { forward: ["dataLayer.push"] } }),
     compress(),
   ],
   output: "server",
