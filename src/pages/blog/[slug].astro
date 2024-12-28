@@ -7,7 +7,7 @@ import type { MetaProps } from "../../components/MetaTags.astro";
 import { Image } from "astro:assets";
 import BlogContent from "../../components/BlogContent.astro";
 import { getCollection, type CollectionEntry } from "astro:content";
-import { getBlogBySlug } from "../../services/notion";
+import { getBlogById } from "../../services/notion";
 
 export const prerender = true;
 
@@ -20,9 +20,10 @@ export async function getStaticPaths() {
   const posts = await getCollection("blogs");
   const mappedPosts = await Promise.all(
     posts.map(async (post) => {
-      const fullPost = await getBlogBySlug(post.data.slug);
+      console.log(post.data.ID);
+      const fullPost = await getBlogById(post.data.ID.toString());
       if (fullPost === null) {
-        return null;
+        return undefined;
       }
       return {
         params: {
@@ -42,7 +43,10 @@ export async function getStaticPaths() {
     })
   );
 
-  return mappedPosts;
+  return mappedPosts.filter(
+    (post): post is { params: any; props: any } =>
+      post !== null && post !== undefined
+  );
 }
 
 const { post, meta } = Astro.props;
@@ -64,14 +68,13 @@ if (post.content === undefined) {
       <p class="text-gray-500 font-light text-xs md:text-sm">
         {
           // TODO: Change this to published date
-          new Date(post.createdDate ?? "1.1.2023").toLocaleDateString(
-            undefined,
-            {
-              year: "numeric",
-              month: "long",
-              day: "2-digit",
-            }
-          )
+          new Date(
+            post.publishedDate ?? post.createdDate ?? "1.1.2023"
+          ).toLocaleDateString(undefined, {
+            year: "numeric",
+            month: "long",
+            day: "2-digit",
+          })
         }
       </p>
     </div>

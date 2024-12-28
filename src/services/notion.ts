@@ -10,6 +10,6 @@ export async function getAllBlogs() {
   return await notionClient.getAllPosts();
 }
 
-export async function getBlogBySlug(postSlug: string) {
-  return await notionClient.getBlogBySlug(postSlug);
+export async function getBlogById(postId: string) {
+  return await notionClient.getBlogById(postId);
 }

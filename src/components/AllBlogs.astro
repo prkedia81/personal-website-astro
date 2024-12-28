@@ -33,14 +33,15 @@ const { posts } = Astro.props as Props;
       class="md:w-1/2 flex flex-col text-center md:text-start gap-2 md:gap-6">
       <p class="text-gray-500 text-xs font-normal md:font-medium md:text-sm">
         {
-          new Date(posts[0].data.createdDate ?? "1/1/2023").toLocaleDateString(
-            undefined,
-            {
-              year: "numeric",
-              month: "long",
-              day: "2-digit",
-            }
-          )
+          new Date(
+            posts[0].data.publishedDate ||
+              posts[0].data.createdDate ||
+              "1/1/2023"
+          ).toLocaleDateString(undefined, {
+            year: "numeric",
+            month: "long",
+            day: "2-digit",
+          })
         }
       </p>
       <h1 class="text-xl md:text-2xl lg:text-4xl font-bold">
@@ -66,7 +67,7 @@ const { posts } = Astro.props as Props;
         <BlogCard
           slug={post.data.slug + "/"}
           image={post.data.coverImage[0]}
-          date={post.data.createdDate}
+          date={post.data.publishedDate || post.data.createdDate || "1/1/2023"}
           title={post.data.title}
           excerpt={post.data.seoDescription || ""}
         />

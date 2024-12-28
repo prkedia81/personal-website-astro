@@ -99,7 +99,7 @@ const { post } = Astro.props as Props;
   border-radius: 0.375rem;
 } */
 
-  .blog .kg-callout-card {
+  .blog .notion-callout {
     margin-bottom: 2rem;
     margin-top: 1.5rem;
     display: flex;
@@ -111,6 +111,30 @@ const { post } = Astro.props as Props;
     background-color: rgb(243 232 255);
     border-width: 2px;
     border-color: rgb(79 70 229);
+  }
+
+  .blog blockquote {
+    margin-bottom: 1.5rem;      /* mb-6 */
+    padding-left: 1.5rem;       /* px-6 */
+    padding-right: 1.5rem;      /* px-6 */
+    padding-top: 1rem;          /* py-4 */
+    padding-bottom: 1rem;       /* py-4 */
+    border-left-width: 2px;     /* border-l-2 */
+    border-left-color: #6366f1; /* border-indigo-500 */
+  }
+
+  .blog blockquote p {
+    margin-bottom: 1rem;        /* mb-4 */
+    font-size: 1rem;           /* text-md */
+    line-height: 1.25;         /* leading-tight */
+    font-weight: 500;          /* font-medium */
+    color: #1f2937;           /* text-coolGray-800 */
+  }
+
+  @media (min-width: 768px) {
+    .blog blockquote p {
+      font-size: 1.125rem;     /* md:text-lg */
+    }
   }
 
   /* const blockquoteClasses = [
@@ -128,4 +152,22 @@ const { post } = Astro.props as Props;
       "font-medium",
       "text-coolGray-800",
     ]; */
+
+  .blog table {
+    width: 100%;
+    margin-bottom: 1.5rem;
+    border-collapse: collapse;
+  }
+
+  .blog th,
+  .blog td {
+    padding: 0.75rem;
+    border: 1px solid #e5e7eb;  /* Similar to Tailwind's gray-200 */
+    text-align: left;
+  }
+
+  .blog th {
+    background-color: #f3f4f6;  /* Changed to gray-100 for more contrast */
+    font-weight: 600;
+  }
 </style>
