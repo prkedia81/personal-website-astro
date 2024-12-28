@@ -5,6 +5,7 @@ import Footer from "../components/Footer.astro";
 import MetaTags, { type MetaProps } from "../components/MetaTags.astro";
 import Nav from "../components/Nav.astro";
 import { ViewTransitions } from "astro:transitions";
+import { NODE_ENV } from "astro:env/server";
 
 export interface Props {
   title?: string;
@@ -48,7 +49,7 @@ if (metaData === undefined) {
       }
     </style>
 
-    <Analytics partytown={false} />
+    {NODE_ENV !== "development" && <Analytics partytown={false} />}
 
     <MetaTags {...metaData} />
   </head>

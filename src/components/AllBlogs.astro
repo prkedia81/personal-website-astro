@@ -2,10 +2,11 @@
 import type { PostsOrPages } from "@tryghost/content-api";
 import BlogCard from "./BlogCard.astro";
 import { Image } from "astro:assets";
+import type { CollectionEntry } from "astro:content";
 export const prerender = true;
 
 interface Props {
-  posts: PostsOrPages;
+  posts: CollectionEntry<"blogs">[];
 }
 
 const { posts } = Astro.props as Props;
@@ -13,18 +14,18 @@ const { posts } = Astro.props as Props;
 
 <section id="latest-blog">
   <a
-    href={"/blog/" + posts[0].slug + "/"}
+    href={"/blog/" + posts[0].data.slug + "/"}
     class="flex flex-col md:flex-row items-center lg:px-24 md:px-16 px-6 mt-12 md:mt-20 gap-3 md:gap-12">
     {
-      posts[0].feature_image && (
+      posts[0].data.coverImage && (
         <Image
-          transition:name={posts[0].slug}
+          transition:name={posts[0].data.slug}
           width={2400}
           height={1000}
           format="webp"
-          alt={posts[0].title || "Blog Post"}
+          alt={posts[0].data.title || "Blog Post"}
           class="rounded-xl aspect-video h-auto md:w-1/2 hover:shadow-xl"
-          src={posts[0].feature_image}
+          src={posts[0].data.coverImage[0]}
         />
       )
     }
@@ -32,7 +33,7 @@ const { posts } = Astro.props as Props;
       class="md:w-1/2 flex flex-col text-center md:text-start gap-2 md:gap-6">
       <p class="text-gray-500 text-xs font-normal md:font-medium md:text-sm">
         {
-          new Date(posts[0].published_at ?? "1/1/2023").toLocaleDateString(
+          new Date(posts[0].data.createdDate ?? "1/1/2023").toLocaleDateString(
             undefined,
             {
               year: "numeric",
@@ -43,11 +44,12 @@ const { posts } = Astro.props as Props;
         }
       </p>
       <h1 class="text-xl md:text-2xl lg:text-4xl font-bold">
-        {posts[0].title}
+        {posts[0].data.title}
       </h1>
       <p
         class="font-light text-xs text-clip overflow-hidden max-h-24 md:max-h-fit md:text-base">
-        {posts[0].custom_excerpt || posts[0].excerpt}
+        <!-- TODO: Change this to the first 100 words of the blog post -->
+        {posts[0].data.seoDescription || ""}
       </p>
     </div>
   </a>
@@ -56,16 +58,17 @@ const { posts } = Astro.props as Props;
 <section
   id="blogs"
   class="grid grid-col-1 lg:grid-cols-3 md:grid-cols-2 gap-x-10 gap-y-12 md:gap-y-16 lg:px-24 md:px-16 px-6 mt-12 md:mt-16 justify-start">
+  <!-- TODO: Change excerpt to the first 100 words of the blog post -->
   {
     posts
       .slice(1)
       .map((post) => (
         <BlogCard
-          slug={post.slug + "/"}
-          image={post.feature_image}
-          date={post.published_at}
-          title={post.title}
-          excerpt={post.custom_excerpt || post.excerpt}
+          slug={post.data.slug + "/"}
+          image={post.data.coverImage[0]}
+          date={post.data.createdDate}
+          title={post.data.title}
+          excerpt={post.data.seoDescription || ""}
         />
       ))
   }

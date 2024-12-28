@@ -5,22 +5,26 @@ import Layout from "../layouts/Layout.astro";
 import PageHeading from "../components/PageHeading.astro";
 import BlogsEmptyState from "../components/BlogsEmptyState.astro";
 import AllBlogs from "../components/AllBlogs.astro";
+import { getCollection } from "astro:content";
+import { NODE_ENV } from "astro:env/server";
 export const prerender = true;
 
-const posts = (await ghostClient.posts
-  .browse({
-    limit: "all",
-    include: ["tags"],
-  })
-  .catch((err) => {
-    console.error(err);
-  })) as PostsOrPages;
-console.log(posts[0]);
+const posts = await getCollection("blogs");
+
+// const posts = (await ghostClient.posts
+//   .browse({
+//     limit: "all",
+//     include: ["tags"],
+//   })
+//   .catch((err) => {
+//     console.error(err);
+//   })) as PostsOrPages;
+// console.log(posts[0]);
 ---
 
 <Layout title="Blogs | Prannay Kedia">
   <PageHeading>
-    <p>My{" "}<br class="md:hidden" />{"Musings"}</p>
+    <p>{"My "}<br class="md:hidden" />{"Musings"}</p>
   </PageHeading>
 
   {

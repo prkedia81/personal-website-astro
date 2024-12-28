@@ -6,42 +6,50 @@ import Newsletter from "../../components/Newsletter";
 import type { MetaProps } from "../../components/MetaTags.astro";
 import { Image } from "astro:assets";
 import BlogContent from "../../components/BlogContent.astro";
+import { getCollection, type CollectionEntry } from "astro:content";
+import { getBlogBySlug } from "../../services/notion";
 
 export const prerender = true;
 
 interface Props {
-  post: PostOrPage;
+  post: CollectionEntry<"blogs">["data"];
   meta: MetaProps;
 }
 
 export async function getStaticPaths() {
-  const posts = (await ghostClient.posts
-    .browse({
-      limit: "all",
-      include: ["tags"],
-    })
-    .catch((err) => {
-      console.error(err);
-    })) as PostsOrPages;
-  return posts.map((post) => {
-    return {
-      params: {
-        slug: post.slug,
-      },
-      props: {
-        post: post as PostOrPage,
-        meta: {
-          title: post.meta_title || post.title,
-          description:
-            post.meta_description || post.custom_excerpt || post.excerpt,
-          image: post.feature_image,
-          url: "https://prannaykedia.com/blog/" + post.slug,
+  const posts = await getCollection("blogs");
+  const mappedPosts = await Promise.all(
+    posts.map(async (post) => {
+      const fullPost = await getBlogBySlug(post.data.slug);
+      if (fullPost === null) {
+        return null;
+      }
+      return {
+        params: {
+          slug: post.data.slug,
         },
-      },
-    };
-  });
+        props: {
+          post: fullPost,
+          meta: {
+            title: fullPost.title,
+            // TODO: Change this to the first 100 words of the blog post
+            description: fullPost.seoDescription,
+            image: fullPost.coverImage[0],
+            url: "https://prannaykedia.com/blog/" + fullPost.slug,
+          },
+        },
+      };
+    })
+  );
+
+  return mappedPosts;
 }
+
 const { post, meta } = Astro.props;
+
+if (post.content === undefined) {
+  Astro.redirect("/404");
+}
 ---
 
 <Layout title={post.title} metaData={meta}>
@@ -55,7 +63,8 @@ const { post, meta } = Astro.props;
       </h1>
       <p class="text-gray-500 font-light text-xs md:text-sm">
         {
-          new Date(post.published_at ?? "1.1.2023").toLocaleDateString(
+          // TODO: Change this to published date
+          new Date(post.createdDate ?? "1.1.2023").toLocaleDateString(
             undefined,
             {
               year: "numeric",
@@ -67,22 +76,22 @@ const { post, meta } = Astro.props;
       </p>
     </div>
     {
-      post.feature_image && (
+      post.coverImage[0] && (
         <Image
           width={2400}
           height={1000}
           format="webp"
           transition:name={post.slug}
-          src={post.feature_image || ""}
+          src={post.coverImage[0] || ""}
           class="md:w-1/2 aspect-video md:order-2 rounded-xl"
-          alt={post.excerpt || ""}
+          alt={post.seoDescription || ""}
         />
       )
     }
   </section>
 
   <section id="blog-content">
-    <BlogContent post={post.html} />
+    <BlogContent post={post.content} />
   </section>
 
   <Newsletter client:visible />
