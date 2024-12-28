@@ -2,11 +2,15 @@
 import Layout from "../layouts/Layout.astro";
 import PageHeading from "../components/PageHeading.astro";
 import ResumePoint from "../components/ResumePoint.astro";
-import { resumePoints } from "../data/resume";
 import { Image } from "astro:assets";
 import myImage from "../assets/images/me-pic.jpg";
+import { getCollection } from "astro:content";
 
 export const prerender = true;
+
+const resumePoints = await getCollection("resume");
+const aboutData = await getCollection("about");
+const about = aboutData[0].data;
 ---
 
 <Layout title="About Me | Prannay Kedia">
@@ -28,26 +32,12 @@ export const prerender = true;
         />
       </div>
       <div class="flex flex-col px-4 md:px-0 gap-8">
-        <p>
-          Hey there! I’m Prannay, Ex-Founder of Writee AI - an AI-based
-          copywriting platform that helps businesses produce content better,
-          faster and easier. Currently I am pursuing my Bachelors in Chemical
-          Engineering at Jadavpur University, Kolkata. Being a builder, I had to
-          become what people call a specialised generalist. That is to say I
-          know a little about a lot of things while being in the constant
-          pursuit of learning more along the way.
-        </p>
-        <p>
-          I'm a devout believer in the audacity of thought - so if you've got an
-          idea too big for the world to digest, count me in. My core
-          competencies lie in copywriting, full stack development, data science,
-          finance and everything product centric. When not working on my
-          startup, you can find me humming Indian Classical Music, venturing out
-          to take the occasional photograph or just lying on my bed
-          binge-watching the latest TV show on Netflix. Hit me up if you want to
-          discuss any potential business ideas, learn more about Writee or just
-          chat over a cup of coffee.
-        </p>
+        <Fragment
+          set:html={about.longBio
+            .split("\n\n")
+            .map((p) => `<p>${p}</p>`)
+            .join("")}
+        />
       </div>
     </div>
 
@@ -69,9 +59,9 @@ export const prerender = true;
               {
                 resumePoints.map((point) => (
                   <ResumePoint
-                    title={point.title}
-                    time={point.time}
-                    description={point.description}
+                    title={point.data.title}
+                    time={point.data.time}
+                    description={point.data.description}
                   />
                 ))
               }

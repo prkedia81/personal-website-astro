@@ -27,7 +27,7 @@ const { banner = null } = Astro.props as Props;
     banner && (
       <>
         <a
-          href={banner.link}
+          href={banner.linkUrl}
           class="flex gap-2 mt-2 items-center italic hover:text-indigo-900"
           target="_blank">
           <p class="font-extralight">{banner.linkUrl}</p>

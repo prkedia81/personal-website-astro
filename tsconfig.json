@@ -4,8 +4,6 @@
     "jsx": "react-jsx",
     "jsxImportSource": "react",
     "strictNullChecks": true,
-    "allowJs": true,
-    "module": "ESNext",
-    "moduleResolution": "Node",
+    "allowJs": true
   }
 }

@@ -2,8 +2,49 @@
 import Layout from "../layouts/Layout.astro";
 import PageHeading from "../components/PageHeading.astro";
 import ProjectCard from "../components/ProjectCard.astro";
-import { projects } from "../data/projects";
+import { getCollection } from "astro:content";
+import type { CollectionEntry } from "astro:content";
 export const prerender = true;
+
+const projects = await getCollection("projects");
+const sortedProjects = projects.sort(
+  (a, b) => (a.data.order || 0) - (b.data.order || 0)
+);
+
+const additionalProjects: CollectionEntry<"projects">[] = [
+  {
+    id: "photography",
+    collection: "projects" as const,
+    data: {
+      title: "Photography",
+      description:
+        "A collection of my photographs from the last 5 years. Includes product images to nature",
+      cardImage:
+        "https://res.cloudinary.com/dg24rzjez/image/upload/v1667581385/personal-website/projects/photography/photography.svg",
+      link: "/photography/",
+      bannerImg:
+        "https://res.cloudinary.com/dg24rzjez/image/upload/v1667581385/personal-website/projects/photography/photography.svg",
+    },
+    body: "",
+  },
+  {
+    id: "film-making",
+    collection: "projects" as const,
+    data: {
+      title: "Film Making",
+      description:
+        "Select short films I've been a part of. I contributed as the director and cinematographer.",
+      cardImage:
+        "https://res.cloudinary.com/dg24rzjez/image/upload/v1667583818/personal-website/projects/film-making.svg",
+      link: "/film-making/",
+      bannerImg:
+        "https://res.cloudinary.com/dg24rzjez/image/upload/v1667583818/personal-website/projects/film-making.svg",
+    },
+    body: "",
+  },
+];
+
+sortedProjects.push(...additionalProjects);
 ---
 
 <Layout title="Projects | Prannay Kedia">
@@ -15,12 +56,12 @@ export const prerender = true;
   <main
     class="projects grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-10 gap-y-16 lg:px-24 md:px-24 px-6 mt-20">
     {
-      projects.map((project) => (
+      sortedProjects.map((project) => (
         <ProjectCard
-          link={project.link}
-          imageLink={project.imageLink}
-          title={project.title}
-          description={project.description}
+          link={project.data.link}
+          cardImage={project.data.cardImage}
+          title={project.data.title}
+          description={project.data.description}
         />
       ))
     }

@@ -2,12 +2,12 @@
 import { Image } from "astro:assets";
 interface Props {
   link: string;
-  imageLink: string;
+  cardImage: string;
   title: string;
   description: string;
 }
 
-const { link, imageLink, title, description } = Astro.props as Props;
+const { link, cardImage, title, description } = Astro.props as Props;
 ---
 
 <a
@@ -17,7 +17,7 @@ const { link, imageLink, title, description } = Astro.props as Props;
     width={2000}
     height={2000}
     quality="high"
-    src={imageLink}
+    src={cardImage}
     class="rounded-xl card shadow-card hover:drop-shadow-lg"
     alt={description}
   />

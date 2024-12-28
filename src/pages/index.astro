@@ -6,8 +6,12 @@ import { Image } from "astro:assets";
 import helloImage from "../assets/images/homepage-hello.svg";
 import portraitImage from "../assets/images/homepage-portrait.svg";
 import goToArrow from "../assets/images/gotoarrow.svg";
+import { getCollection } from "astro:content";
 
 export const prerender = true;
+
+const aboutData = await getCollection("about");
+const about = aboutData[0].data;
 ---
 
 <Layout title="Prannay Kedia">
@@ -27,7 +31,7 @@ export const prerender = true;
         <h1 class="hidden">Prannay Kedia</h1>
         <div class="hero-content-others md:pl-7">
           <p class="font-light text-xl text-gray-900 pt-4 md:pt-1"
-            >A Problem Solver</p
+            >{about.shortBio}</p
           >
           <div
             class="cta-hero flex flex-col md:flex-row items-center justify-start gap-2 md:gap-12 mt-8 md:mt-12">
@@ -161,24 +165,7 @@ export const prerender = true;
     ></div>
     <div
       class="about-text text-base text-center md:text-start md:text-lg font-light md:p-4">
-      <p>
-        Hey there! I’m Prannay, Ex-Founder of <a
-          href="https://www.writee.in"
-          class="underline italic">Writee AI</a
-        > - an AI-based copywriting platform that helps businesses produce
-        content better, faster and easier. Currently I am pursuing my Bachelors
-        in Chemical Engineering at Jadavpur University, Kolkata. Being a
-        builder, I had to become what people call a specialised generalist. That
-        is to say I know a little about a lot of things while being in the
-        constant pursuit of learning more along the way. I'm a devout believer
-        in the audacity of thought - so if you've got an idea too big for the
-        world to digest, count me in. <a
-          href="/contact-me"
-          class="underline italic">Hit me up</a
-        >
-         if you want to discuss any potential business ideas, learn more about
-        Writee or just chat over a cup of coffee.
-      </p>
+      <p set:html={about.shortAbout} />
     </div>
   </section>
 

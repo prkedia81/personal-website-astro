@@ -1,0 +1,51 @@
+---
+import Layout from "../layouts/Layout.astro";
+import PageHeading, { type Banner } from "../components/PageHeading.astro";
+import { getCollection, render } from "astro:content";
+export const prerender = true;
+
+// Generate static paths for all projects
+export async function getStaticPaths() {
+  const projects = await getCollection("projects");
+  return projects.map((project) => ({
+    params: { projectSlug: project.id },
+    props: { project },
+  }));
+}
+
+const { project } = Astro.props;
+const { Content } = await render(project);
+
+const banner: Banner = {
+  link: project.data.link || "",
+  linkUrl: project.data.linkUrl || "",
+  bannerImg: project.data.bannerImg,
+};
+---
+
+<Layout title={`${project.data.title} | Prannay Kedia`}>
+  <PageHeading banner={banner}>
+    <h1>{project.data.title}</h1>
+  </PageHeading>
+
+  <section
+    class="mt-8 md:mt-16 lg:px-44 md:px-44 px-6 leading-7 font-normal text-base flex flex-col gap-8">
+    <article
+      class="prose max-w-none
+    prose-headings:font-bold
+    prose-h1:text-3xl
+    prose-h2:text-2xl
+    prose-h3:text-xl
+    prose-p:text-base
+    prose-a:text-indigo-700
+    prose-li:text-base
+    prose-em:text-center
+    prose-em:text-sm
+    prose-em:not-italic
+    prose-em:block
+    md:prose-lg lg:prose-xl
+    prose-img:rounded-lg prose-img:w-[75%] prose-img:mx-auto prose-img:h-auto">
+      <Content />
+    </article>
+  </section>
+</Layout>
