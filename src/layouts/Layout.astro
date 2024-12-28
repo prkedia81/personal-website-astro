@@ -4,8 +4,8 @@ import Analytics from "../components/Analytics.astro";
 import Footer from "../components/Footer.astro";
 import MetaTags, { type MetaProps } from "../components/MetaTags.astro";
 import Nav from "../components/Nav.astro";
-import { ViewTransitions } from "astro:transitions";
 import { NODE_ENV } from "astro:env/server";
+import { ClientRouter } from "astro:transitions";
 
 export interface Props {
   title?: string;
@@ -34,7 +34,7 @@ if (metaData === undefined) {
   <head>
     <title>{title}</title>
 
-    <ViewTransitions />
+    <ClientRouter />
 
     <link rel="preconnect" href="https://fonts.gstatic.com" />
     <GoogleFontsOptimizer
@@ -49,7 +49,7 @@ if (metaData === undefined) {
       }
     </style>
 
-    {NODE_ENV !== "development" && <Analytics partytown={false} />}
+    <Analytics partytown={false} />
 
     <MetaTags {...metaData} />
   </head>

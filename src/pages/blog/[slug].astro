@@ -66,7 +66,6 @@ if (post.content === undefined) {
       </h1>
       <p class="text-gray-500 font-light text-xs md:text-sm">
         {
-          // TODO: Change this to published date
           new Date(
             post.publishedDate ?? post.createdDate ?? "1.1.2023"
           ).toLocaleDateString(undefined, {
