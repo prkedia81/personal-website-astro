@@ -10,16 +10,11 @@ import { NODE_ENV } from "astro:env/server";
 export const prerender = true;
 
 const posts = await getCollection("blogs");
-
-// const posts = (await ghostClient.posts
-//   .browse({
-//     limit: "all",
-//     include: ["tags"],
-//   })
-//   .catch((err) => {
-//     console.error(err);
-//   })) as PostsOrPages;
-// console.log(posts[0]);
+const sortedPosts = posts.sort((a, b) => {
+  const dateA = a.data.publishedDate || a.data.createdDate;
+  const dateB = b.data.publishedDate || b.data.createdDate;
+  return new Date(dateB).getTime() - new Date(dateA).getTime();
+});
 ---
 
 <Layout title="Blogs | Prannay Kedia">
@@ -31,7 +26,7 @@ const posts = await getCollection("blogs");
     posts === undefined || posts.length === 0 ? (
       <BlogsEmptyState />
     ) : (
-      <AllBlogs posts={posts} />
+      <AllBlogs posts={sortedPosts} />
     )
   }
 </Layout>
