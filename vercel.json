@@ -7,11 +7,5 @@
       "src": "/assets/(.*)",
       "dest": "/assets/$1"
     }
-  ],
-  "functions": {
-    "api/*": {
-      "memory": 1024,
-      "maxDuration": 10
-    }
-  }
+  ]
 } 
