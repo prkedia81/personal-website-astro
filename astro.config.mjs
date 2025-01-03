@@ -53,9 +53,6 @@ export default defineConfig({
     compress(),
     CopyFilesPlugin(),
   ],
-  build: {
-    assets: "assets",
-  },
   adapter: vercel({
     webAnalytics: {
       enabled: true,
