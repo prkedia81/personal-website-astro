@@ -39,8 +39,8 @@ export default defineConfig({
       GHOST_API_KEY: envField.string({ context: "server", access: "secret" }),
     },
   },
+  output: "server",
   integrations: [
-    preload(),
     tailwind(),
     sitemap(),
     prefetch({
@@ -48,13 +48,13 @@ export default defineConfig({
     }),
     react({ experimentalReactChildren: true }),
     partytown({ config: { forward: ["dataLayer.push"] } }),
+    // preload(),
     compress(),
   ],
   adapter: vercel({
     webAnalytics: {
       enabled: true,
     },
-    imageService: true
   }),
   site: "https://prannaykedia.com",
 });
