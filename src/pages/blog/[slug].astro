@@ -4,7 +4,7 @@ import { ghostClient } from "../../services/ghost";
 import type { PostsOrPages, PostOrPage, Tag } from "@tryghost/content-api";
 import Newsletter from "../../components/Newsletter";
 import type { MetaProps } from "../../components/MetaTags.astro";
-import { Image } from "astro:assets";
+import { Image } from "astro-preload/components";
 import BlogContent from "../../components/BlogContent.astro";
 import { getCollection, type CollectionEntry } from "astro:content";
 import { getBlogById } from "../../services/notion";
@@ -34,6 +34,7 @@ export async function getStaticPaths() {
             title: fullPost.title,
             // TODO: Change this to the first 100 words of the blog post
             description: fullPost.seoDescription,
+            // TODO: Fix this
             image: fullPost.coverImage[0],
             url: "https://prannaykedia.com/blog/" + fullPost.slug,
           },
@@ -78,12 +79,12 @@ if (post.content === undefined) {
     </div>
     {
       post.coverImage[0] && (
+        // width={2400}
+        // height={1000}
+        // format="webp"
         <Image
-          width={2400}
-          height={1000}
-          format="webp"
           transition:name={post.slug}
-          src={post.coverImage[0] || ""}
+          url={post.coverImage[0] || ""}
           class="md:w-1/2 aspect-video md:order-2 rounded-xl"
           alt={post.seoDescription || ""}
         />

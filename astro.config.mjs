@@ -8,6 +8,8 @@ import partytown from "@astrojs/partytown";
 import vercel from "@astrojs/vercel";
 import compress from "astro-compress";
 
+import preload from "astro-preload";
+
 // https://astro.build/config
 export default defineConfig({
   env: {
@@ -38,6 +40,7 @@ export default defineConfig({
     },
   },
   integrations: [
+    preload(),
     tailwind(),
     sitemap(),
     prefetch({

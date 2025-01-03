@@ -1,5 +1,6 @@
 ---
-import { Image } from "astro:assets";
+import { Image } from "astro-preload/components";
+// import { Image as AstroImage } from "astro:assets";
 
 interface Props {
   slug: string | undefined;
@@ -27,14 +28,14 @@ title = truncateString(title, 50);
 <a href={"/blog/" + slug} class="flex flex-col gap-4">
   {
     image && (
+      // format="webp"
       <Image
         transition:name={slug}
         width={2400}
         height={1000}
         alt={title}
-        format="webp"
         class="h-auto w-76 rounded-xl card hover:shadow-xl"
-        src={image || ""}
+        url={image || ""}
       />
     )
   }
