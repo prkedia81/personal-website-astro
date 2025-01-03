@@ -54,8 +54,7 @@ export default defineConfig({
     webAnalytics: {
       enabled: true,
     },
-    imageService: true,
-    edgeMiddleware: true,
+    imageService: true
   }),
   site: "https://prannaykedia.com",
 });
