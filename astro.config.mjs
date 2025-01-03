@@ -51,6 +51,9 @@ export default defineConfig({
     preload(),
     compress(),
   ],
+  build: {
+    assets: "assets",
+  },
   adapter: vercel({
     webAnalytics: {
       enabled: true,
