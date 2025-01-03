@@ -9,6 +9,7 @@ import vercel from "@astrojs/vercel";
 import compress from "astro-compress";
 
 import preload from "astro-preload";
+import { CopyFilesPlugin } from "./copy-files";
 
 // https://astro.build/config
 export default defineConfig({
@@ -50,6 +51,7 @@ export default defineConfig({
     partytown({ config: { forward: ["dataLayer.push"] } }),
     preload(),
     compress(),
+    CopyFilesPlugin(),
   ],
   build: {
     assets: "assets",
