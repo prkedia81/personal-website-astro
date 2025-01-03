@@ -50,11 +50,12 @@ export default defineConfig({
     partytown({ config: { forward: ["dataLayer.push"] } }),
     compress(),
   ],
-  output: "server",
   adapter: vercel({
     webAnalytics: {
       enabled: true,
     },
+    imageService: true,
+    edgeMiddleware: true,
   }),
   site: "https://prannaykedia.com",
 });

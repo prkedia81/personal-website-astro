@@ -23,4 +23,4 @@ pnpm-debug.log*
 .vercel/
 .vercel
 .vscode/
-.public/assets/preloaded/
+public/assets/preloaded/
