@@ -48,7 +48,7 @@ export default defineConfig({
     }),
     react({ experimentalReactChildren: true }),
     partytown({ config: { forward: ["dataLayer.push"] } }),
-    // preload(),
+    preload(),
     compress(),
   ],
   adapter: vercel({
