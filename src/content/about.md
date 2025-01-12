@@ -1,6 +1,6 @@
 ---
 title: "About Me"
-shortBio: "A Problem Solver"
+shortBio: "An Entrepreneur"
 longBio: |
   Hey there! I'm Prannay, Ex-Founder of Writee AI - an AI-based copywriting platform that helps businesses produce content better, faster and easier. Currently I am pursuing my Bachelors in Chemical Engineering at Jadavpur University, Kolkata. Being a builder, I had to become what people call a specialised generalist. That is to say I know a little about a lot of things while being in the constant pursuit of learning more along the way.
 
