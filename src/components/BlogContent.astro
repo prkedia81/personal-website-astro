@@ -48,77 +48,44 @@ if (post) {
 ---
 
 <div
-  class="blog mt-6 md:mt-16 lg:px-44 md:px-44 px-6 leading-7 font-normal text-base flex flex-col gap-4">
-  {
-    contentParts.map((part, index) =>
-      index % 2 === 0 ? (
-        <Fragment set:html={part} />
-      ) : (
-        <Image
-          url={images[parseInt(part)].url}
-          alt={images[parseInt(part)].alt}
-          width={1200}
-          height={630}
-          {...images[parseInt(part)].attrs}
-        />
+  class="blog mt-6 md:mt-16 lg:px-44 md:px-44 px-8 leading-7 font-normal text-base flex flex-col gap-4">
+  <div
+    class="prose max-w-none
+          prose-p:text-base
+          prose-p:leading-7
+          prose-headings:font-bold
+          prose-h1:text-2xl
+          prose-h2:text-2xl
+          prose-h1:md:text-3xl
+          prose-h2:md:text-3xl
+          prose-h3:md:text-2xl
+          prose-a:text-indigo-700
+          prose-li:text-base
+          prose-em:text-center
+          prose-em:text-sm
+          prose-em:not-italic
+          prose-em:block
+          md:prose-lg lg:prose-xl
+          prose-img:rounded-lg prose-img:w-[75%] prose-img:mx-auto prose-img:h-auto">
+    {
+      contentParts.map((part, index) =>
+        index % 2 === 0 ? (
+          <Fragment set:html={part} />
+        ) : (
+          <Image
+            url={images[parseInt(part)].url}
+            alt={images[parseInt(part)].alt}
+            width={1200}
+            height={630}
+            {...images[parseInt(part)].attrs}
+          />
+        )
       )
-    )
-  }
+    }
+  </div>
 </div>
 
 <style is:inline>
-  .blog {
-    /* Base styles */
-    color: #2c3544;
-    font-size: 1.125rem;
-    line-height: 1.75rem;
-  }
-
-  /* Headings */
-  .blog h1,
-  .blog h2 {
-    margin-top: 2rem;
-    font-size: 1.875rem;
-    line-height: 2.25rem;
-    font-weight: 800;
-  }
-
-  .blog h3,
-  .blog h4,
-  .blog h5 {
-    font-size: 1.5rem;
-    line-height: 2rem;
-    font-weight: 700;
-  }
-
-  /* Links */
-  .blog a {
-    color: #4338ca;
-    text-decoration-line: underline;
-    font-weight: 500;
-  }
-
-  .blog a:hover {
-    color: #3730a3;
-  }
-
-  /* Lists */
-  .blog ul,
-  .blog ol {
-    padding: 0 1.25rem;
-    margin: 0 0 1rem 1rem;
-    gap: 0.5rem;
-    display: flex;
-    flex-direction: column;
-  }
-
-  .blog ul {
-    list-style-type: disc;
-  }
-  .blog ol {
-    list-style-type: decimal;
-  }
-
   /* Code blocks */
   .blog code {
     font-size: 0.875rem;

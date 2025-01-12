@@ -62,7 +62,7 @@ if (post.content === undefined) {
     class="flex-col flex md:flex-row items-center lg:px-24 md:px-24 px-6 mt-12 gap-12 justify-around">
     <div
       class="order-2 md:order-1 md:max-w-2xl flex flex-col gap-3 text-center md:text-start md:gap-6">
-      <h1 class="text-2xl md:text-4xl font-bold">
+      <h1 class="text-3xl md:text-4xl font-bold">
         {post.title}
       </h1>
       <p class="text-gray-500 font-light text-xs md:text-sm">
@@ -85,7 +85,7 @@ if (post.content === undefined) {
         <Image
           transition:name={post.slug}
           url={post.coverImage[0] || ""}
-          class="md:w-1/2 aspect-video md:order-2 rounded-xl"
+          class="w-full md:w-1/2 aspect-video md:order-2 rounded-xl"
           alt={post.seoDescription || ""}
         />
       )
