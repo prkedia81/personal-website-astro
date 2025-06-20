@@ -5,7 +5,7 @@ link: /aggregate-terminal
 linkUrl: https://aterm.prannaykedia.com
 bannerImg: https://res.cloudinary.com/dg24rzjez/image/upload/v1667498943/personal-website/projects/aggregate-terminal/aggterm-banner.svg
 cardImage: https://res.cloudinary.com/dg24rzjez/image/upload/v1667497921/personal-website/projects/aggregate-terminal/aggregate-terminal.svg
-order: 1
+order: 2
 ---
 
 What started as an idea for a B-Plan competition turned into my first full fledged project. Aggregate Terminal was my introduction to the world of building which eventually led me to my start-up - Writee AI.

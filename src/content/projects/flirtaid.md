@@ -5,7 +5,7 @@ link: /flirtaid
 linkUrl: www.flirtaid.social
 bannerImg: https://res.cloudinary.com/dg24rzjez/image/upload/v1667501321/personal-website/projects/flirtaid/banner.png
 cardImage: https://res.cloudinary.com/dg24rzjez/image/upload/v1667501323/personal-website/projects/flirtaid/flirtaid.png
-order: 2
+order: 3
 ---
 
 It had been a month since my work at Aggregate Terminal had come to a halt. I was looking to try my hand out at something new and have fun in the process. Lockdown 3.0 was in full swing and things were becoming bleaker by the day. It was then that 2 of my friends and I decided that it was high time that our university got its very own dating app. With that thought in mind, we came up with **FlirtAid - Your Very Own Loveguru.**
