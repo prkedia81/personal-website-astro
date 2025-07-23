@@ -2,7 +2,7 @@
 title: FlirtAid
 description: Your Very Own Loveguru - A dating app built for college students
 link: /flirtaid
-linkUrl: www.flirtaid.social
+linkUrl: https://www.flirtaid.social
 bannerImg: https://res.cloudinary.com/dg24rzjez/image/upload/v1667501321/personal-website/projects/flirtaid/banner.png
 cardImage: https://res.cloudinary.com/dg24rzjez/image/upload/v1667501323/personal-website/projects/flirtaid/flirtaid.png
 order: 3
