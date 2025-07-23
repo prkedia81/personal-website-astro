@@ -17,6 +17,10 @@ const { title = "Prannay Kedia", isNav = true } = Astro.props as Props;
 
 let { metaData } = Astro.props as Props;
 
+// Get the current page URL for canonical tag
+const currentPath = Astro.url.pathname;
+const canonicalUrl = new URL(currentPath, Astro.site).href;
+
 if (metaData === undefined) {
   metaData = {
     title: "Prannay Kedia",
@@ -24,8 +28,11 @@ if (metaData === undefined) {
       "Ex-Founder of Writee AI and a finance afficiandado - here's the story of Prannay Kedia, a chemical engineering undergrad at Jadavpur University.",
     image:
       "https://res.cloudinary.com/dg24rzjez/image/upload/v1667652495/personal-website/meta-image.svg",
-    url: "https://prannaykedia.com/",
+    url: canonicalUrl,
   };
+} else {
+  // Ensure the canonical URL is set even if metaData is provided
+  metaData.url = canonicalUrl;
 }
 ---
 
