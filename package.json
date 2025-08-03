@@ -14,6 +14,7 @@
     "@astrojs/partytown": "^2.1.2",
     "@astrojs/prefetch": "^0.4.1",
     "@astrojs/react": "^4.1.2",
+    "@astrojs/rss": "^4.0.12",
     "@astrojs/sitemap": "^3.2.1",
     "@astrojs/tailwind": "^5.1.4",
     "@astrojs/vercel": "^8.0.1",
@@ -33,6 +34,7 @@
     "google-spreadsheets": "^2.0.0",
     "htmlparser2": "^10.0.0",
     "nodemailer": "^6.9.3",
+    "personal-website-astro": "link:",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "tailwindcss": "^3.3.2"
