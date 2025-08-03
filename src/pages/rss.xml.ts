@@ -13,6 +13,12 @@ export async function GET(context: any) {
       pubDate: new Date(post.data.publishedDate ?? ""),
       description: post.data.seoDescription,
       link: `/blog/${post.data.slug}`,
+      customData: post.data.coverImage?.[0]
+        ? `
+        <enclosure url="${post.data.coverImage[0]}" type="image/jpeg" />
+        <img src="${post.data.coverImage[0]}" alt="${post.data.title} cover" />
+      `
+        : "",
     })),
   });
 }
