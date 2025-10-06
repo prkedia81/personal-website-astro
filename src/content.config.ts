@@ -1,7 +1,8 @@
 import { defineCollection, z } from "astro:content";
-import { getAllBlogs } from "./services/notion";
+import { getAllBlogs, getAllTags } from "./services/notion";
 import type { BlogPost } from "@prkedia81/notion-blogs";
 import { file, glob } from "astro/loaders";
+import type { Tags } from "@prkedia81/notion-blogs";
 
 const blogs = defineCollection({
   loader: async () => {
@@ -9,6 +10,14 @@ const blogs = defineCollection({
     return blogs.map((blog) => ({ id: blog.ID.toString(), ...blog }));
   },
   schema: z.custom<BlogPost>(),
+});
+
+const tags = defineCollection({
+  loader: async () => {
+    const tags = await getAllTags();
+    return tags.map((tag) => ({ ...tag, id: tag.id.toString() }));
+  },
+  schema: z.custom<Tags>(),
 });
 
 const projects = defineCollection({
@@ -54,4 +63,4 @@ const films = defineCollection({
   }),
 });
 
-export const collections = { blogs, projects, resume, films, about };
+export const collections = { blogs, projects, resume, films, about, tags };

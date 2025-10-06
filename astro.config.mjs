@@ -19,6 +19,7 @@ export default defineConfig({
       SMTP_USER: envField.string({ context: "server", access: "public" }),
       SMTP_PASSWORD: envField.string({ context: "server", access: "secret" }),
       NOTION_KEY: envField.string({ context: "server", access: "secret" }),
+      NOTION_TAG_ID: envField.string({ context: "server", access: "public" }),
       NOTION_BLOG_ID: envField.string({ context: "server", access: "public" }),
       GOOGLE_SHEET_ID: envField.string({ context: "server", access: "public" }),
       GOOGLE_PROJECT_ID: envField.string({

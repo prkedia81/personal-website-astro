@@ -1,15 +1,13 @@
 ---
-import { ghostClient } from "../services/ghost";
-import type { PostsOrPages } from "@tryghost/content-api";
 import Layout from "../layouts/Layout.astro";
 import PageHeading from "../components/PageHeading.astro";
 import BlogsEmptyState from "../components/BlogsEmptyState.astro";
-import AllBlogs from "../components/AllBlogs.astro";
+import AllBlogs from "../components/AllBlogs.tsx";
 import { getCollection } from "astro:content";
-import { NODE_ENV } from "astro:env/server";
 export const prerender = true;
 
 const posts = await getCollection("blogs");
+const tags = await getCollection("tags");
 const sortedPosts = posts.sort((a, b) => {
   const dateA = a.data.publishedDate || a.data.createdDate;
   const dateB = b.data.publishedDate || b.data.createdDate;
@@ -26,7 +24,7 @@ const sortedPosts = posts.sort((a, b) => {
     posts === undefined || posts.length === 0 ? (
       <BlogsEmptyState />
     ) : (
-      <AllBlogs posts={sortedPosts} />
+      <AllBlogs posts={sortedPosts} tags={tags} client:load />
     )
   }
 </Layout>
