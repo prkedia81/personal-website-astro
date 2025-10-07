@@ -1,0 +1,99 @@
+---
+import { Image } from "astro:assets";
+
+interface Props {
+  link: {
+    id: string;
+    category: string;
+    title: string;
+    description: string;
+    highlight: string;
+    image: string;
+    link: string;
+    isDominant: boolean;
+    color: string;
+  };
+}
+
+const { link } = Astro.props as Props;
+
+// Color mapping for highlight pills
+const colorClasses = {
+  indigo: "bg-indigo-100 text-indigo-800",
+  blue: "bg-blue-100 text-blue-800",
+  green: "bg-green-100 text-green-800",
+  purple: "bg-purple-100 text-purple-800",
+  orange: "bg-orange-100 text-orange-800",
+  red: "bg-red-100 text-red-800",
+};
+
+const colorClass =
+  colorClasses[link.color as keyof typeof colorClasses] || colorClasses.indigo;
+---
+
+<a href={link.link} class="group block">
+  <div class="border rounded-md p-4 sm:p-6 h-full flex flex-col">
+    <!-- Category and Highlight -->
+    <div class="flex items-center justify-between mb-3 gap-2 min-w-0">
+      <span
+        class="text-xs font-medium text-gray-500 uppercase tracking-wider flex-shrink-0">
+        {link.category}
+      </span>
+      <span
+        class={`px-2 py-1 rounded-full text-xs font-medium text-center flex-shrink-0 max-w-[50%] truncate ${colorClass}`}>
+        {link.highlight}
+      </span>
+    </div>
+
+    <!-- Image -->
+    <div
+      class={`
+        mt-4 mb-4 sm:mb-10 flex items-center justify-center flex-shrink-0 overflow-hidden
+        ${link.isDominant ? "h-14 sm:h-16 md:h-20" : "h-14 sm:h-16 md:h-20"}
+      `}>
+      <Image
+        src={link.image}
+        alt={link.title}
+        width={link.isDominant ? 160 : 100}
+        height={link.isDominant ? 120 : 80}
+        class="object-cover w-full h-full rounded-sm"
+      />
+    </div>
+
+    <!-- Content -->
+    <div class="flex-1 flex flex-col">
+      <h3
+        class={`
+        font-bold mb-2 text-black transition-colors duration-200
+        ${link.isDominant ? "text-lg sm:text-lg md:text-xl" : "text-base sm:text-base md:text-lg"}
+      `}>
+        {link.title}
+      </h3>
+
+      <p
+        class={`
+        text-gray-700 font-light leading-relaxed flex-1
+        ${link.isDominant ? "text-sm sm:text-sm md:text-base" : "text-sm sm:text-sm md:text-sm"}
+      `}>
+        {link.description}
+      </p>
+    </div>
+
+    <!-- CTA -->
+    <div
+      class="mt-4 flex items-center text-indigo-600 group-hover:text-indigo-700">
+      <span class="text-sm font-medium mr-2">Learn more</span>
+      <svg
+        class="w-4 h-4 transform group-hover:translate-x-1 transition-transform duration-200"
+        fill="none"
+        stroke="currentColor"
+        viewBox="0 0 24 24">
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M9 5l7 7-7 7"></path>
+      </svg>
+    </div>
+  </div>
+</a>
