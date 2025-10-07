@@ -1,0 +1,140 @@
+---
+// LogoCloud component - displays company logos in a minimal, elegant way
+import { Image } from "astro:assets";
+import writeeLogo from "../assets/images/logo-cloud/writee-logo.png";
+import juLogo from "../assets/images/logo-cloud/ju-logo-sdasda.png";
+import iimcalLogo from "../assets/images/logo-cloud/iimcal-logo.png";
+import bseLogo from "../assets/images/logo-cloud/bse-logo.png";
+import bainLogo from "../assets/images/logo-cloud/bain-logo.png";
+---
+
+<div class="max-w-6xl mx-auto">
+  <!-- Unified container for better connection -->
+  <div class="bg-gray-50/30 rounded-2xl p-6 sm:p-8">
+    <!-- Logos Grid -->
+    <!-- Mobile Layout: 2x2 grid with centered 5th logo -->
+    <div class="block sm:hidden">
+      <!-- Logo container with unified spacing -->
+      <div class="space-y-6">
+        <!-- First row: 2 logos -->
+        <div class="grid grid-cols-2 gap-8 items-center justify-items-center">
+          <div class="flex items-center justify-center">
+            <Image
+              src={writeeLogo}
+              alt="Writee"
+              width={120}
+              height={48}
+              class="h-10 w-auto max-w-[200px]"
+            />
+          </div>
+          <div class="flex items-center justify-center">
+            <Image
+              src={bainLogo}
+              alt="Bain & Company"
+              width={120}
+              height={48}
+              class="h-10 w-auto max-w-[200px]"
+            />
+          </div>
+        </div>
+
+        <!-- Second row: 2 logos -->
+        <div class="grid grid-cols-3 gap-8 items-center justify-items-center">
+          <div class="flex items-center justify-center">
+            <Image
+              src={iimcalLogo}
+              alt="IIM Calcutta"
+              width={120}
+              height={72}
+              class="h-16 w-auto"
+            />
+          </div>
+          <div class="flex items-center justify-center">
+            <Image
+              src={bseLogo}
+              alt="BSE"
+              width={120}
+              height={48}
+              class="h-10 w-auto max-w-[200px]"
+            />
+          </div>
+          <div class="flex items-center justify-center">
+            <Image
+              src={juLogo}
+              alt="Jadavpur University"
+              width={120}
+              height={72}
+              class="h-16 w-auto"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Desktop Layout: Original grid -->
+    <div
+      class="hidden sm:grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 sm:gap-8 md:gap-12 items-center justify-items-center">
+      <!-- Writee Logo -->
+      <div class="flex items-center justify-center">
+        <Image
+          src={writeeLogo}
+          alt="Writee"
+          width={120}
+          height={48}
+          class="h-10 md:h-16 w-auto max-w-[240px]"
+        />
+      </div>
+
+      <!-- Bain Logo -->
+      <div class="flex items-center justify-center">
+        <Image
+          src={bainLogo}
+          alt="Bain & Company"
+          width={120}
+          height={48}
+          class="h-10 md:h-16 w-auto max-w-[240px]"
+        />
+      </div>
+
+      <!-- IIM Calcutta Logo -->
+      <div class="flex items-center justify-center">
+        <Image
+          src={iimcalLogo}
+          alt="IIM Calcutta"
+          width={120}
+          height={120}
+          class="h-20 w-auto"
+        />
+      </div>
+
+      <!-- JU Logo -->
+      <div class="flex items-center justify-center">
+        <Image
+          src={juLogo}
+          alt="Jadavpur University"
+          width={120}
+          height={120}
+          class="h-20 w-auto"
+        />
+      </div>
+
+      <!-- BSE Logo -->
+      <div class="flex items-center justify-center">
+        <Image
+          src={bseLogo}
+          alt="BSE"
+          width={120}
+          height={48}
+          class="h-10 md:h-12 w-auto max-w-[240px]"
+        />
+      </div>
+    </div>
+
+    <!-- Section Header - now integrated within the container -->
+    <div class="text-center mt-6">
+      <h2 class="text-base md:text-lg font-light text-gray-600 tracking-wide"
+        >Past Orgs</h2
+      >
+    </div>
+  </div>
+</div>
