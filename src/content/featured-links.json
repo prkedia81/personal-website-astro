@@ -1,0 +1,68 @@
+[
+  {
+    "id": "1",
+    "category": "Entrepreneurship",
+    "title": "Writee AI",
+    "description": "My entrepreneurial venture building AI-powered writing tools for content creators and businesses.",
+    "highlight": "Featured in TechCrunch",
+    "image": "/src/assets/images/logo-cloud/writee-logo.png",
+    "link": "/writee-ai",
+    "isDominant": true,
+    "color": "indigo"
+  },
+  {
+    "id": "2", 
+    "category": "Media Coverage",
+    "title": "Featured in News",
+    "description": "Coverage of my work and insights in major publications and media outlets.",
+    "highlight": "Press Coverage",
+    "image": "/src/assets/images/meta-image.svg",
+    "link": "/about-me",
+    "isDominant": false,
+    "color": "blue"
+  },
+  {
+    "id": "3",
+    "category": "Research",
+    "title": "Deep Dive on Stable Coins",
+    "description": "Comprehensive analysis of stablecoin mechanisms and their impact on the financial ecosystem.",
+    "highlight": "Research Paper",
+    "image": "/src/assets/images/meta-image.svg", 
+    "link": "/projects",
+    "isDominant": false,
+    "color": "green"
+  },
+  {
+    "id": "4",
+    "category": "Thought Leadership",
+    "title": "The Future of VC",
+    "description": "Insights on venture capital trends and predictions for the next decade of investing.",
+    "highlight": "Industry Analysis",
+    "image": "/src/assets/images/meta-image.svg",
+    "link": "/blogs",
+    "isDominant": false,
+    "color": "purple"
+  },
+  {
+    "id": "5",
+    "category": "Projects",
+    "title": "Aggregate Terminal",
+    "description": "A comprehensive terminal application for managing multiple development environments.",
+    "highlight": "Open Source",
+    "image": "/src/assets/images/meta-image.svg",
+    "link": "/aggregate-terminal",
+    "isDominant": false,
+    "color": "orange"
+  },
+  {
+    "id": "6",
+    "category": "Creative",
+    "title": "Film Making",
+    "description": "Documentary and short film projects exploring social issues and human stories.",
+    "highlight": "Award Winning",
+    "image": "/src/assets/images/meta-image.svg",
+    "link": "/film-making",
+    "isDominant": false,
+    "color": "red"
+  }
+]
