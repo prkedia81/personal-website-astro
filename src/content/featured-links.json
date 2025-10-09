@@ -27,7 +27,7 @@
     "title": "Stablecoin Primer in 2025",
     "description": "A deep dive into stablecoins - how they work, why they matter, & whether they're becoming the new backbone of finance.",
     "highlight": "Industry Analysis",
-    "image": "/src/assets/images/bitcoin.jpg", 
+    "image": "/assets/images/bitcoin.jpg", 
     "link": "/blog/stablecoin-primer-in-2025/",
     "isDominant": false,
     "color": "green"
@@ -38,7 +38,7 @@
     "title": "AI in Venture Capital",
     "description": "Insights on the use of AI in early stage venture capital and its impact on the investment process.",
     "highlight": "Industry Analysis",
-    "image": "/src/assets/images/ai-in-vc.webp",
+    "image": "/assets/images/ai-in-vc.webp",
     "link": "/blog/primer-on-the-use-of-ai-in-early-stage-venture-capital/",
     "isDominant": false,
     "color": "purple"
@@ -49,7 +49,7 @@
     "title": "BSE's Market Share Growth",
     "description": "The story of my internship at BSE where I helped grow BSE's market share in the common stock segment by around 10%",
     "highlight": "Reflections",
-    "image": "/src/assets/images/bse.webp",
+    "image": "/assets/images/bse.webp",
     "link": "/blog/how-i-grew-bse-market-share-by-10-points/",
     "isDominant": false,
     "color": "orange"
