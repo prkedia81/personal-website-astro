@@ -2,7 +2,7 @@
 import Layout from "../layouts/Layout.astro";
 import PageHeading from "../components/PageHeading.astro";
 import BlogsEmptyState from "../components/BlogsEmptyState.astro";
-import AllBlogs from "../components/AllBlogs.tsx";
+import AllBlogs from "../components/AllBlogs.astro";
 import { getCollection } from "astro:content";
 export const prerender = true;
 
@@ -24,7 +24,7 @@ const sortedPosts = posts.sort((a, b) => {
     posts === undefined || posts.length === 0 ? (
       <BlogsEmptyState />
     ) : (
-      <AllBlogs posts={sortedPosts} tags={tags} client:load />
+      <AllBlogs posts={sortedPosts} tags={tags} />
     )
   }
 </Layout>

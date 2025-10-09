@@ -1,0 +1,324 @@
+---
+import type { CollectionEntry } from "astro:content";
+import { Image } from "astro-preload/components";
+import BlogCard from "./BlogCard.astro";
+
+interface Props {
+  posts: CollectionEntry<"blogs">[];
+  tags: CollectionEntry<"tags">[];
+}
+
+const { posts, tags } = Astro.props;
+
+const formatDate = (dateString: string) => {
+  return new Date(dateString || "1/1/2023").toLocaleDateString(undefined, {
+    year: "numeric",
+    month: "long",
+    day: "2-digit",
+  });
+};
+---
+
+<div id="all-blogs-container">
+  {
+    !posts || posts.length === 0 ? (
+      <div class="text-center py-12">
+        <p class="text-gray-500">No blog posts found.</p>
+      </div>
+    ) : (
+      <>
+        {/* Tag Filter Pills */}
+        <div class="flex flex-wrap justify-center gap-2 lg:px-24 md:px-16 px-6 mb-8 md:mb-12 mt-4">
+          <button
+            data-tag="all"
+            class="px-3 py-1 rounded-md text-xs font-normal transition-colors duration-150 text-indigo-600 bg-indigo-50">
+            All
+          </button>
+          {tags.map((tag) => (
+            <button
+              data-tag={tag.id}
+              data-tag-name={tag.data.name}
+              class="px-3 py-1 rounded-md text-xs font-normal transition-colors duration-150 text-gray-600 hover:text-gray-800 hover:bg-gray-50">
+              {tag.data.name}
+            </button>
+          ))}
+        </div>
+
+        {/* Empty State for Filtered Results */}
+        <div
+          id="empty-state"
+          class="text-center py-12 lg:px-24 md:px-16 px-6 hidden">
+          <p class="text-gray-500 text-lg">
+            No blog posts found for the selected tag.
+          </p>
+          <button
+            id="show-all-btn"
+            class="mt-4 px-6 py-2 bg-gray-900 text-white rounded-full text-sm font-medium hover:bg-gray-800 transition-colors duration-200">
+            Show All Posts
+          </button>
+        </div>
+
+        {/* Latest Blog Post */}
+        <section
+          id="latest-blog"
+          data-tags={
+            posts[0].data.tags && Array.isArray(posts[0].data.tags)
+              ? posts[0].data.tags.map((tag) => tag.name).join(",")
+              : ""
+          }>
+          <a
+            id="latest-blog-link"
+            href={"/blog/" + posts[0].data.slug + "/"}
+            class="flex flex-col md:flex-row items-center lg:px-24 md:px-16 px-6 gap-3 md:gap-12">
+            {posts[0].data.coverImage && (
+              <Image
+                id="latest-blog-image"
+                transition:name={posts[0].data.slug}
+                width={2400}
+                height={1000}
+                alt={posts[0].data.title || "Blog Post"}
+                class="rounded-xl aspect-video h-auto md:w-1/2 hover:shadow-xl"
+                url={posts[0].data.coverImage[0]}
+              />
+            )}
+            <div class="md:w-1/2 flex flex-col text-center md:text-start gap-2 md:gap-6">
+              <p
+                id="latest-blog-date"
+                class="text-gray-500 text-xs font-normal md:font-medium md:text-sm">
+                {formatDate(
+                  posts[0].data.publishedDate ||
+                    posts[0].data.createdDate ||
+                    "1/1/2023"
+                )}
+              </p>
+              <h1
+                id="latest-blog-title"
+                class="text-xl md:text-2xl lg:text-4xl font-bold">
+                {posts[0].data.title}
+              </h1>
+              <p
+                id="latest-blog-description"
+                class="font-light text-xs text-clip overflow-hidden max-h-24 md:max-h-fit md:text-base">
+                {posts[0].data.seoDescription || ""}
+              </p>
+            </div>
+          </a>
+        </section>
+
+        {/* Blog Grid */}
+        <section
+          id="blogs"
+          class="grid grid-col-1 lg:grid-cols-3 md:grid-cols-2 gap-x-10 gap-y-12 md:gap-y-16 lg:px-24 md:px-16 px-6 mt-12 md:mt-16 justify-start">
+          {posts.slice(1).map((post) => {
+            const postTags = post.data.tags;
+            const tagNames =
+              postTags && Array.isArray(postTags)
+                ? postTags.map((tag) => tag.name).join(",")
+                : "";
+
+            return (
+              <div
+                class="blog-card"
+                data-tags={tagNames}
+                data-slug={post.data.slug}
+                data-title={post.data.title}
+                data-date={formatDate(
+                  post.data.publishedDate || post.data.createdDate || "1/1/2023"
+                )}
+                data-description={post.data.seoDescription || ""}
+                data-image={post.data.coverImage?.[0] || ""}>
+                <BlogCard
+                  slug={post.data.slug + "/"}
+                  image={post.data.coverImage?.[0]}
+                  date={
+                    post.data.publishedDate ||
+                    post.data.createdDate ||
+                    "1/1/2023"
+                  }
+                  title={post.data.title}
+                  excerpt={post.data.seoDescription || ""}
+                />
+              </div>
+            );
+          })}
+        </section>
+      </>
+    )
+  }
+</div>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    // Cache DOM elements
+    const elements = {
+      tagButtons: document.querySelectorAll("[data-tag]"),
+      blogCards: document.querySelectorAll(".blog-card"),
+      emptyState: document.getElementById("empty-state"),
+      showAllBtn: document.getElementById("show-all-btn"),
+      latestBlog: document.getElementById("latest-blog"),
+      latestBlogLink: document.getElementById("latest-blog-link"),
+      latestBlogImage: document.getElementById("latest-blog-image"),
+      latestBlogTitle: document.getElementById("latest-blog-title"),
+      latestBlogDate: document.getElementById("latest-blog-date"),
+      latestBlogDescription: document.getElementById("latest-blog-description"),
+    };
+
+    // Build posts data once
+    const allPosts = [
+      // Latest blog post
+      {
+        slug: elements.latestBlogLink
+          ?.getAttribute("href")
+          ?.replace("/blog/", "")
+          .replace("/", ""),
+        title: elements.latestBlogTitle?.textContent || "",
+        date: elements.latestBlogDate?.textContent || "",
+        description: elements.latestBlogDescription?.textContent || "",
+        image: elements.latestBlogImage?.getAttribute("src") || "",
+        tags: elements.latestBlog?.getAttribute("data-tags")?.split(",") || [],
+      },
+      // Blog grid posts
+      ...Array.from(elements.blogCards).map((card) => ({
+        slug: card.getAttribute("data-slug"),
+        title: card.getAttribute("data-title"),
+        date: card.getAttribute("data-date"),
+        description: card.getAttribute("data-description"),
+        image: card.getAttribute("data-image"),
+        tags: card.getAttribute("data-tags")?.split(",") || [],
+      })),
+    ];
+
+    // CSS classes for button states
+    const buttonClasses = {
+      active:
+        "px-3 py-1 rounded-md text-xs font-normal transition-colors duration-150 text-indigo-600 bg-indigo-50",
+      inactive:
+        "px-3 py-1 rounded-md text-xs font-normal transition-colors duration-150 text-gray-600 hover:text-gray-800 hover:bg-gray-50",
+    };
+
+    // Filter posts by tag
+    const filterPosts = (selectedTagId: string | null) => {
+      if (!selectedTagId || selectedTagId === "all") return allPosts;
+
+      const selectedTagName = document
+        .querySelector(`[data-tag="${selectedTagId}"]`)
+        ?.getAttribute("data-tag-name");
+      if (!selectedTagName) return allPosts;
+
+      return allPosts.filter((post) =>
+        post.tags?.some((tag) => tag === selectedTagName)
+      );
+    };
+
+    // Update button states
+    const updateButtons = (selectedTagId: string | null) => {
+      elements.tagButtons.forEach((button) => {
+        const buttonElement = button as HTMLElement;
+        const buttonTagId = button.getAttribute("data-tag");
+        const isActive =
+          buttonTagId === selectedTagId ||
+          (buttonTagId === "all" &&
+            (!selectedTagId || selectedTagId === "all"));
+        buttonElement.className = isActive
+          ? buttonClasses.active
+          : buttonClasses.inactive;
+      });
+    };
+
+    // Update latest blog content
+    const updateLatestBlog = (post: any) => {
+      if (!post) {
+        elements.latestBlog?.classList.add("hidden");
+        return;
+      }
+
+      elements.latestBlog?.classList.remove("hidden");
+      elements.latestBlogLink?.setAttribute("href", `/blog/${post.slug}/`);
+      elements.latestBlogImage?.setAttribute("src", post.image);
+      elements.latestBlogImage?.setAttribute("alt", post.title || "Blog Post");
+      elements.latestBlogTitle &&
+        (elements.latestBlogTitle.textContent = post.title || "");
+      elements.latestBlogDate &&
+        (elements.latestBlogDate.textContent = post.date || "");
+      elements.latestBlogDescription &&
+        (elements.latestBlogDescription.textContent = post.description || "");
+    };
+
+    // Update blog grid
+    const updateBlogGrid = (posts: any[]) => {
+      elements.blogCards.forEach((card, index) => {
+        const cardElement = card as HTMLElement;
+        const post = posts[index];
+
+        if (post) {
+          cardElement.style.display = "block";
+          cardElement.style.animation = "fadeIn 0.3s ease-in";
+
+          // Update card content
+          const cardLink = card.querySelector("a");
+          const cardImage = card.querySelector("img");
+          const cardTitle = card.querySelector("h1");
+          const cardDate = card.querySelector("p:first-of-type");
+          const cardDescription = card.querySelector("p:last-of-type");
+
+          cardLink?.setAttribute("href", `/blog/${post.slug}/`);
+          cardImage?.setAttribute("src", post.image);
+          cardImage?.setAttribute("alt", post.title || "Blog Post");
+          cardTitle && (cardTitle.textContent = post.title || "");
+          cardDate && (cardDate.textContent = post.date || "");
+          cardDescription &&
+            (cardDescription.textContent = post.description || "");
+        } else {
+          cardElement.style.display = "none";
+        }
+      });
+    };
+
+    // Main update function
+    const updateUI = (selectedTagId: string | null) => {
+      const filteredPosts = filterPosts(selectedTagId);
+
+      updateButtons(selectedTagId);
+      updateLatestBlog(filteredPosts[0]);
+      updateBlogGrid(filteredPosts.slice(1));
+
+      // Update empty state
+      const isEmpty =
+        filteredPosts.length === 0 && selectedTagId && selectedTagId !== "all";
+      elements.emptyState?.classList.toggle("hidden", !isEmpty);
+    };
+
+    // Event listeners
+    elements.tagButtons.forEach((button) => {
+      button.addEventListener("click", function (this: HTMLElement) {
+        updateUI(this.getAttribute("data-tag"));
+      });
+    });
+
+    elements.showAllBtn?.addEventListener("click", () => updateUI("all"));
+  });
+</script>
+
+<style>
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .blog-card {
+    transition: all 0.3s ease-in-out;
+  }
+  [data-tag] {
+    cursor: pointer;
+    transition: all 0.15s ease-in-out;
+  }
+  [data-tag]:hover {
+    transform: translateY(-1px);
+  }
+</style>
