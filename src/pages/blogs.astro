@@ -24,7 +24,7 @@ const sortedPosts = posts.sort((a, b) => {
     posts === undefined || posts.length === 0 ? (
       <BlogsEmptyState />
     ) : (
-      <AllBlogs posts={sortedPosts} tags={tags} />
+      <AllBlogs posts={sortedPosts} tags={tags} client:load />
     )
   }
 </Layout>
