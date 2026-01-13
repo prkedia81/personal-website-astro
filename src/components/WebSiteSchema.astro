@@ -1,0 +1,19 @@
+---
+const siteUrl = "https://prannaykedia.com";
+
+interface Props {
+  description?: string;
+}
+
+const { description } = Astro.props as Props;
+
+const webSiteSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  name: "Prannay Kedia",
+  url: siteUrl,
+  ...(description && { description }),
+};
+---
+
+<script type="application/ld+json" set:html={JSON.stringify(webSiteSchema)} />

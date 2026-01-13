@@ -1,0 +1,27 @@
+---
+const siteUrl = "https://prannaykedia.com";
+
+interface Props {
+  title: string;
+  description?: string;
+  url: string;
+}
+
+const { title, description, url } = Astro.props as Props;
+
+const contactPageSchema = {
+  "@context": "https://schema.org",
+  "@type": "ContactPage",
+  name: title,
+  ...(description && { description }),
+  url,
+  mainEntity: {
+    "@type": "Person",
+    name: "Prannay Kedia",
+    email: "prannaykedia1@gmail.com",
+    url: siteUrl,
+  },
+};
+---
+
+<script type="application/ld+json" set:html={JSON.stringify(contactPageSchema)} />

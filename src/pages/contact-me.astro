@@ -3,11 +3,21 @@ import Layout from "../layouts/Layout.astro";
 import PageHeading from "../components/PageHeading.astro";
 import Connect from "../components/Connect.astro";
 import Contact from "../components/Contact";
+import ContactPageSchema from "../components/ContactPageSchema.astro";
 
-export const prerender = true
+export const prerender = true;
+
+const siteUrl = "https://prannaykedia.com";
+const contactUrl = new URL(Astro.url.pathname, siteUrl).href;
 ---
 
 <Layout title="Contact Me | Prannay Kedia">
+  <ContactPageSchema
+    title="Contact Me | Prannay Kedia"
+    description="Want to talk? Send me a message and I'll get back to you in 2 day's time"
+    url={contactUrl}
+  />
+
   <PageHeading>
     <h1>Contact Me</h1>
   </PageHeading>

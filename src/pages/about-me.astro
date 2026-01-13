@@ -2,11 +2,15 @@
 import Layout from "../layouts/Layout.astro";
 import PageHeading from "../components/PageHeading.astro";
 import ResumePoint from "../components/ResumePoint.astro";
+import WebPageSchema from "../components/WebPageSchema.astro";
 import { Image } from "astro:assets";
 import myImage from "../assets/images/me-pic.jpg";
 import { getCollection } from "astro:content";
 
 export const prerender = true;
+
+const siteUrl = "https://prannaykedia.com";
+const aboutUrl = new URL(Astro.url.pathname, siteUrl).href;
 
 const resumePoints = await getCollection("resume");
 const aboutData = await getCollection("about");
@@ -14,6 +18,12 @@ const about = aboutData[0].data;
 ---
 
 <Layout title="About Me | Prannay Kedia">
+  <WebPageSchema
+    title="About Me | Prannay Kedia"
+    description={about.shortAbout?.split("\n\n")[0] || about.longBio?.split("\n\n")[0] || "About Prannay Kedia"}
+    url={aboutUrl}
+  />
+
   <PageHeading>
     <h1>About Me</h1>
   </PageHeading>

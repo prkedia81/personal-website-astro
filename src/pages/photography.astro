@@ -1,12 +1,39 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import PageHeading from "../components/PageHeading.astro";
+import WebPageSchema from "../components/WebPageSchema.astro";
 import { Image } from "astro:assets";
 
 export const prerender = true;
+
+const siteUrl = "https://prannaykedia.com";
+const photographyUrl = new URL(Astro.url.pathname, siteUrl).href;
+
+// Extract all image URLs from the page
+const photographyImages = [
+  "https://res.cloudinary.com/dg24rzjez/image/upload/v1667582659/personal-website/projects/photography/09.jpg",
+  "https://res.cloudinary.com/dg24rzjez/image/upload/v1667582938/personal-website/projects/photography/06.jpg",
+  "https://res.cloudinary.com/dg24rzjez/image/upload/v1667581150/personal-website/projects/photography/05.jpg",
+  "https://res.cloudinary.com/dg24rzjez/image/upload/v1667581150/personal-website/projects/photography/03.jpg",
+  "https://res.cloudinary.com/dg24rzjez/image/upload/v1667581143/personal-website/projects/photography/02.jpg",
+  "https://res.cloudinary.com/dg24rzjez/image/upload/v1667581150/personal-website/projects/photography/04.jpg",
+  "https://res.cloudinary.com/dg24rzjez/image/upload/v1667581014/personal-website/projects/photography/16.jpg",
+  "https://res.cloudinary.com/dg24rzjez/image/upload/v1667583374/personal-website/projects/photography/08.jpg",
+  "https://res.cloudinary.com/dg24rzjez/image/upload/v1667581019/personal-website/projects/photography/11.jpg",
+  "https://res.cloudinary.com/dg24rzjez/image/upload/v1667581017/personal-website/projects/photography/13.jpg",
+  "https://res.cloudinary.com/dg24rzjez/image/upload/v1667581020/personal-website/projects/photography/10.jpg",
+  "https://res.cloudinary.com/dg24rzjez/image/upload/v1667581015/personal-website/projects/photography/15.jpg",
+];
 ---
 
 <Layout title="Photography | Prannay Kedia">
+  <WebPageSchema
+    title="Photography | Prannay Kedia"
+    description="A collection of my photographs from the last 5 years. Includes product images to nature"
+    url={photographyUrl}
+    images={photographyImages}
+  />
+
   <PageHeading>
     <h1>Photography</h1>
   </PageHeading>

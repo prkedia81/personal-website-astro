@@ -1,0 +1,38 @@
+---
+const siteUrl = "https://prannaykedia.com";
+
+interface Props {
+  title: string;
+  description: string;
+  url: string;
+  image?: string;
+  datePublished?: string;
+  dateModified?: string;
+}
+
+const { title, description, url, image, datePublished, dateModified } = Astro.props as Props;
+
+const articleSchema = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  headline: title,
+  description,
+  url,
+  ...(image && { image }),
+  ...(datePublished && { datePublished: new Date(datePublished).toISOString() }),
+  ...(dateModified && { dateModified: new Date(dateModified).toISOString() }),
+  author: {
+    "@type": "Person",
+    name: "Prannay Kedia",
+    email: "prannaykedia1@gmail.com",
+    url: siteUrl,
+  },
+  publisher: {
+    "@type": "Person",
+    name: "Prannay Kedia",
+    url: siteUrl,
+  },
+};
+---
+
+<script type="application/ld+json" set:html={JSON.stringify(articleSchema)} />

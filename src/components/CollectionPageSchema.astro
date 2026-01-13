@@ -1,0 +1,40 @@
+---
+interface Props {
+  title: string;
+  description?: string;
+  url: string;
+  items: Array<{
+    name: string;
+    url: string;
+    description?: string;
+    image?: string;
+  }>;
+}
+
+const { title, description, url, items } = Astro.props as Props;
+
+const collectionPageSchema = {
+  "@context": "https://schema.org",
+  "@type": "CollectionPage",
+  name: title,
+  ...(description && { description }),
+  url,
+  mainEntity: {
+    "@type": "ItemList",
+    numberOfItems: items.length,
+    itemListElement: items.map((item, index) => ({
+      "@type": "ListItem",
+      position: index + 1,
+      item: {
+        "@type": "Article",
+        name: item.name,
+        url: item.url,
+        ...(item.description && { description: item.description }),
+        ...(item.image && { image: item.image }),
+      },
+    })),
+  },
+};
+---
+
+<script type="application/ld+json" set:html={JSON.stringify(collectionPageSchema)} />

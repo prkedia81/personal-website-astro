@@ -4,6 +4,8 @@ import Connect from "../components/Connect.astro";
 import Newsletter from "../components/Newsletter.tsx";
 import LogoCloud from "../components/LogoCloud.astro";
 import FeaturedLinks from "../components/FeaturedLinks.astro";
+import WebSiteSchema from "../components/WebSiteSchema.astro";
+import WebPageSchema from "../components/WebPageSchema.astro";
 import { Image } from "astro:assets";
 import helloImage from "../assets/images/homepage-hello.svg";
 import portraitImage from "../assets/images/homepage-portrait.svg";
@@ -12,11 +14,21 @@ import { getCollection } from "astro:content";
 
 export const prerender = true;
 
+const siteUrl = "https://prannaykedia.com";
+const homepageUrl = new URL(Astro.url.pathname, siteUrl).href;
+
 const aboutData = await getCollection("about");
 const about = aboutData[0].data;
 ---
 
 <Layout title="Prannay Kedia">
+  <WebSiteSchema description="Personal website of Prannay Kedia - Entrepreneur, Ex-Founder of Writee AI, Ex-Bain & Co, IIM Calcutta" />
+  <WebPageSchema
+    title="Prannay Kedia"
+    description={about.shortBio || "Entrepreneur, Ex-Founder of Writee AI, Ex-Bain & Co, IIM Calcutta"}
+    url={homepageUrl}
+  />
+
   <main class="max-w-7xl mx-auto px-4 sm:px-6 mt-8 sm:mt-12 lg:max-h-screen">
     <div class="flex items-center justify-around">
       <div

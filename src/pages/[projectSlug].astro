@@ -1,6 +1,7 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import PageHeading, { type Banner } from "../components/PageHeading.astro";
+import ArticleSchema from "../components/ArticleSchema.astro";
 import { getCollection, render } from "astro:content";
 export const prerender = true;
 
@@ -16,6 +17,9 @@ export async function getStaticPaths() {
 const { project } = Astro.props;
 const { Content } = await render(project);
 
+const siteUrl = "https://prannaykedia.com";
+const projectUrl = new URL(Astro.url.pathname, siteUrl).href;
+
 const banner: Banner = {
   link: project.data.link || "",
   linkUrl: project.data.linkUrl || "",
@@ -24,6 +28,13 @@ const banner: Banner = {
 ---
 
 <Layout title={`${project.data.title} | Prannay Kedia`}>
+  <ArticleSchema
+    title={project.data.title}
+    description={project.data.description}
+    url={projectUrl}
+    image={project.data.bannerImg || project.data.cardImage}
+  />
+
   <PageHeading banner={banner}>
     <h1>{project.data.title}</h1>
   </PageHeading>

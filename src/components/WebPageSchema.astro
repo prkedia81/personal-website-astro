@@ -1,0 +1,45 @@
+---
+interface Props {
+  title: string;
+  description?: string;
+  url: string;
+  images?: string[];
+  videos?: Array<{
+    url: string;
+    name: string;
+    description?: string;
+    thumbnailUrl?: string;
+  }>;
+}
+
+const { title, description, url, images, videos } = Astro.props as Props;
+
+const webPageSchema: any = {
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  name: title,
+  url,
+  ...(description && { description }),
+};
+
+// Add images if provided
+if (images && images.length > 0) {
+  webPageSchema.image = images.map((img) => ({
+    "@type": "ImageObject",
+    url: img,
+  }));
+}
+
+// Add videos if provided
+if (videos && videos.length > 0) {
+  webPageSchema.video = videos.map((video) => ({
+    "@type": "VideoObject",
+    url: video.url,
+    name: video.name,
+    ...(video.description && { description: video.description }),
+    ...(video.thumbnailUrl && { thumbnailUrl: video.thumbnailUrl }),
+  }));
+}
+---
+
+<script type="application/ld+json" set:html={JSON.stringify(webPageSchema)} />

@@ -1,0 +1,73 @@
+---
+import { getCollection } from "astro:content";
+import resumeData from "../content/resume.json";
+
+const siteUrl = "https://prannaykedia.com";
+
+interface Props {
+  post: {
+    title: string;
+    slug: string;
+    seoDescription?: string;
+    coverImage?: string[];
+    publishedDate?: string;
+    createdDate?: string;
+    tags?: Array<{ name: string }>;
+  };
+}
+
+const { post } = Astro.props as Props;
+
+// Get about data for author description
+const aboutData = await getCollection("about");
+const about = aboutData[0]?.data;
+
+// Format dates to ISO 8601
+const publishedDate = post.publishedDate || post.createdDate || new Date().toISOString();
+const datePublished = new Date(publishedDate).toISOString();
+const dateModified = new Date(publishedDate).toISOString();
+
+// Author schema (Person)
+const author = {
+  "@type": "Person",
+  name: "Prannay Kedia",
+  email: "prannaykedia1@gmail.com",
+  url: siteUrl,
+  image: "https://res.cloudinary.com/dg24rzjez/image/upload/v1667652495/personal-website/meta-image.svg",
+  description:
+    about?.shortAbout?.split("\n\n")[0] ||
+    about?.longBio?.split("\n\n")[0] ||
+    "Entrepreneur, Ex-Founder of Writee AI, Ex-Bain & Co, IIM Calcutta",
+};
+
+// Publisher schema (Person)
+const publisher = {
+  "@type": "Person",
+  name: "Prannay Kedia",
+  url: siteUrl,
+};
+
+// Build BlogPosting schema
+const blogPostingSchema = {
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  headline: post.title,
+  description: post.seoDescription || post.title,
+  image: post.coverImage?.[0] || "https://res.cloudinary.com/dg24rzjez/image/upload/v1667652495/personal-website/meta-image.svg",
+  datePublished,
+  dateModified,
+  author,
+  publisher,
+  mainEntityOfPage: {
+    "@type": "WebPage",
+    "@id": `${siteUrl}/blog/${post.slug}`,
+  },
+  ...(post.tags && post.tags.length > 0 && {
+    articleSection: post.tags.map((tag) => tag.name).join(", "),
+    keywords: post.tags.map((tag) => tag.name).join(", "),
+  }),
+  url: `${siteUrl}/blog/${post.slug}`,
+};
+---
+
+<script type="application/ld+json" set:html={JSON.stringify(blogPostingSchema)} />

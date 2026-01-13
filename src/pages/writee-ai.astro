@@ -1,7 +1,11 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import PageHeading, { type Banner } from "../components/PageHeading.astro";
+import WebPageSchema from "../components/WebPageSchema.astro";
 export const prerender = true;
+
+const siteUrl = "https://prannaykedia.com";
+const writeeUrl = new URL(Astro.url.pathname, siteUrl).href;
 
 const banner: Banner = {
   link: "https://writee.in",
@@ -12,6 +16,12 @@ const banner: Banner = {
 ---
 
 <Layout title="Writee AI | Prannay Kedia">
+  <WebPageSchema
+    title="Writee AI | Prannay Kedia"
+    description="Writee AI, legally incorporated as Whixic Technologies Private Limited, is an AI-based copywriting platform built for marketers, founders and freelancers. Writee was incorporated on 9th March 2022 and it's my first start-up."
+    url={writeeUrl}
+  />
+
   <PageHeading banner={banner}>
     <h1
       >Whixic{" "}<br class="md:hidden" />Technologies{" "}<br

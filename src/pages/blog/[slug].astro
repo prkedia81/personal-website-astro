@@ -8,6 +8,7 @@ import { Image } from "astro-preload/components";
 import BlogContent from "../../components/BlogContent.astro";
 import { getCollection, type CollectionEntry } from "astro:content";
 import { getBlogById } from "../../services/notion";
+import BlogPostingSchema from "../../components/BlogPostingSchema.astro";
 
 export const prerender = true;
 
@@ -57,6 +58,8 @@ if (post.content === undefined) {
 ---
 
 <Layout title={post.title} metaData={meta}>
+  <BlogPostingSchema post={post} />
+
   <section
     id="blog-header"
     class="flex-col flex md:flex-row items-center lg:px-24 md:px-24 px-6 mt-12 gap-12 justify-around">

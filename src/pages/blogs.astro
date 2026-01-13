@@ -3,8 +3,11 @@ import Layout from "../layouts/Layout.astro";
 import PageHeading from "../components/PageHeading.astro";
 import BlogsEmptyState from "../components/BlogsEmptyState.astro";
 import AllBlogs from "../components/AllBlogs.astro";
+import CollectionPageSchema from "../components/CollectionPageSchema.astro";
 import { getCollection } from "astro:content";
 export const prerender = true;
+
+const siteUrl = "https://prannaykedia.com";
 
 const posts = await getCollection("blogs");
 const tags = await getCollection("tags");
@@ -13,9 +16,24 @@ const sortedPosts = posts.sort((a, b) => {
   const dateB = b.data.publishedDate || b.data.createdDate;
   return new Date(dateB).getTime() - new Date(dateA).getTime();
 });
+
+// Prepare items for CollectionPage schema
+const collectionItems = sortedPosts.map((post) => ({
+  name: post.data.title,
+  url: `${siteUrl}/blog/${post.data.slug}`,
+  description: post.data.seoDescription || post.data.title,
+  image: post.data.coverImage?.[0],
+}));
 ---
 
 <Layout title="Blogs | Prannay Kedia">
+  <CollectionPageSchema
+    title="Blogs | Prannay Kedia"
+    description="A collection of blog posts and musings by Prannay Kedia"
+    url={`${siteUrl}/blogs`}
+    items={collectionItems}
+  />
+
   <PageHeading>
     <p>{"My "}<br class="md:hidden" />{"Musings"}</p>
   </PageHeading>
