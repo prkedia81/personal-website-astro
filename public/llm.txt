@@ -1,0 +1,133 @@
+# LLM.txt for prannaykedia.com
+
+## Site Overview
+
+This is the personal website of Prannay Kedia, an entrepreneur, MBA student at IIM Calcutta, and former co-founder of Writee AI (acquired in 2023). The site showcases his professional journey, projects, blog posts, photography, and film-making work.
+
+## About Prannay Kedia
+
+Prannay Kedia is an entrepreneur and specialized generalist with expertise in:
+- Business Strategy
+- Entrepreneurship
+- Venture Capital
+- Tech & AI
+- Full stack development
+- Finance
+
+**Background:**
+- Ex-Founder of Writee AI (Acquired '23) - an AI-based copywriting platform
+- MBA from IIM Calcutta (2024-2026)
+- Chemical Engineering from Jadavpur University (2020-2024)
+- Former experience at Bain & Company and Bombay Stock Exchange
+
+**Interests:** Indian Classical Music, photography, film-making, binge-watching TV shows
+
+## Site Structure
+
+### Main Pages
+
+1. **Homepage** (`/`)
+   - Hero section with introduction
+   - Short bio and call-to-action buttons
+   - Social media links (LinkedIn, Twitter, Website)
+   - About Me section
+   - Featured links showcase
+   - Newsletter subscription
+
+2. **About Me** (`/about-me`)
+   - Detailed biography and background
+   - Professional journey and experiences
+   - Resume timeline with key positions:
+     - Bain & Company (April 2025 - June 2025)
+     - MBA at IIM Calcutta (2024-2026)
+     - Writee AI - Co-founder (Feb 2022 - Jul 2023)
+     - Chemical Engineering at Jadavpur University (2020-2024)
+     - Bombay Stock Exchange (May 2022 - July 2022)
+     - Bokaro Steel Plant (Dec 2022)
+
+3. **Projects** (`/projects`)
+   - Showcase of selected projects including:
+     - **FlirtAid** - A dating app built for college students with features like signal system, match percentage, and face matching AI
+     - **Aggregate Terminal** - (See project details)
+     - **A.R.T (Advanced Refereeing Technology)** - Goal-line detection system for Indian Football Association
+     - **Photography** - Collection of photographs from the last 5 years
+     - **Film Making** - Short films where Prannay contributed as director and cinematographer
+
+4. **Blogs** (`/blogs`)
+   - Personal blog posts and musings
+   - Content sourced from Notion/Ghost CMS
+   - Topics include entrepreneurship, technology, finance, and industry analysis
+   - Featured blog posts:
+     - Stablecoin Primer in 2025
+     - AI in Venture Capital
+     - BSE's Market Share Growth
+
+5. **Photography** (`/photography`)
+   - Portfolio of photographs spanning 5 years
+   - Includes product images and nature photography
+
+6. **Film Making** (`/film-making`)
+   - Collection of short films
+   - Prannay's role: Director and Cinematographer
+
+7. **Contact** (`/contact-me`)
+   - Contact form and information
+   - Ways to connect with Prannay
+
+8. **Writee AI** (`/writee-ai`)
+   - Detailed information about Writee AI venture
+   - Featured as a top highlight on the homepage
+
+### Content Types
+
+- **Projects**: Detailed case studies of entrepreneurial ventures and technical projects
+- **Blog Posts**: Articles on technology, finance, entrepreneurship, and industry insights
+- **Resume Data**: JSON-based resume information with timeline of experiences
+- **Featured Links**: Curated highlights of key projects and blog posts
+- **Films**: JSON data about film-making projects
+
+### Technical Details
+
+- **Framework**: Astro.js
+- **Styling**: Tailwind CSS
+- **Content Management**: Astro Content Collections, Notion API, Ghost CMS
+- **Deployment**: Vercel
+- **Site URL**: https://prannaykedia.com
+- **Sitemap**: https://prannaykedia.com/sitemap-index.xml
+
+### Key Features
+
+- RSS feed available at `/rss.xml`
+- Newsletter subscription functionality
+- Contact form with email integration
+- Responsive design optimized for all devices
+- SEO optimized with sitemap and meta tags
+
+### Navigation Guide for LLMs
+
+When exploring this site:
+1. Start with the homepage (`/`) to understand the overall structure
+2. Visit `/about-me` for comprehensive background information
+3. Check `/projects` for detailed project case studies
+4. Browse `/blogs` for written content and insights
+5. Use `/contact-me` to understand how to reach out
+
+### Content Themes
+
+- Entrepreneurship and startup building
+- AI and technology applications
+- Product development and design
+- Finance and market analysis
+- Creative work (photography, film-making)
+- Career journey and professional development
+
+### Social Links
+
+- LinkedIn: https://www.linkedin.com/in/prannay-kedia/
+- Twitter: https://twitter.com/kediaprannay/
+- Website: https://www.prannaykedia.com
+
+---
+
+Last updated: 2025
+For questions or updates, refer to the site's contact page.

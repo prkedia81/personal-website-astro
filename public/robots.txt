@@ -2,3 +2,6 @@ User-agent: *
 Allow: /
 
 Sitemap: https://prannaykedia.com/sitemap-index.xml
+
+# LLM-friendly content
+# For AI assistants and LLMs, see: https://prannaykedia.com/llm.txt
