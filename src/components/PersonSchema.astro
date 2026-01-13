@@ -1,0 +1,105 @@
+---
+import { getCollection } from "astro:content";
+import resumeData from "../content/resume.json";
+
+// Get about data
+const aboutData = await getCollection("about");
+const about = aboutData[0]?.data;
+
+// Site URL from config
+const siteUrl = "https://prannaykedia.com";
+
+// Extract education from resume
+const education = resumeData.filter(
+  (item) =>
+    item.title.includes("MBA") ||
+    item.title.includes("University") ||
+    item.title.includes("Engineering")
+);
+
+// Extract work experience (excluding education)
+const workExperience = resumeData.filter(
+  (item) =>
+    !item.title.includes("MBA") &&
+    !item.title.includes("University") &&
+    !item.title.includes("Engineering") &&
+    !item.title.includes("Bokaro Steel Plant") // Exclude training programs
+);
+
+// Parse education details
+const iimCalcutta = education.find((e) => e.title.includes("IIM Calcutta"));
+const jadavpurUniversity = education.find((e) =>
+  e.title.includes("Jadavpur University")
+);
+
+// Skills extracted from bio
+const skills = [
+  "Full Stack Development",
+  "Finance",
+  "Product Management",
+  "Entrepreneurship",
+  "AI",
+  "Business Strategy",
+];
+
+// Social profiles
+const socialProfiles = [
+  "https://www.linkedin.com/in/prannay-kedia/",
+  "https://twitter.com/kediaprannay/",
+  "https://www.prannaykedia.com",
+];
+
+// Construct Person schema
+const personSchema = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: "Prannay Kedia",
+  jobTitle: "Entrepreneur",
+  description:
+    about?.shortAbout?.split("\n\n")[0] ||
+    about?.longBio?.split("\n\n")[0] ||
+    "Entrepreneur, Ex-Founder of Writee AI, Ex-Bain & Co, IIM Calcutta",
+  url: siteUrl,
+  image:
+    "https://res.cloudinary.com/dg24rzjez/image/upload/v1667652495/personal-website/meta-image.svg",
+  email: "prannaykedia1@gmail.com",
+  sameAs: socialProfiles,
+  alumniOf: [
+    ...(iimCalcutta
+      ? [
+          {
+            "@type": "EducationalOrganization",
+            name: "Indian Institute of Management Calcutta",
+            alternateName: "IIM Calcutta",
+            description: iimCalcutta.description,
+          },
+        ]
+      : []),
+    ...(jadavpurUniversity
+      ? [
+          {
+            "@type": "EducationalOrganization",
+            name: "Jadavpur University",
+            description: jadavpurUniversity.description,
+          },
+        ]
+      : []),
+  ],
+  knowsAbout: skills,
+  worksFor: workExperience.map((work) => {
+    const orgName = work.title.replace(/\s*\(.*?\)\s*/g, "").trim();
+    return {
+      "@type": "Organization",
+      name: orgName,
+      description: work.description,
+    };
+  }),
+  contactPoint: {
+    "@type": "ContactPoint",
+    email: "prannaykedia1@gmail.com",
+    contactType: "Personal",
+  },
+};
+---
+
+<script type="application/ld+json" set:html={JSON.stringify(personSchema)} />

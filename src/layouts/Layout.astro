@@ -4,6 +4,7 @@ import Analytics from "../components/Analytics.astro";
 import Footer from "../components/Footer.astro";
 import MetaTags, { type MetaProps } from "../components/MetaTags.astro";
 import Nav from "../components/Nav.astro";
+import PersonSchema from "../components/PersonSchema.astro";
 import { NODE_ENV } from "astro:env/server";
 import { ClientRouter } from "astro:transitions";
 
@@ -59,6 +60,7 @@ if (metaData === undefined) {
     <Analytics partytown={false} />
 
     <MetaTags {...metaData} />
+    <PersonSchema />
   </head>
 
   <body class="bg-background">
